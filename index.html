@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Baytek Collection - Mağaza</title>
+<title>Baytek Collection - Ultra Mağaza</title>
 <style>
 body {margin:0;font-family:'Poppins',sans-serif;background:#111;color:#fff;text-align:center;}
 header {padding:50px 20px;background:linear-gradient(135deg,#000,#222);}
@@ -12,9 +12,10 @@ h1 {font-size:40px;letter-spacing:3px;text-transform:uppercase;font-weight:800;c
 .btns a {display:inline-block;margin:10px;padding:12px 25px;background:#ff00ff;color:#fff;text-decoration:none;border-radius:8px;font-weight:700;box-shadow:0 0 15px #ff00ff;transition:0.3s;}
 .btns a:hover {background:#fff;color:#ff00ff;box-shadow:0 0 25px #fff;}
 .products {display:flex;flex-wrap:wrap;justify-content:center;gap:25px;padding:30px 20px;}
-.product-card {background:#222;border-radius:12px;width:250px;padding:15px;box-shadow:0 0 15px #ff00ff;transition:transform 0.3s,box-shadow 0.3s;position:relative;}
+.product-card {background:#222;border-radius:12px;width:250px;padding:15px;box-shadow:0 0 15px #ff00ff;transition:transform 0.3s,box-shadow 0.3s;position:relative;overflow:hidden;}
 .product-card:hover {transform:scale(1.05);box-shadow:0 0 25px #ff00ff;}
-.product-card img {width:100%;border-radius:8px;margin-bottom:10px;}
+.product-card img {width:100%;border-radius:8px;margin-bottom:10px;transition:0.3s;}
+.product-card img:hover {transform:scale(1.05);}
 .product-card h3 {font-size:18px;margin:10px 0 5px;}
 .product-card p {font-size:14px;color:#ccc;}
 .product-card strong {color:#ff00ff;display:block;margin:10px 0;font-size:16px;}
@@ -23,7 +24,7 @@ h1 {font-size:40px;letter-spacing:3px;text-transform:uppercase;font-weight:800;c
 .product-card button:hover {background:#fff;color:#ff00ff;}
 #cart-icon {position:fixed;top:20px;right:20px;background:#ff00ff;color:#111;padding:10px;border-radius:50%;width:50px;height:50px;display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:1000;box-shadow:0 0 15px #ff00ff;}
 #cart-icon span {font-weight:700;}
-#cart {position:fixed;right:20px;top:80px;background:#222;border-radius:12px;padding:15px;width:300px;max-height:80vh;overflow-y:auto;box-shadow:0 0 15px #ff00ff;display:none;z-index:999;}
+#cart {position:fixed;right:20px;top:80px;background:#222;border-radius:12px;padding:15px;width:320px;max-height:80vh;overflow-y:auto;box-shadow:0 0 15px #ff00ff;display:none;z-index:999;}
 #cart h2 {margin-top:0;color:#ff00ff;display:flex;justify-content:space-between;align-items:center;}
 #cart ul {list-style:none;padding:0;margin:0;}
 #cart li {margin-bottom:8px;font-size:14px;display:flex;justify-content:space-between;align-items:center;}
@@ -49,13 +50,17 @@ h1 {font-size:40px;letter-spacing:3px;text-transform:uppercase;font-weight:800;c
 <div id="cart-icon">🛒 <span id="cart-count">0</span></div>
 
 <section class="products">
+
 <div class="product-card" data-name="Kartal figürlü LED ışıklı su şelalesi" data-price="1200">
 <div class="added-popup">✅ Sepete eklendi!</div>
 <img src="https://i.imgur.com/aIAthmX.jpeg" alt="">
 <h3>Kartal figürlü LED ışıklı su şelalesi</h3>
-<p>Şık tasarım, LED ışıklı ve dekoratif su şelalesi.</p>
+<p>Seçenekli figürler: 1 adet Fil Figürlü veya 2 adet Fil Figürlü</p>
 <strong>1200₺</strong>
-<input type="number" value="1" min="1" max="24">
+<select class="color-select">
+<option value="1 adet Fil Figürlü">1 adet Fil Figürlü</option>
+<option value="2 adet Fil Figürlü">2 adet Fil Figürlü</option>
+</select>
 <select>
 <option value="MNG - Standart">MNG - Standart</option>
 <option value="MNG - Hızlı">MNG - Hızlı</option>
@@ -66,11 +71,7 @@ h1 {font-size:40px;letter-spacing:3px;text-transform:uppercase;font-weight:800;c
 <option value="PTT - Standart">PTT - Standart</option>
 <option value="PTT - Hızlı">PTT - Hızlı</option>
 </select>
-<select class="color-select">
-<option value="Mor">Mor</option>
-<option value="Mavi">Mavi</option>
-<option value="Yeşil">Yeşil</option>
-</select>
+<input type="number" value="1" min="1" max="24">
 <button>Add to Cart</button>
 </div>
 
@@ -78,9 +79,13 @@ h1 {font-size:40px;letter-spacing:3px;text-transform:uppercase;font-weight:800;c
 <div class="added-popup">✅ Sepete eklendi!</div>
 <img src="https://i.imgur.com/wvdZXrC.jpeg" alt="">
 <h3>3 Bardaklı Vakumlu Termos Seti</h3>
-<p>Taşınabilir, paslanmaz çelik ve ısıyı korur.</p>
+<p>Renk seçenekleri: Su Yeşili, Mor, Siyah</p>
 <strong>450₺</strong>
-<input type="number" value="1" min="1" max="24">
+<select class="color-select">
+<option value="Su Yeşili">Su Yeşili</option>
+<option value="Mor">Mor</option>
+<option value="Siyah">Siyah</option>
+</select>
 <select>
 <option value="MNG - Standart">MNG - Standart</option>
 <option value="MNG - Hızlı">MNG - Hızlı</option>
@@ -91,11 +96,7 @@ h1 {font-size:40px;letter-spacing:3px;text-transform:uppercase;font-weight:800;c
 <option value="PTT - Standart">PTT - Standart</option>
 <option value="PTT - Hızlı">PTT - Hızlı</option>
 </select>
-<select class="color-select">
-<option value="Gümüş">Gümüş</option>
-<option value="Siyah">Siyah</option>
-<option value="Beyaz">Beyaz</option>
-</select>
+<input type="number" value="1" min="1" max="24">
 <button>Add to Cart</button>
 </div>
 
@@ -103,9 +104,13 @@ h1 {font-size:40px;letter-spacing:3px;text-transform:uppercase;font-weight:800;c
 <div class="added-popup">✅ Sepete eklendi!</div>
 <img src="https://i.imgur.com/oiAFO7w.jpeg" alt="">
 <h3>Mobgift USB’li Işıklı Ahşap Standlı Cam Küre</h3>
-<p>Şık ahşap stand ve kristal cam yapısı.</p>
+<p>Figür seçenekleri: Astronot, Melek, Galaksi</p>
 <strong>200₺</strong>
-<input type="number" value="1" min="1" max="52">
+<select class="color-select">
+<option value="Astronot">Astronot</option>
+<option value="Melek">Melek</option>
+<option value="Galaksi">Galaksi</option>
+</select>
 <select>
 <option value="MNG - Standart">MNG - Standart</option>
 <option value="MNG - Hızlı">MNG - Hızlı</option>
@@ -116,13 +121,10 @@ h1 {font-size:40px;letter-spacing:3px;text-transform:uppercase;font-weight:800;c
 <option value="PTT - Standart">PTT - Standart</option>
 <option value="PTT - Hızlı">PTT - Hızlı</option>
 </select>
-<select class="color-select">
-<option value="Beyaz">Beyaz</option>
-<option value="Altın">Altın</option>
-<option value="Mavi">Mavi</option>
-</select>
+<input type="number" value="1" min="1" max="52">
 <button>Add to Cart</button>
 </div>
+
 </section>
 
 <div id="cart">
@@ -148,7 +150,7 @@ const price=Number(card.getAttribute('data-price'));
 let quantity=Number(card.querySelector('input').value);
 const max=Number(card.querySelector('input').max);
 if(quantity>max) quantity=max;
-const shipping=card.querySelector('select').value;
+const shipping=card.querySelector('select:nth-of-type(2)').value;
 const color=card.querySelector('.color-select').value;
 
 const exists=cart.find(i=>i.name===name && i.color===color && i.shipping===shipping);
