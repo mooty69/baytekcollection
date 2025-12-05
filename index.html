@@ -1,85 +1,88 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Baytek Collection</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baytek Collection</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #000000, #222222);
+            color: #fff;
+            text-align: center;
+        }
+        header {
+            padding: 60px 20px;
+        }
+        .logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px #ff00ff);
+        }
+        h1 {
+            font-size: 45px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 800;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ff00ff; }
+            to { text-shadow: 0 0 25px #ff00ff; }
+        }
+        .tagline {
+            font-size: 18px;
+            margin-top: -10px;
+            color: #d1d1d1;
+        }
+        .btns {
+            margin-top: 40px;
+        }
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
+            background: #ff00ff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 0 15px #ff00ff;
+        }
+        .btn:hover {
+            background: #ffffff;
+            color: #ff00ff;
+            box-shadow: 0 0 25px #ffffff;
+        }
+        footer {
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 14px;
+            color: #7d7d7d;
+        }
+    </style>
+</head>
+<body>
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap');
+<header>
+    <img class="logo" src="YOUR_LOGO_LINK" alt="Baytek Collection Logo">
 
-    body {
-        margin: 0;
-        font-family: 'Poppins', sans-serif;
-        background: linear-gradient(135deg, #000000, #20002c, #440062);
-        background-size: 400% 400%;
-        animation: bgMove 12s infinite alternate;
-        color: white;
-        text-align: center;
-    }
+    <h1>Baytek Collection</h1>
+    <p class="tagline">Tarzın Yeni Merkezi – Kalite, Şıklık ve Etki Bir Arada</p>
 
-    @keyframes bgMove {
-        0% {background-position: 0% 50%;}
-        100% {background-position: 100% 50%;}
-    }
+    <div class="btns">
+        <a class="btn" href="https://instagram.com/baytekcollection" target="_blank">📸 Instagram</a>
+        <a class="btn" href="https://wa.me/905334772649" target="_blank">💬 WhatsApp</a>
+    </div>
+</header>
 
-    .title {
-        font-size: 65px;
-        font-weight: 900;
-        margin-top: 120px;
-        letter-spacing: 6px;
-        text-transform: uppercase;
-        text-shadow: 
-            0 0 20px #ff00ff,
-            0 0 40px #ff00ff,
-            0 0 70px #ff00ff,
-            0 0 120px #ff00ff;
-        animation: pulse 2s infinite ease-in-out;
-    }
+<footer>
+    © 2025 Baytek Collection – Tüm Hakları Saklıdır.
+</footer>
 
-    @keyframes pulse {
-        0% {transform: scale(1);}
-        100% {transform: scale(1.07);}
-    }
-
-    .subtitle {
-        font-size: 25px;
-        opacity: 0.8;
-        letter-spacing: 3px;
-        margin-top: -10px;
-    }
-
-    .card {
-        width: 80%;
-        max-width: 650px;
-        margin: 60px auto;
-        background: rgba(255, 255, 255, 0.08);
-        border-radius: 25px;
-        padding: 35px;
-        backdrop-filter: blur(14px);
-        box-shadow: 0 0 40px rgba(255, 0, 200, 0.4);
-        animation: fadeUp 1.5s ease-out;
-    }
-
-    @keyframes fadeUp {
-        0% {transform: translateY(50px); opacity: 0;}
-        100% {transform: translateY(0); opacity: 1;}
-    }
-
-    .btn {
-        display: inline-block;
-        margin-top: 25px;
-        padding: 16px 45px;
-        font-size: 20px;
-        border-radius: 40px;
-        border: none;
-        cursor: pointer;
-        color: white;
-        background: linear-gradient(45deg, #ff00ff, #ff0066, #ff0099);
-        box-shadow: 0 0 35px #ff00ff;
-        transition: 0.3s;
-        text-decoration: none;
-        font-weight: 600;
-    }
-
-    .btn:hover {
-        transform: scale(
+</body>
+</html>
