@@ -16,10 +16,8 @@
             padding: 60px 20px;
         }
         .logo {
-            width: 180px;
-            height: auto;
+            width: 150px;
             margin-bottom: 20px;
-            filter: drop-shadow(0 0 15px #ff00ff);
         }
         h1 {
             font-size: 45px;
@@ -38,7 +36,7 @@
             color: #d1d1d1;
         }
         .btns {
-            margin-top: 40px;
+            margin-top: 30px;
         }
         .btn {
             display: inline-block;
@@ -58,6 +56,44 @@
             color: #ff00ff;
             box-shadow: 0 0 25px #ffffff;
         }
+        .products {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 40px 20px;
+        }
+        .product-card {
+            background: #111;
+            padding: 20px;
+            border-radius: 12px;
+            width: 250px;
+            box-shadow: 0 0 15px #ff00ff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ff00ff;
+        }
+        .product-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .product-card h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .product-card p {
+            font-size: 14px;
+            color: #ccc;
+        }
+        .product-card strong {
+            display: block;
+            margin-top: 10px;
+            font-size: 18px;
+            color: #ff00ff;
+        }
         footer {
             margin-top: 60px;
             padding: 20px;
@@ -69,7 +105,8 @@
 <body>
 
 <header>
-    <img class="logo" src="YOUR_LOGO_LINK" alt="Baytek Collection Logo">
+    <!-- Logo -->
+    <img class="logo" src="https://i.imgur.com/Xcka2e9.jpeg" alt="Baytek Collection Logo">
 
     <h1>Baytek Collection</h1>
     <p class="tagline">Tarzın Yeni Merkezi – Kalite, Şıklık ve Etki Bir Arada</p>
@@ -79,6 +116,29 @@
         <a class="btn" href="https://wa.me/905334772649" target="_blank">💬 WhatsApp</a>
     </div>
 </header>
+
+<section class="products">
+    <div class="product-card">
+        <img src="https://i.imgur.com/aIAthmX.jpeg" alt="Kartal figürlü LED ışıklı su şelalesi">
+        <h3>Kartal figürlü LED ışıklı su şelalesi</h3>
+        <p>Şık tasarım, LED ışıklı ve dekoratif su şelalesi.</p>
+        <strong>Fiyat: 1200₺</strong>
+    </div>
+
+    <div class="product-card">
+        <img src="https://i.imgur.com/wvdZXrC.jpeg" alt="3 Bardaklı Vakumlu Termos Seti">
+        <h3>3 Bardaklı Vakumlu Termos Seti</h3>
+        <p>Ürünün türü (vakum termos, su matarası vs.), hacmi/kapasitesi, renk/tema, öne çıkan özellikler (ısıyı uzun süre koruma, taşınabilirlik, paslanmaz çelik, vs.), kullanıcıya hitap eden faydalar (kahve severler, seyahat, outdoor, vs.)</p>
+        <strong>Fiyat: 450₺</strong>
+    </div>
+
+    <div class="product-card">
+        <img src="https://i.imgur.com/oiAFO7w.jpeg" alt="Mobgift USB’li Işıklı Ahşap Standlı Cam Küre">
+        <h3>Mobgift USB’li Işıklı Ahşap Standlı Cam Küre</h3>
+        <p>Mobgift USB’li Işıklı Ahşap Standlı Cam Küre ile masanızı ya da odanızı büyüleyici bir atmosfere dönüştürün! Şık ahşap standı ve kristal cam yapısıyla modern dekorasyonun vazgeçilmezi olacak bu küre, hem göz alıcı hem de fonksiyonel.</p>
+        <strong>Fiyat: 200₺</strong>
+    </div>
+</section>
 
 <footer>
     © 2025 Baytek Collection – Tüm Hakları Saklıdır.
