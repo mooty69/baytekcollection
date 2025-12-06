@@ -5,44 +5,101 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Baytek Collection - Ultra Mağaza</title>
 <style>
-/* Genel Stil */
-body {margin:0;font-family:'Poppins',sans-serif;background:#111;color:#fff;text-align:center;overflow-x:hidden;transition:background 0.5s;position:relative;}
-header {padding:50px 20px;background:linear-gradient(135deg,#000,#222);}
+body {
+  margin:0; font-family:'Poppins',sans-serif; background:#111; color:#fff;
+  text-align:center; overflow-x:hidden; transition:background 0.5s; position:relative;
+}
+/* Header */
+header {
+  padding:50px 20px; background:linear-gradient(135deg,#000,#222); position:relative; z-index:2;
+}
 .logo {width:120px;margin-bottom:10px;}
-h1 {font-size:42px;letter-spacing:3px;text-transform:uppercase;font-weight:800;color:#ff00ff;text-shadow:0 0 20px #ff00ff;transition:0.5s;}
-.btns a {display:inline-block;margin:10px;padding:12px 25px;background:#ff00ff;color:#111;text-decoration:none;border-radius:8px;font-weight:700;box-shadow:0 0 15px #ff00ff;transition:0.3s;}
+h1 {
+  font-size:42px; letter-spacing:3px; text-transform:uppercase; font-weight:800;
+  color:#ff00ff; text-shadow:0 0 20px #ff00ff; transition:0.5s;
+}
+.btns a {
+  display:inline-block;margin:10px;padding:12px 25px;background:#ff00ff;color:#111;
+  text-decoration:none;border-radius:8px;font-weight:700;box-shadow:0 0 15px #ff00ff;transition:0.3s;
+}
 .btns a:hover {background:#fff;color:#ff00ff;box-shadow:0 0 35px #ff00ff;transform:scale(1.05);}
-.products {display:flex;flex-wrap:wrap;justify-content:center;gap:30px;padding:40px 20px;perspective:1200px;}
-.product-card {background:#222;border-radius:15px;width:260px;padding:20px;box-shadow:0 0 15px #ff00ff;transition:transform 0.5s,box-shadow 0.5s;position:relative;overflow:hidden;cursor:pointer;}
+.tagline {font-size:16px;color:#ccc;margin-top:5px;}
+
+/* Products */
+.products {
+  display:flex;flex-wrap:wrap;justify-content:center;gap:30px;padding:40px 20px;perspective:1200px;
+}
+.product-card {
+  background:#222;border-radius:15px;width:260px;padding:20px;
+  box-shadow:0 0 15px #ff00ff;transition:transform 0.5s,box-shadow 0.5s;
+  position:relative;overflow:hidden;cursor:pointer;
+}
 .product-card:hover {transform:scale(1.08) rotateY(5deg) translateY(-5px);box-shadow:0 0 50px #ff00ff;}
 .product-card img {width:100%;border-radius:10px;margin-bottom:12px;transition:0.5s;}
 .product-card img:hover {transform:scale(1.1) rotate(2deg);}
 .product-card h3 {font-size:19px;margin:10px 0 5px;transition:0.3s;}
 .product-card p {font-size:14px;color:#ccc;}
 .product-card strong {color:#ff00ff;display:block;margin:10px 0;font-size:17px;}
-.product-card input,.product-card select {padding:5px;width:80%;margin-bottom:10px;border-radius:5px;border:none;font-size:14px;}
-.product-card button {padding:10px 18px;background:#ff00ff;border:none;color:#111;font-weight:700;border-radius:8px;cursor:pointer;transition:0.3s;box-shadow:0 0 10px #ff00ff;}
+.product-card input,.product-card select {
+  padding:5px;width:80%;margin-bottom:10px;border-radius:5px;border:none;font-size:14px;
+}
+.product-card button {
+  padding:10px 18px;background:#ff00ff;border:none;color:#111;font-weight:700;
+  border-radius:8px;cursor:pointer;transition:0.3s;box-shadow:0 0 10px #ff00ff;
+}
 .product-card button:hover {background:#fff;color:#ff00ff;transform:scale(1.07);}
-#cart-icon {position:fixed;top:20px;right:20px;background:#ff00ff;color:#111;padding:12px;border-radius:50%;width:55px;height:55px;display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:1000;box-shadow:0 0 30px #ff00ff;animation:glowCart 2s infinite alternate;}
+
+/* Cart */
+#cart-icon {
+  position:fixed;top:20px;right:20px;background:#ff00ff;color:#111;
+  padding:12px;border-radius:50%;width:55px;height:55px;display:flex;
+  justify-content:center;align-items:center;cursor:pointer;z-index:1000;
+  box-shadow:0 0 30px #ff00ff;animation:glowCart 2s infinite alternate;
+}
 #cart-icon span {font-weight:700;}
 @keyframes glowCart {0%{box-shadow:0 0 30px #ff00ff;}50%{box-shadow:0 0 50px #ff00ff;}100%{box-shadow:0 0 30px #ff00ff;}}
-#cart {position:fixed;right:20px;top:90px;background:#222;border-radius:15px;padding:20px;width:380px;max-height:80vh;overflow-y:auto;box-shadow:0 0 40px #ff00ff;display:none;z-index:999;transition:0.5s;}
+#cart {
+  position:fixed;right:20px;top:90px;background:#222;border-radius:15px;padding:20px;
+  width:380px;max-height:80vh;overflow-y:auto;box-shadow:0 0 40px #ff00ff;
+  display:none;z-index:999;transition:0.5s;
+}
 #cart h2 {margin-top:0;color:#ff00ff;display:flex;justify-content:space-between;align-items:center;}
 #cart ul {list-style:none;padding:0;margin:0;}
 #cart li {margin-bottom:8px;font-size:14px;display:flex;justify-content:space-between;align-items:center;transition:0.3s;}
 .remove-item {cursor:pointer;color:#ff00ff;font-weight:700;margin-left:5px;}
-#checkout {margin-top:12px;padding:12px;width:100%;background:#ff00ff;border:none;border-radius:8px;font-weight:700;cursor:pointer;box-shadow:0 0 15px #ff00ff;}
+#checkout {
+  margin-top:12px;padding:12px;width:100%;background:#ff00ff;border:none;border-radius:8px;
+  font-weight:700;cursor:pointer;box-shadow:0 0 15px #ff00ff;
+}
 #checkout:hover {background:#fff;color:#ff00ff;transform:scale(1.03);}
-.added-popup {position:absolute;top:10px;left:50%;transform:translateX(-50%);background:#ff00ff;color:#111;padding:5px 12px;border-radius:6px;font-size:13px;display:none;animation:popupAnim 0.6s;}
+.added-popup {
+  position:absolute;top:10px;left:50%;transform:translateX(-50%);
+  background:#ff00ff;color:#111;padding:5px 12px;border-radius:6px;font-size:13px;
+  display:none;animation:popupAnim 0.6s;
+}
 @keyframes popupAnim {0%{opacity:0;transform:translate(-50%,-10px);}50%{opacity:1;transform:translate(-50%,0);}100%{opacity:0;transform:translate(-50%,-10px);}}
-.color-option {display:inline-block;margin:3px;padding:5px 10px;border-radius:5px;background:#ff00ff;color:#111;cursor:pointer;transition:0.3s;}
-.color-option.selected {box-shadow:0 0 20px #ff00ff;}
-/* Arka Plan Animasyonları */
-body::before {content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:url('https://i.imgur.com/5U3F9jA.jpg') center/cover no-repeat;opacity:0.05;z-index:-1;transition:transform 0.3s;}
-body:hover::before {transform:scale(1.02);}
-#floating {position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-2;}
-.float-item {position:absolute;width:30px;height:30px;background:linear-gradient(45deg,#ff00ff,#ff77ff);border-radius:50%;opacity:0.7;animation:float 20s linear infinite;}
-@keyframes float {0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(-1200px) rotate(720deg);}}
+.color-select {display:inline-block;margin:3px;padding:5px 10px;border-radius:5px;background:#ff00ff;color:#111;cursor:pointer;transition:0.3s;}
+.color-select.selected {box-shadow:0 0 20px #ff00ff;}
+
+/* Parallax background */
+body::before {
+  content:'';position:fixed;top:0;left:0;width:100%;height:100%;
+  background:#111; z-index:-1; pointer-events:none;
+}
+#animation-container {
+  position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
+}
+
+/* Discount stickers */
+.discount {position:absolute;top:10px;right:10px;background:red;color:#fff;padding:5px 8px;border-radius:6px;font-size:13px;font-weight:700;}
+
+/* Popup notifications */
+#last-order-popup {
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  background:#ff00ff;color:#111;padding:10px 18px;border-radius:10px;
+  font-weight:700;box-shadow:0 0 15px #ff00ff;display:none;animation:popupAnim 0.5s;
+  z-index:1001;
+}
 </style>
 </head>
 <body>
@@ -59,12 +116,12 @@ body:hover::before {transform:scale(1.02);}
 </header>
 
 <div id="cart-icon">🛒 <span id="cart-count">0</span></div>
-<div id="floating"></div>
 
 <section class="products">
 
 <!-- 1. Ürün -->
-<div class="product-card" data-name="Kartal figürlü LED ışıklı su şelalesi" data-price="1200" data-shopier="https://shopier.com/baytekcollection/41882654" data-max="24">
+<div class="product-card" data-name="Kartal figürlü LED ışıklı su şelalesi" data-price="1200" data-max="24">
+<div class="discount">%10 İNDİRİM</div>
 <div class="added-popup">✅ Sepete eklendi!</div>
 <img src="https://i.imgur.com/aIAthmX.jpeg" alt="">
 <h3>Kartal figürlü LED ışıklı su şelalesi</h3>
@@ -88,7 +145,8 @@ body:hover::before {transform:scale(1.02);}
 </div>
 
 <!-- 2. Ürün -->
-<div class="product-card" data-name="3 Bardaklı Vakumlu Termos Seti" data-price="450" data-shopier="https://shopier.com/baytekcollection/41884160" data-max="24">
+<div class="product-card" data-name="3 Bardaklı Vakumlu Termos Seti" data-price="450" data-max="24">
+<div class="discount">%5 İNDİRİM</div>
 <div class="added-popup">✅ Sepete eklendi!</div>
 <img src="https://i.imgur.com/wvdZXrC.jpeg" alt="">
 <h3>3 Bardaklı Vakumlu Termos Seti</h3>
@@ -113,7 +171,7 @@ body:hover::before {transform:scale(1.02);}
 </div>
 
 <!-- 3. Ürün -->
-<div class="product-card" data-name="Mobgift USB’li Işıklı Ahşap Standlı Cam Küre" data-price="200" data-shopier="https://shopier.com/baytekcollection/41884313" data-max="52">
+<div class="product-card" data-name="Mobgift USB’li Işıklı Ahşap Standlı Cam Küre" data-price="200" data-max="52">
 <div class="added-popup">✅ Sepete eklendi!</div>
 <img src="https://i.imgur.com/oiAFO7w.jpeg" alt="">
 <h3>Mobgift USB’li Işıklı Ahşap Standlı Cam Küre</h3>
@@ -138,7 +196,7 @@ body:hover::before {transform:scale(1.02);}
 </div>
 
 <!-- 4. Ürün -->
-<div class="product-card" data-name="3’lü Motivasyonel Su Matarası" data-price="350" data-shopier="https://shopier.com/baytekcollection/41884046" data-max="24">
+<div class="product-card" data-name="3’lü Motivasyonel Su Matarası" data-price="350" data-max="24">
 <div class="added-popup">✅ Sepete eklendi!</div>
 <img src="https://i.imgur.com/2en5c9l.jpeg" alt="">
 <h3>3’lü Motivasyonel Su Matarası</h3>
@@ -168,24 +226,36 @@ body:hover::before {transform:scale(1.02);}
 <button id="checkout">Siparişi Tamamla</button>
 </div>
 
+<div id="last-order-popup"></div>
+
+<div id="animation-container"></div>
+
 <script>
-// Arka Plan Animasyonları
-for(let i=0;i<25;i++){
-let div=document.createElement('div');
-div.className='float-item';
-div.style.left=Math.random()*100+'%';
-div.style.width=(20+Math.random()*30)+'px';
-div.style.height=div.style.width;
-div.style.animationDuration=(15+Math.random()*15)+'s';
-document.getElementById('floating').appendChild(div);
+// Arka plan animasyonu: uçuşan figürler
+const animContainer = document.getElementById('animation-container');
+for(let i=0;i<40;i++){
+  const div=document.createElement('div');
+  div.style.position='absolute';
+  div.style.width=Math.random()*20+10+'px';
+  div.style.height=Math.random()*20+10+'px';
+  div.style.backgroundColor='rgba(255,0,255,'+Math.random()+')';
+  div.style.borderRadius='50%';
+  div.style.top=Math.random()*100+'%';
+  div.style.left=Math.random()*100+'%';
+  div.style.animation=`float${i} ${Math.random()*10+5}s linear infinite`;
+  animContainer.appendChild(div);
+  const style=document.createElement('style');
+  style.innerHTML=`@keyframes float${i} {0%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-200px) rotate(180deg);}100%{transform:translateY(0) rotate(360deg);}}`;
+  document.head.appendChild(style);
 }
 
-// Sepet
+// Sepet işlemleri
 let cart=[];
 const cartIcon=document.getElementById('cart-icon');
 const cartCount=document.getElementById('cart-count');
 const cartDiv=document.getElementById('cart');
 const cartTotal=document.getElementById('cart-total');
+const lastPopup=document.getElementById('last-order-popup');
 
 cartIcon.addEventListener('click',()=>{cartDiv.style.display=cartDiv.style.display==='none'?'block':'none';});
 
@@ -194,7 +264,6 @@ btn.addEventListener('click',()=>{
 const card=btn.parentElement;
 const name=card.getAttribute('data-name');
 const price=Number(card.getAttribute('data-price'));
-const shopier=card.getAttribute('data-shopier');
 let quantity=Number(card.querySelector('input').value);
 const max=Number(card.getAttribute('data-max'));
 if(quantity>max) quantity=max;
@@ -203,13 +272,18 @@ const color=card.querySelector('.color-select').value;
 
 const exists=cart.find(i=>i.name===name && i.color===color && i.shipping===shipping);
 if(exists){exists.quantity+=quantity;if(exists.quantity>max) exists.quantity=max;}
-else{cart.push({name,price,quantity,shipping,color,shopier});}
+else{cart.push({name,price,quantity,shipping,color});}
 
 updateCart();
 
 const popup=card.querySelector('.added-popup');
 popup.style.display='block';
 setTimeout(()=>{popup.style.display='none';},1000);
+
+// Son sipariş bildirimi
+lastPopup.textContent=`${name} sepete eklendi!`;
+lastPopup.style.display='block';
+setTimeout(()=>{lastPopup.style.display='none';},2000);
 });
 });
 
@@ -233,14 +307,25 @@ updateCart();
 });
 }
 
+// Checkout işlemi: Shopier yönlendirme + WhatsApp onayı
 document.querySelector('#checkout').addEventListener('click',()=>{
 if(cart.length===0)return alert('Sepetiniz boş!');
+let message='Merhaba, sipariş vermek istiyorum:%0A';
 cart.forEach(item=>{
-// Shopier yönlendirme
-window.open(item.shopier,'_blank');
+message+=`• ${item.name} (${item.color}) x${item.quantity} (${item.shipping}) - ${item.price*item.quantity}₺%0A`;
 });
-// İşlem tamamlandı WhatsApp
-window.open('https://wa.me/905334772649?text=Siparişiniz tamamlandı!','_blank');
+// Shopier linklerini burada yönetiyoruz (ürüne göre)
+const shopierLinks = {
+  "Kartal figürlü LED ışıklı su şelalesi":"https://shopier.com/baytekcollection/41882654",
+  "3 Bardaklı Vakumlu Termos Seti":"https://shopier.com/baytekcollection/41884160",
+  "Mobgift USB’li Işıklı Ahşap Standlı Cam Küre":"https://shopier.com/baytekcollection/41884313",
+  "3’lü Motivasyonel Su Matarası":"https://shopier.com/baytekcollection/41884046"
+};
+// Sepete eklenen ilk ürünün Shopier linkine yönlendir
+const firstLink = shopierLinks[cart[0].name];
+window.open(firstLink,'_blank');
+// WhatsApp mesajı
+window.open('https://wa.me/905334772649?text='+message,'_blank');
 });
 </script>
 
