@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Baytek Collection - Ultra Mağaza</title>
 <style>
+/* Genel Stil */
 body {margin:0;font-family:'Poppins',sans-serif;background:#111;color:#fff;text-align:center;overflow-x:hidden;transition:background 0.5s;position:relative;}
 header {padding:50px 20px;background:linear-gradient(135deg,#000,#222);}
 .logo {width:120px;margin-bottom:10px;}
@@ -36,12 +37,12 @@ h1 {font-size:42px;letter-spacing:3px;text-transform:uppercase;font-weight:800;c
 @keyframes popupAnim {0%{opacity:0;transform:translate(-50%,-10px);}50%{opacity:1;transform:translate(-50%,0);}100%{opacity:0;transform:translate(-50%,-10px);}}
 .color-option {display:inline-block;margin:3px;padding:5px 10px;border-radius:5px;background:#ff00ff;color:#111;cursor:pointer;transition:0.3s;}
 .color-option.selected {box-shadow:0 0 20px #ff00ff;}
-
-/* Parallax & uçuşan şekiller */
+/* Arka Plan Animasyonları */
 body::before {content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:url('https://i.imgur.com/5U3F9jA.jpg') center/cover no-repeat;opacity:0.05;z-index:-1;transition:transform 0.3s;}
 body:hover::before {transform:scale(1.02);}
-.floating {position:absolute;width:20px;height:20px;border-radius:50%;background:#ff00ff;opacity:0.6;animation:floatAnim 10s infinite;}
-@keyframes floatAnim {0%{transform:translateY(0) translateX(0);}50%{transform:translateY(-100px) translateX(50px);}100%{transform:translateY(0) translateX(0);}}
+#floating {position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-2;}
+.float-item {position:absolute;width:30px;height:30px;background:linear-gradient(45deg,#ff00ff,#ff77ff);border-radius:50%;opacity:0.7;animation:float 20s linear infinite;}
+@keyframes float {0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(-1200px) rotate(720deg);}}
 </style>
 </head>
 <body>
@@ -58,6 +59,7 @@ body:hover::before {transform:scale(1.02);}
 </header>
 
 <div id="cart-icon">🛒 <span id="cart-count">0</span></div>
+<div id="floating"></div>
 
 <section class="products">
 
@@ -139,8 +141,8 @@ body:hover::before {transform:scale(1.02);}
 <div class="product-card" data-name="3’lü Motivasyonel Su Matarası" data-price="350" data-shopier="https://shopier.com/baytekcollection/41884046" data-max="24">
 <div class="added-popup">✅ Sepete eklendi!</div>
 <img src="https://i.imgur.com/2en5c9l.jpeg" alt="">
-<h3>3’lü Motivasyonel Su Matarası, 2L, 750ML, 300ML</h3>
-<p>Renk: Siyah | BPA içermez</p>
+<h3>3’lü Motivasyonel Su Matarası</h3>
+<p>Renk seçenekleri: Siyah</p>
 <select class="color-select">
 <option value="Siyah">Siyah</option>
 </select>
@@ -163,10 +165,22 @@ body:hover::before {transform:scale(1.02);}
 <div id="cart">
 <h2>Sepet <span id="cart-total">0₺</span></h2>
 <ul></ul>
-<button id="checkout">Sipariş Geç</button>
+<button id="checkout">Siparişi Tamamla</button>
 </div>
 
 <script>
+// Arka Plan Animasyonları
+for(let i=0;i<25;i++){
+let div=document.createElement('div');
+div.className='float-item';
+div.style.left=Math.random()*100+'%';
+div.style.width=(20+Math.random()*30)+'px';
+div.style.height=div.style.width;
+div.style.animationDuration=(15+Math.random()*15)+'s';
+document.getElementById('floating').appendChild(div);
+}
+
+// Sepet
 let cart=[];
 const cartIcon=document.getElementById('cart-icon');
 const cartCount=document.getElementById('cart-count');
@@ -221,36 +235,13 @@ updateCart();
 
 document.querySelector('#checkout').addEventListener('click',()=>{
 if(cart.length===0)return alert('Sepetiniz boş!');
-
 cart.forEach(item=>{
-// Shopier sayfasına yönlendirme
+// Shopier yönlendirme
 window.open(item.shopier,'_blank');
 });
-
-// WhatsApp mesajı
-let message='Merhaba, sipariş vermek istiyorum:%0A';
-cart.forEach(item=>{
-message+=`• ${item.name} (${item.color}) x${item.quantity} (${item.shipping}) - ${item.price*item.quantity}₺%0A`;
+// İşlem tamamlandı WhatsApp
+window.open('https://wa.me/905334772649?text=Siparişiniz tamamlandı!','_blank');
 });
-window.open('https://wa.me/905334772649?text='+message,'_blank');
-cart=[];
-updateCart();
-alert('Ödeme yönlendirmesi Shopier üzerinden yapılacaktır. İşlem tamamlandıktan sonra WhatsApp üzerinden size dönüş sağlanacaktır.');
-});
-</script>
-
-<!-- Rastgele uçuşan şekiller -->
-<script>
-for(let i=0;i<50;i++){
-let div=document.createElement('div');
-div.className='floating';
-div.style.top=Math.random()*window.innerHeight+'px';
-div.style.left=Math.random()*window.innerWidth+'px';
-div.style.width=(10+Math.random()*20)+'px';
-div.style.height=(10+Math.random()*20)+'px';
-div.style.backgroundColor=`hsl(${Math.random()*360},100%,70%)`;
-document.body.appendChild(div);
-}
 </script>
 
 </body>
