@@ -7,8 +7,9 @@
 <style>
 body {
   margin:0; font-family:'Poppins',sans-serif; background:#111; color:#fff;
-  text-align:center; overflow-x:hidden; position:relative; transition:background 0.5s;
+  text-align:center; overflow-x:hidden; position:relative;
 }
+
 /* Header */
 header {
   padding:50px 20px; background:linear-gradient(135deg,#000,#222); position:relative; z-index:5;
@@ -28,7 +29,6 @@ h1 {
 /* Products */
 .products {
   display:flex;flex-wrap:wrap;justify-content:center;gap:30px;padding:40px 20px;position:relative; z-index:5;
-  perspective:1200px;
 }
 .product-card {
   background:#222;border-radius:15px;width:260px;padding:20px;
@@ -53,24 +53,17 @@ h1 {
 #cart-icon {
   position:fixed;top:20px;right:20px;background:#ff00ff;color:#111;
   padding:12px;border-radius:50%;width:55px;height:55px;display:flex;
-  justify-content:center;align-items:center;cursor:pointer;z-index:1000;
+  justify-content:center;align-items:center;cursor:pointer;z-index:100;
   box-shadow:0 0 30px #ff00ff;animation:glowCart 2s infinite alternate;
 }
 #cart-icon span {font-weight:700;}
 @keyframes glowCart {0%{box-shadow:0 0 30px #ff00ff;}50%{box-shadow:0 0 50px #ff00ff;}100%{box-shadow:0 0 30px #ff00ff;}}
-#cart {
-  position:fixed;right:20px;top:90px;background:#222;border-radius:15px;padding:20px;
-  width:380px;max-height:80vh;overflow-y:auto;box-shadow:0 0 40px #ff00ff;
-  display:none;z-index:999;transition:0.5s;
-}
+#cart {position:fixed;right:20px;top:90px;background:#222;border-radius:15px;padding:20px;width:380px;max-height:80vh;overflow-y:auto;box-shadow:0 0 40px #ff00ff;display:none;z-index:100;transition:0.5s;}
 #cart h2 {margin-top:0;color:#ff00ff;display:flex;justify-content:space-between;align-items:center;}
 #cart ul {list-style:none;padding:0;margin:0;}
 #cart li {margin-bottom:8px;font-size:14px;display:flex;justify-content:space-between;align-items:center;transition:0.3s;}
 .remove-item {cursor:pointer;color:#ff00ff;font-weight:700;margin-left:5px;}
-#checkout {
-  margin-top:12px;padding:12px;width:100%;background:#ff00ff;border:none;border-radius:8px;
-  font-weight:700;cursor:pointer;box-shadow:0 0 15px #ff00ff;
-}
+#checkout {margin-top:12px;padding:12px;width:100%;background:#ff00ff;border:none;border-radius:8px;font-weight:700;cursor:pointer;box-shadow:0 0 15px #ff00ff;}
 #checkout:hover {background:#fff;color:#ff00ff;transform:scale(1.03);}
 .added-popup {
   position:absolute;top:10px;left:50%;transform:translateX(-50%);
@@ -78,19 +71,19 @@ h1 {
   display:none;animation:popupAnim 0.6s;
 }
 @keyframes popupAnim {0%{opacity:0;transform:translate(-50%,-10px);}50%{opacity:1;transform:translate(-50%,0);}100%{opacity:0;transform:translate(-50%,-10px);}}
-.color-select {display:inline-block;margin:3px;padding:5px 10px;border-radius:5px;background:#ff00ff;color:#111;cursor:pointer;transition:0.3s;}
-.color-select.selected {box-shadow:0 0 20px #ff00ff;}
 
-/* Discount stickers */
-.discount {position:absolute;top:10px;right:10px;background:red;color:#fff;padding:5px 8px;border-radius:6px;font-size:13px;font-weight:700;}
-
-/* Arka plan yürüyen insanlar */
-#animation-container {position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden;}
-.walker {
-  position:absolute; bottom:0; background: url('https://i.imgur.com/0Qb5rWj.png') no-repeat center/contain;
-  animation-name: walkLeft, walkRight;
-  animation-iteration-count: infinite;
+/* Arka planda alışveriş yapan insanlar */
+#animation-container {
+  position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; overflow:hidden;
 }
+.walker {
+  position:absolute; bottom:0; background-size:contain; background-repeat:no-repeat;
+  width:50px; height:100px; opacity:0.7;
+}
+
+/* Keyframes yürüme */
+@keyframes walkRight {0% {transform: translateX(-60px);} 100% {transform: translateX(110vw);}}
+@keyframes walkLeft {0% {transform: translateX(110vw) scaleX(-1);} 100% {transform: translateX(-60px) scaleX(-1);}}
 </style>
 </head>
 <body>
@@ -109,7 +102,32 @@ h1 {
 <div id="cart-icon">🛒 <span id="cart-count">0</span></div>
 
 <section class="products">
-<!-- Ürünler buraya aynı şekilde devam ediyor... -->
+<!-- Mevcut ürün kartların buraya aynen gelecek -->
+<!-- Örnek 1 ürün -->
+<div class="product-card" data-name="Kartal figürlü LED ışıklı su şelalesi" data-price="1200" data-max="24">
+<div class="discount">%10 İNDİRİM</div>
+<div class="added-popup">✅ Sepete eklendi!</div>
+<img src="https://i.imgur.com/aIAthmX.jpeg" alt="">
+<h3>Kartal figürlü LED ışıklı su şelalesi</h3>
+<p>Figür seçenekleri: 1 adet Fil, 2 adet Fil</p>
+<select class="color-select">
+<option value="1 adet Fil">1 adet Fil</option>
+<option value="2 adet Fil">2 adet Fil</option>
+</select>
+<select>
+<option value="MNG - Standart">MNG - Standart</option>
+<option value="MNG - Hızlı">MNG - Hızlı</option>
+<option value="Aras - Standart">Aras - Standart</option>
+<option value="Aras - Hızlı">Aras - Hızlı</option>
+<option value="Sürat - Standart">Sürat - Standart</option>
+<option value="Sürat - Hızlı">Sürat - Hızlı</option>
+<option value="PTT - Standart">PTT - Standart</option>
+<option value="PTT - Hızlı">PTT - Hızlı</option>
+</select>
+<input type="number" value="1" min="1" max="24">
+<button>Sepete Ekle</button>
+</div>
+<!-- Diğer ürün kartlarını buraya ekle -->
 </section>
 
 <div id="cart">
@@ -121,31 +139,79 @@ h1 {
 <div id="animation-container"></div>
 
 <script>
-// Arka planda yürüyen insanlar (kalabalık efekti)
+// Arka planda yürüyen insanlar
 const animContainer = document.getElementById('animation-container');
-for(let i=0;i<30;i++){
+const walkerImages = [
+  'https://i.imgur.com/0Qb5rWj.png', // örnek insan 1
+  'https://i.imgur.com/YOUR_IMAGE2.png', // ekleyebilirsin
+  'https://i.imgur.com/YOUR_IMAGE3.png'
+];
+
+for(let i=0;i<20;i++){
   const human = document.createElement('div');
   human.classList.add('walker');
-  const scale = 0.5 + Math.random()*1;
+  const scale = 0.5 + Math.random()*0.8;
   human.style.width = 50*scale+'px';
   human.style.height = 100*scale+'px';
-  human.style.bottom = Math.random()*50+'px';
-  human.style.opacity = 0.4 + Math.random()*0.6;
+  human.style.bottom = Math.random()*20+'px';
+  human.style.opacity = 0.5 + Math.random()*0.5;
   const direction = Math.random()>0.5 ? 1 : -1;
-  const duration = 5 + Math.random()*5;
+  const duration = 8 + Math.random()*7;
   human.style.animation = `walk${direction>0?'Right':'Left'} ${duration}s linear infinite`;
-  if(direction<0) human.style.transform = 'scaleX(-1)';
+  human.style.backgroundImage = `url(${walkerImages[Math.floor(Math.random()*walkerImages.length)]})`;
   human.style.left = direction>0? '-60px' : '100vw';
+  if(direction<0) human.style.transform = 'scaleX(-1)';
   animContainer.appendChild(human);
 }
-const style = document.createElement('style');
-style.innerHTML = `
-@keyframes walkRight {0% {transform: translateX(-60px);} 100% {transform: translateX(110vw);}}
-@keyframes walkLeft {0% {transform: translateX(110vw);} 100% {transform: translateX(-60px);}}
-`;
-document.head.appendChild(style);
 
-// Sepet işlemleri (önceki script burada aynı şekilde kalacak...)
+// Sepet işlemleri
+let cart=[];
+const cartIcon=document.getElementById('cart-icon');
+const cartCount=document.getElementById('cart-count');
+const cartDiv=document.getElementById('cart');
+const cartTotal=document.getElementById('cart-total');
+
+cartIcon.addEventListener('click',()=>{cartDiv.style.display=cartDiv.style.display==='none'?'block':'none';});
+
+document.querySelectorAll('.product-card button').forEach(btn=>{
+btn.addEventListener('click',()=>{
+const card=btn.parentElement;
+const name=card.getAttribute('data-name');
+const price=Number(card.getAttribute('data-price'));
+let quantity=Number(card.querySelector('input').value);
+const max=Number(card.getAttribute('data-max'));
+if(quantity>max) quantity=max;
+const shipping=card.querySelector('select:nth-of-type(2)').value;
+const color=card.querySelector('.color-select').value;
+const exists=cart.find(i=>i.name===name && i.color===color && i.shipping===shipping);
+if(exists){exists.quantity+=quantity;if(exists.quantity>max) exists.quantity=max;}
+else{cart.push({name,price,quantity,shipping,color});}
+updateCart();
+const popup=card.querySelector('.added-popup');
+popup.style.display='block';
+setTimeout(()=>{popup.style.display='none';},1000);
+});
+});
+
+function updateCart(){
+const ul=document.querySelector('#cart ul');
+ul.innerHTML='';
+let total=0;
+cart.forEach((item,index)=>{
+total+=item.price*item.quantity;
+const li=document.createElement('li');
+li.innerHTML=`${item.name} (${item.color}) x${item.quantity} (${item.shipping}) - ${item.price*item.quantity}₺ <span class="remove-item" data-index="${index}">❌</span>`;
+ul.appendChild(li);
+});
+cartTotal.textContent=total+'₺';
+cartCount.textContent=cart.length;
+document.querySelectorAll('.remove-item').forEach(span=>{
+span.addEventListener('click',()=>{
+cart.splice(span.getAttribute('data-index'),1);
+updateCart();
+});
+});
+}
 </script>
 
 </body>
