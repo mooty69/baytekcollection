@@ -11,13 +11,11 @@ body {
 }
 /* Header */
 header {
-  padding:50px 20px; background:linear-gradient(135deg,#000,#222); position:relative; z-index:2;
+  padding:50px 20px; background:linear-gradient(135deg,#000,#222); position:relative; z-index:5;
 }
 .logo {width:120px;margin-bottom:10px;}
-h1 {
-  font-size:42px; letter-spacing:3px; text-transform:uppercase; font-weight:800;
-  color:#ff00ff; text-shadow:0 0 20px #ff00ff; transition:0.5s;
-}
+h1 {font-size:42px; letter-spacing:3px; text-transform:uppercase; font-weight:800;
+color:#ff00ff; text-shadow:0 0 20px #ff00ff;}
 .btns a {
   display:inline-block;margin:10px;padding:12px 25px;background:#ff00ff;color:#111;
   text-decoration:none;border-radius:8px;font-weight:700;box-shadow:0 0 15px #ff00ff;transition:0.3s;
@@ -37,8 +35,9 @@ h1 {
 .product-card:hover {transform:scale(1.08) rotateY(5deg) translateY(-5px);box-shadow:0 0 50px #ff00ff;}
 .product-card img {width:100%;border-radius:10px;margin-bottom:12px;transition:0.5s;}
 .product-card img:hover {transform:scale(1.1) rotate(2deg);}
-.product-card h3 {font-size:19px;margin:10px 0 5px;transition:0.3s;}
+.product-card h3 {font-size:19px;margin:10px 0 5px;}
 .product-card p {font-size:14px;color:#ccc;}
+.product-card strong {color:#ff00ff;display:block;margin:10px 0;font-size:17px;}
 .product-card input,.product-card select {
   padding:5px;width:80%;margin-bottom:10px;border-radius:5px;border:none;font-size:14px;
 }
@@ -77,9 +76,22 @@ h1 {
   display:none;animation:popupAnim 0.6s;
 }
 @keyframes popupAnim {0%{opacity:0;transform:translate(-50%,-10px);}50%{opacity:1;transform:translate(-50%,0);}100%{opacity:0;transform:translate(-50%,-10px);}}
+.color-select {display:inline-block;margin:3px;padding:5px 10px;border-radius:5px;background:#ff00ff;color:#111;cursor:pointer;transition:0.3s;}
+.color-select.selected {box-shadow:0 0 20px #ff00ff;}
 
 /* Arka plan animasyonu */
 #animation-container {position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+
+/* Discount stickers */
+.discount {position:absolute;top:10px;right:10px;background:red;color:#fff;padding:5px 8px;border-radius:6px;font-size:13px;font-weight:700;}
+
+/* Son sipariş popup */
+#last-order-popup {
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  background:#ff00ff;color:#111;padding:10px 18px;border-radius:10px;
+  font-weight:700;box-shadow:0 0 15px #ff00ff;display:none;animation:popupAnim 0.5s;
+  z-index:1001;
+}
 </style>
 </head>
 <body>
@@ -101,6 +113,7 @@ h1 {
 
 <!-- 1. Ürün -->
 <div class="product-card" data-name="Kartal figürlü LED ışıklı su şelalesi" data-price="1200" data-max="24">
+<div class="discount">%10 İNDİRİM</div>
 <div class="added-popup">✅ Sepete eklendi!</div>
 <img src="https://i.imgur.com/aIAthmX.jpeg" alt="">
 <h3>Kartal figürlü LED ışıklı su şelalesi</h3>
@@ -125,6 +138,7 @@ h1 {
 
 <!-- 2. Ürün -->
 <div class="product-card" data-name="3 Bardaklı Vakumlu Termos Seti" data-price="450" data-max="24">
+<div class="discount">%5 İNDİRİM</div>
 <div class="added-popup">✅ Sepete eklendi!</div>
 <img src="https://i.imgur.com/wvdZXrC.jpeg" alt="">
 <h3>3 Bardaklı Vakumlu Termos Seti</h3>
@@ -173,6 +187,52 @@ h1 {
 <button>Sepete Ekle</button>
 </div>
 
+<!-- 4. Ürün -->
+<div class="product-card" data-name="3’lü Motivasyonel Su Matarası" data-price="350" data-max="24">
+<div class="added-popup">✅ Sepete eklendi!</div>
+<img src="https://i.imgur.com/2en5c9l.jpeg" alt="">
+<h3>3’lü Motivasyonel Su Matarası</h3>
+<p>Renk seçenekleri: Siyah</p>
+<select class="color-select">
+<option value="Siyah">Siyah</option>
+</select>
+<select>
+<option value="MNG - Standart">MNG - Standart</option>
+<option value="MNG - Hızlı">MNG - Hızlı</option>
+<option value="Aras - Standart">Aras - Standart</option>
+<option value="Aras - Hızlı">Aras - Hızlı</option>
+<option value="Sürat - Standart">Sürat - Standart</option>
+<option value="Sürat - Hızlı">Sürat - Hızlı</option>
+<option value="PTT - Standart">PTT - Standart</option>
+<option value="PTT - Hızlı">PTT - Hızlı</option>
+</select>
+<input type="number" value="1" min="1" max="24">
+<button>Sepete Ekle</button>
+</div>
+
+<!-- 5. Ürün (Yeni) -->
+<div class="product-card" data-name="3'lü Pipetli Motivasyonel Su Matarası" data-price="400" data-max="2">
+<div class="added-popup">✅ Sepete eklendi!</div>
+<img src="blob:https://imgur.com/342c66d4-2f42-4246-bca5-9f7a7e0273b1" alt="">
+<h3>3'lü Pipetli Motivasyonel Su Matarası</h3>
+<p>Renk: Siyah</p>
+<select class="color-select">
+<option value="Siyah">Siyah</option>
+</select>
+<select>
+<option value="MNG - Standart">MNG - Standart</option>
+<option value="MNG - Hızlı">MNG - Hızlı</option>
+<option value="Aras - Standart">Aras - Standart</option>
+<option value="Aras - Hızlı">Aras - Hızlı</option>
+<option value="Sürat - Standart">Sürat - Standart</option>
+<option value="Sürat - Hızlı">Sürat - Hızlı</option>
+<option value="PTT - Standart">PTT - Standart</option>
+<option value="PTT - Hızlı">PTT - Hızlı</option>
+</select>
+<input type="number" value="1" min="1" max="2">
+<button>Sepete Ekle</button>
+</div>
+
 </section>
 
 <div id="cart">
@@ -181,12 +241,13 @@ h1 {
 <button id="checkout">Siparişi Tamamla</button>
 </div>
 
+<div id="last-order-popup"></div>
 <div id="animation-container"></div>
 
 <script>
-// Arka plan animasyonu: uçuşan figürler
+// Arka plan hareketli cisimler
 const animContainer = document.getElementById('animation-container');
-for(let i=0;i<30;i++){
+for(let i=0;i<50;i++){
   const div=document.createElement('div');
   div.style.position='absolute';
   div.style.width=Math.random()*20+10+'px';
@@ -198,7 +259,7 @@ for(let i=0;i<30;i++){
   div.style.animation=`float${i} ${Math.random()*10+5}s linear infinite`;
   animContainer.appendChild(div);
   const style=document.createElement('style');
-  style.innerHTML=`@keyframes float${i} {0%{transform:translateY(0);}50%{transform:translateY(-200px);}100%{transform:translateY(0);}}`;
+  style.innerHTML=`@keyframes float${i} {0%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-200px) rotate(180deg);}100%{transform:translateY(0) rotate(360deg);}}`;
   document.head.appendChild(style);
 }
 
@@ -208,6 +269,7 @@ const cartIcon=document.getElementById('cart-icon');
 const cartCount=document.getElementById('cart-count');
 const cartDiv=document.getElementById('cart');
 const cartTotal=document.getElementById('cart-total');
+const lastPopup=document.getElementById('last-order-popup');
 
 cartIcon.addEventListener('click',()=>{cartDiv.style.display=cartDiv.style.display==='none'?'block':'none';});
 
@@ -221,13 +283,21 @@ const max=Number(card.getAttribute('data-max'));
 if(quantity>max) quantity=max;
 const shipping=card.querySelector('select:nth-of-type(2)').value;
 const color=card.querySelector('.color-select').value;
+
 const exists=cart.find(i=>i.name===name && i.color===color && i.shipping===shipping);
 if(exists){exists.quantity+=quantity;if(exists.quantity>max) exists.quantity=max;}
 else{cart.push({name,price,quantity,shipping,color});}
+
 updateCart();
+
 const popup=card.querySelector('.added-popup');
 popup.style.display='block';
 setTimeout(()=>{popup.style.display='none';},1000);
+
+// Son sipariş bildirimi
+lastPopup.textContent=`${name} sepete eklendi!`;
+lastPopup.style.display='block';
+setTimeout(()=>{lastPopup.style.display='none';},2000);
 });
 });
 
@@ -235,31 +305,23 @@ function updateCart(){
 const ul=document.querySelector('#cart ul');
 ul.innerHTML='';
 let total=0;
-cart.forEach((item,index)=>{
-total+=item.price*item.quantity;
-const li=document.createElement('li');
-li.innerHTML=`${item.name} (${item.color}) x${item.quantity} (${item.shipping}) - ${item.price*item.quantity}₺ <span class="remove-item" data-index="${index}">❌</span>`;
-ul.appendChild(li);
+cart.forEach((item,i)=>{
+  const li=document.createElement('li');
+  li.innerHTML=`${item.name} x${item.quantity} - ${item.price*item.quantity}₺ <span class="remove-item" data-index="${i}">×</span>`;
+  ul.appendChild(li);
+  total+=item.price*item.quantity;
 });
-cartTotal.textContent=total+'₺';
-cartCount.textContent=cart.length;
-document.querySelectorAll('.remove-item').forEach(span=>{
-span.addEventListener('click',()=>{
-cart.splice(span.getAttribute('data-index'),1);
-updateCart();
+cartTotal.textContent=`${total}₺`;
+cartCount.textContent=cart.reduce((a,b)=>a+b.quantity,0);
+document.querySelectorAll('.remove-item').forEach(rm=>{
+rm.addEventListener('click',()=>{
+  const idx=rm.getAttribute('data-index');
+  cart.splice(idx,1);
+  updateCart();
 });
 });
 }
 
-// Checkout: WhatsApp yönlendirme
-document.querySelector('#checkout').addEventListener('click',()=>{
-if(cart.length===0)return alert('Sepetiniz boş!');
-let message='Merhaba, sipariş vermek istiyorum:%0A';
-cart.forEach(item=>{
-message+=`• ${item.name} (${item.color}) x${item.quantity} (${item.shipping}) - ${item.price*item.quantity}₺%0A`;
-});
-window.open('https://wa.me/905334772649?text='+message,'_blank');
-});
 </script>
 
 </body>
