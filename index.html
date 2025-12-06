@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Baytek Collection - Ultra Mağaza</title>
 <style>
-body {margin:0;font-family:'Poppins',sans-serif;background:#111;color:#fff;text-align:center;overflow-x:hidden;transition:background 0.5s;}
+body {margin:0;font-family:'Poppins',sans-serif;background:#111;color:#fff;text-align:center;overflow-x:hidden;transition:background 0.5s;position:relative;}
 header {padding:50px 20px;background:linear-gradient(135deg,#000,#222);}
 .logo {width:120px;margin-bottom:10px;}
 h1 {font-size:42px;letter-spacing:3px;text-transform:uppercase;font-weight:800;color:#ff00ff;text-shadow:0 0 20px #ff00ff;transition:0.5s;}
@@ -18,6 +18,7 @@ h1 {font-size:42px;letter-spacing:3px;text-transform:uppercase;font-weight:800;c
 .product-card img:hover {transform:scale(1.1) rotate(2deg);}
 .product-card h3 {font-size:19px;margin:10px 0 5px;transition:0.3s;}
 .product-card p {font-size:14px;color:#ccc;}
+.product-card strong {color:#ff00ff;display:block;margin:10px 0;font-size:17px;}
 .product-card input,.product-card select {padding:5px;width:80%;margin-bottom:10px;border-radius:5px;border:none;font-size:14px;}
 .product-card button {padding:10px 18px;background:#ff00ff;border:none;color:#111;font-weight:700;border-radius:8px;cursor:pointer;transition:0.3s;box-shadow:0 0 10px #ff00ff;}
 .product-card button:hover {background:#fff;color:#ff00ff;transform:scale(1.07);}
@@ -35,8 +36,12 @@ h1 {font-size:42px;letter-spacing:3px;text-transform:uppercase;font-weight:800;c
 @keyframes popupAnim {0%{opacity:0;transform:translate(-50%,-10px);}50%{opacity:1;transform:translate(-50%,0);}100%{opacity:0;transform:translate(-50%,-10px);}}
 .color-option {display:inline-block;margin:3px;padding:5px 10px;border-radius:5px;background:#ff00ff;color:#111;cursor:pointer;transition:0.3s;}
 .color-option.selected {box-shadow:0 0 20px #ff00ff;}
+
+/* Parallax & uçuşan şekiller */
 body::before {content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:url('https://i.imgur.com/5U3F9jA.jpg') center/cover no-repeat;opacity:0.05;z-index:-1;transition:transform 0.3s;}
 body:hover::before {transform:scale(1.02);}
+.floating {position:absolute;width:20px;height:20px;border-radius:50%;background:#ff00ff;opacity:0.6;animation:floatAnim 10s infinite;}
+@keyframes floatAnim {0%{transform:translateY(0) translateX(0);}50%{transform:translateY(-100px) translateX(50px);}100%{transform:translateY(0) translateX(0);}}
 </style>
 </head>
 <body>
@@ -57,7 +62,7 @@ body:hover::before {transform:scale(1.02);}
 <section class="products">
 
 <!-- 1. Ürün -->
-<div class="product-card" data-name="Kartal figürlü LED ışıklı su şelalesi" data-price="1200" data-max="24" data-shopier="https://shopier.com/baytekcollection/41882654">
+<div class="product-card" data-name="Kartal figürlü LED ışıklı su şelalesi" data-price="1200" data-shopier="https://shopier.com/baytekcollection/41882654" data-max="24">
 <div class="added-popup">✅ Sepete eklendi!</div>
 <img src="https://i.imgur.com/aIAthmX.jpeg" alt="">
 <h3>Kartal figürlü LED ışıklı su şelalesi</h3>
@@ -81,7 +86,7 @@ body:hover::before {transform:scale(1.02);}
 </div>
 
 <!-- 2. Ürün -->
-<div class="product-card" data-name="3 Bardaklı Vakumlu Termos Seti" data-price="450" data-max="24" data-shopier="https://shopier.com/baytekcollection/41884160">
+<div class="product-card" data-name="3 Bardaklı Vakumlu Termos Seti" data-price="450" data-shopier="https://shopier.com/baytekcollection/41884160" data-max="24">
 <div class="added-popup">✅ Sepete eklendi!</div>
 <img src="https://i.imgur.com/wvdZXrC.jpeg" alt="">
 <h3>3 Bardaklı Vakumlu Termos Seti</h3>
@@ -106,7 +111,7 @@ body:hover::before {transform:scale(1.02);}
 </div>
 
 <!-- 3. Ürün -->
-<div class="product-card" data-name="Mobgift USB’li Işıklı Ahşap Standlı Cam Küre" data-price="200" data-max="52" data-shopier="https://shopier.com/baytekcollection/41884313">
+<div class="product-card" data-name="Mobgift USB’li Işıklı Ahşap Standlı Cam Küre" data-price="200" data-shopier="https://shopier.com/baytekcollection/41884313" data-max="52">
 <div class="added-popup">✅ Sepete eklendi!</div>
 <img src="https://i.imgur.com/oiAFO7w.jpeg" alt="">
 <h3>Mobgift USB’li Işıklı Ahşap Standlı Cam Küre</h3>
@@ -131,11 +136,11 @@ body:hover::before {transform:scale(1.02);}
 </div>
 
 <!-- 4. Ürün -->
-<div class="product-card" data-name="3’lü Motivasyonel Su Matarası" data-price="350" data-max="24" data-shopier="https://shopier.com/baytekcollection/41884046">
+<div class="product-card" data-name="3’lü Motivasyonel Su Matarası" data-price="350" data-shopier="https://shopier.com/baytekcollection/41884046" data-max="24">
 <div class="added-popup">✅ Sepete eklendi!</div>
-<img src="https://i.imgur.com/iseyCZu.jpeg" alt="">
-<h3>3’lü Motivasyonel Su Matarası, 2 Litre 750 Ml 300 Ml BPA İçermez Suluk</h3>
-<p>Renk seçenekleri: Siyah</p>
+<img src="https://i.imgur.com/2en5c9l.jpeg" alt="">
+<h3>3’lü Motivasyonel Su Matarası, 2L, 750ML, 300ML</h3>
+<p>Renk: Siyah | BPA içermez</p>
 <select class="color-select">
 <option value="Siyah">Siyah</option>
 </select>
@@ -158,7 +163,7 @@ body:hover::before {transform:scale(1.02);}
 <div id="cart">
 <h2>Sepet <span id="cart-total">0₺</span></h2>
 <ul></ul>
-<button id="checkout">Siparişi Tamamla</button>
+<button id="checkout">Sipariş Geç</button>
 </div>
 
 <script>
@@ -175,18 +180,19 @@ btn.addEventListener('click',()=>{
 const card=btn.parentElement;
 const name=card.getAttribute('data-name');
 const price=Number(card.getAttribute('data-price'));
+const shopier=card.getAttribute('data-shopier');
 let quantity=Number(card.querySelector('input').value);
 const max=Number(card.getAttribute('data-max'));
 if(quantity>max) quantity=max;
 const shipping=card.querySelector('select:nth-of-type(2)').value;
 const color=card.querySelector('.color-select').value;
-const shopier=card.getAttribute('data-shopier');
 
 const exists=cart.find(i=>i.name===name && i.color===color && i.shipping===shipping);
-if(exists){exists.quantity+=quantity;if(exists.quantity>max) exists.quantity=max;exists.shopier=shopier;}
+if(exists){exists.quantity+=quantity;if(exists.quantity>max) exists.quantity=max;}
 else{cart.push({name,price,quantity,shipping,color,shopier});}
 
 updateCart();
+
 const popup=card.querySelector('.added-popup');
 popup.style.display='block';
 setTimeout(()=>{popup.style.display='none';},1000);
@@ -215,19 +221,36 @@ updateCart();
 
 document.querySelector('#checkout').addEventListener('click',()=>{
 if(cart.length===0)return alert('Sepetiniz boş!');
+
 cart.forEach(item=>{
+// Shopier sayfasına yönlendirme
 window.open(item.shopier,'_blank');
 });
-setTimeout(()=>{
-let message='Merhaba, sipariş verdim ve ödeme tamamlandı.%0A';
+
+// WhatsApp mesajı
+let message='Merhaba, sipariş vermek istiyorum:%0A';
 cart.forEach(item=>{
 message+=`• ${item.name} (${item.color}) x${item.quantity} (${item.shipping}) - ${item.price*item.quantity}₺%0A`;
 });
 window.open('https://wa.me/905334772649?text='+message,'_blank');
 cart=[];
 updateCart();
-},5000);
+alert('Ödeme yönlendirmesi Shopier üzerinden yapılacaktır. İşlem tamamlandıktan sonra WhatsApp üzerinden size dönüş sağlanacaktır.');
 });
+</script>
+
+<!-- Rastgele uçuşan şekiller -->
+<script>
+for(let i=0;i<50;i++){
+let div=document.createElement('div');
+div.className='floating';
+div.style.top=Math.random()*window.innerHeight+'px';
+div.style.left=Math.random()*window.innerWidth+'px';
+div.style.width=(10+Math.random()*20)+'px';
+div.style.height=(10+Math.random()*20)+'px';
+div.style.backgroundColor=`hsl(${Math.random()*360},100%,70%)`;
+document.body.appendChild(div);
+}
 </script>
 
 </body>
