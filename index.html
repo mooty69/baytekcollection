@@ -3,197 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Baytek Collection – Premium Satış</title>
+<title>Baytek Collection – Premium Store</title>
 
 <style>
-/* ---------------- GENEL TASARIM ---------------- */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: "Segoe UI", sans-serif;
-}
+    body {
+        margin: 0;
+        background: #0a0a0a;
+        font-family: 'Segoe UI', sans-serif;
+        color: white;
+        overflow-x: hidden;
+    }
 
-body{
-  background:#0f0f0f;
-  color:white;
-  overflow-x:hidden;
-}
+    /* ARKA PLAN NEON ANİMASYON */
+    .bg-anim {
+        position: fixed;
+        top: -20%;
+        left: -20%;
+        width: 140%;
+        height: 140%;
+        background: radial-gradient(circle at center, #00eaff22, #ff00dd11, #000000);
+        animation: moveGlow 18s infinite linear;
+        filter: blur(140px);
+        z-index: -1;
+    }
 
-/* ---------------- HEADER ---------------- */
-header{
-  text-align:center;
-  padding:40px 20px 20px 20px;
-}
+    @keyframes moveGlow {
+        0% { transform: scale(1) translate(0,0); }
+        50% { transform: scale(1.3) translate(80px, -80px); }
+        100% { transform: scale(1) translate(0,0); }
+    }
 
-header img{
-  width:120px;
-  height:auto;
-  border-radius:50%;
-  margin-bottom:15px;
-}
+    header {
+        text-align: center;
+        padding: 50px 20px 20px;
+    }
 
-header h1{
-  font-size:40px;
-  font-weight:900;
-  letter-spacing:1px;
-}
+    header img {
+        width: 160px;
+        margin-bottom: 10px;
+    }
 
-header h2{
-  font-size:18px;
-  color:#d3d3d3;
-  margin-top:6px;
-}
+    header h1 {
+        font-size: 46px;
+        font-weight: 900;
+        margin: 10px 0 0;
+        text-shadow: 0 0 25px #00eaffaa;
+    }
 
-/* ---------------- ARKA PLAN ANİMASYON (GIF) ---------------- */
-.background{
-  position:fixed;
-  top:0; left:0;
-  width:100vw;
-  height:100vh;
-  background:url("https://i.imgur.com/0Qb5rWj.gif");
-  background-size:cover;
-  background-position:center;
-  opacity:0.25;
-  z-index:-1;
-}
+    .container {
+        max-width: 1250px;
+        margin: auto;
+        padding: 20px;
+    }
 
-/* ---------------- ÜRÜN GRID ---------------- */
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:20px;
-}
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        gap: 35px;
+        margin-top: 40px;
+    }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
-  gap:25px;
-}
+    .card {
+        background: #111;
+        border-radius: 22px;
+        padding: 18px;
+        box-shadow: 0 0 25px #0008;
+        transition: .25s;
+        position: relative;
+        overflow: hidden;
+    }
 
-.card{
-  background:#1a1a1a;
-  padding:20px;
-  border-radius:18px;
-  box-shadow:0 0 20px #0006;
-  transition:0.35s;
-  text-align:center;
-}
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 30px #00eaff88;
+    }
 
-.card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 25px #222;
-}
+    .card img {
+        width: 100%;
+        border-radius: 18px;
+        margin-bottom: 12px;
+    }
 
-.card img{
-  width:100%;
-  border-radius:14px;
-  margin-bottom:15px;
-}
+    .card h3 {
+        font-size: 22px;
+        margin: 10px 0 5px;
+        font-weight: 600;
+    }
 
-.card h3{
-  font-size:22px;
-  margin-bottom:8px;
-}
+    .price {
+        font-size: 34px;
+        color: #00eaff;
+        font-weight: 900;
+        margin-bottom: 10px;
+        text-shadow: 0 0 15px #00eaff;
+    }
 
-.card .price{
-  font-size:26px;
-  font-weight:800;
-  color:#4ae3ff;
-  margin-bottom:15px;
-}
+    .btn {
+        display: block;
+        background: #00eaff;
+        padding: 14px;
+        border-radius: 40px;
+        color: #000;
+        font-weight: 800;
+        text-align: center;
+        text-decoration: none;
+        font-size: 17px;
+        transition: .25s;
+    }
 
-.card button{
-  background:#4ae3ff;
-  border:none;
-  padding:12px 20px;
-  border-radius:30px;
-  font-size:16px;
-  font-weight:700;
-  cursor:pointer;
-  width:100%;
-  transition:.3s;
-}
+    .btn:hover {
+        background: #00c4d6;
+    }
 
-.card button:hover{
-  background:#37b5cc;
-}
+    /* İLETİŞİM BÖLÜMÜ */
+    .contact {
+        text-align: center;
+        margin: 55px 0;
+    }
 
-/* ---------------- İLETİŞİM ---------------- */
-.contact{
-  text-align:center;
-  margin:40px 0 80px;
-}
+    .contact-title {
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 20px;
+        text-shadow: 0 0 20px #00eaff88;
+    }
 
-.contact h3{
-  margin-bottom:15px;
-  font-size:24px;
-  font-weight:700;
-}
+    .contact a {
+        display: inline-block;
+        background: #25d366;
+        padding: 15px 25px;
+        border-radius: 35px;
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        margin: 10px;
+        font-size: 18px;
+        transition: .25s;
+    }
 
-.contact a{
-  display:inline-block;
-  margin:10px;
-  padding:12px 20px;
-  border-radius:30px;
-  background:#25d366;
-  color:white;
-  text-decoration:none;
-  font-size:17px;
-  font-weight:600;
-}
+    .contact a:hover {
+        background: #1da851;
+    }
 
-.contact a:hover{
-  background:#1da851;
-}
-
+    footer {
+        text-align: center;
+        padding: 25px;
+        opacity: 0.5;
+        font-size: 15px;
+        margin-top: 40px;
+    }
 </style>
 </head>
+
 <body>
 
-<div class="background"></div>
+<div class="bg-anim"></div>
 
 <header>
-  <img src="https://i.imgur.com/Xcka2e9.jpeg">
-  <h1>Baytek Collection</h1>
-  <h2>Premium & Modern Satış Platformu</h2>
+    <!-- Logo istersen buraya -->
+    <h1>Baytek Collection</h1>
 </header>
 
 <div class="container">
-  <div class="grid">
 
-    <!-- ÜRÜN 1 -->
-    <div class="card">
-      <img src="https://i.imgur.com/aIAthmX.jpeg">
-      <h3>Motivasyonel Su Matarası Seti</h3>
-      <div class="price">249 ₺</div>
-      <button>WhatsApp Sipariş Ver</button>
+    <div class="grid">
+
+        <!-- ÜRÜN 1 -->
+        <div class="card">
+            <img src="https://i.imgur.com/aIAthmX.jpeg" alt="">
+            <h3>3’lü Motivasyonel Su Matarası</h3>
+            <div class="price">249 ₺</div>
+            <a class="btn" href="https://wa.me/905511122791?text=Motivasyonel%20Su%20Matarası%20için%20sipariş%20vermek%20istiyorum">
+                WhatsApp ile Sipariş Ver
+            </a>
+        </div>
+
+        <!-- ÜRÜN 2 -->
+        <div class="card">
+            <img src="https://i.imgur.com/oiAFO7w.jpeg" alt="">
+            <h3>3 Bardaklı Vakumlu Termos Seti</h3>
+            <div class="price">199 ₺</div>
+            <a class="btn" href="https://wa.me/905511122791?text=Vakumlu%20Termos%20Seti%20sipariş">
+                WhatsApp ile Sipariş Ver
+            </a>
+        </div>
+
+        <!-- ÜRÜN 3 -->
+        <div class="card">
+            <img src="https://i.imgur.com/2en5c9l.jpeg" alt="">
+            <h3>Mobgift LED Işıklı Cam Küre Stand</h3>
+            <div class="price">299 ₺</div>
+            <a class="btn" href="https://wa.me/905511122791?text=Cam%20Küre%20Stand%20siparişi">
+                WhatsApp ile Sipariş Ver
+            </a>
+        </div>
+
     </div>
-
-    <!-- ÜRÜN 2 -->
-    <div class="card">
-      <img src="https://i.imgur.com/oiAFO7w.jpeg">
-      <h3>Vakumlu Termos Seti</h3>
-      <div class="price">199 ₺</div>
-      <button>WhatsApp Sipariş Ver</button>
-    </div>
-
-    <!-- ÜRÜN 3 -->
-    <div class="card">
-      <img src="https://i.imgur.com/2en5c9l.jpeg">
-      <h3>Işıklı Cam Küre Stand</h3>
-      <div class="price">299 ₺</div>
-      <button>WhatsApp Sipariş Ver</button>
-    </div>
-
-  </div>
 </div>
 
 <div class="contact">
-  <h3>✨ Satın Almak İçin Tıklayın</h3>
-  <a href="https://wa.me/905334772649">Kerim Bayraktar – 0533 477 26 49</a>
-  <a href="https://wa.me/905511122791">Enes Tekin – 0551 112 27 91</a>
+    <div class="contact-title">İletişim ve Hızlı Sipariş</div>
+    <a href="https://wa.me/905334772649">Kerim Bayraktar – 0533 477 26 49</a>
+    <a href="https://wa.me/905511122791">Enes Tekin – 0551 112 27 91</a>
 </div>
+
+<footer>
+    © 2025 Baytek Collection — Tüm Hakları Saklıdır.
+</footer>
 
 </body>
 </html>
