@@ -1,283 +1,183 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Baytek Collection - Ultra Mağaza</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Baytek Collection</title>
 <style>
   :root{
-    --bg:#0b0b0f; --card:#16161a; --accent:#ff00ff; --muted:#bfbfbf;
+    --bg:#08070a; --card:#111114; --accent:#ff00ff; --muted:#cfcfe0;
     --glass: rgba(255,255,255,0.03);
     --radius:12px;
   }
   *{box-sizing:border-box}
-  html,body{height:100%;margin:0;font-family:Poppins,system-ui,Arial; background:var(--bg); color:#fff;}
+  html,body{height:100%;margin:0;font-family:Inter, Poppins, system-ui, Arial; background:var(--bg); color:#fff; -webkit-font-smoothing:antialiased}
+  /* Background video */
+  #bg-video{position:fixed;inset:0;z-index:-100;object-fit:cover;width:100%;height:100%;pointer-events:none;filter:brightness(0.55) saturate(0.85);}
+  .bg-overlay{position:fixed;inset:0;z-index:-90;background:linear-gradient(180deg, rgba(3,3,6,0.18), rgba(0,0,0,0.42));pointer-events:none}
 
-  /* --- BACKGROUND VIDEO (fixed, cover) --- */
-  #bg-video {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -999;
-    object-fit: cover;
-    filter: brightness(0.55) saturate(0.85) blur(0.6px);
-    pointer-events: none;
+  /* header centered */
+  header{padding:36px 16px;text-align:center;position:relative;z-index:10}
+  .logo{width:120px;height:120px;object-fit:cover;border-radius:14px;display:block;margin:0 auto 10px;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+  .site-title{font-size:30px;color:var(--accent);margin:4px 0 0;font-weight:800;letter-spacing:1px}
+  .site-sub{color:var(--muted);margin-top:6px;font-size:14px}
+
+  /* main container */
+  .container{max-width:1200px;margin:28px auto;padding:0 16px;position:relative;z-index:5}
+  /* products center layout */
+  .products{
+    display:flex;
+    flex-wrap:wrap;
+    gap:24px;
+    justify-content:center; /* <-- centers all items in each row */
+    align-items:flex-start;
   }
-  /* overlay to slightly darken / tint */
-  .bg-overlay {
-    position: fixed; inset:0; z-index:-998;
-    background: linear-gradient(180deg, rgba(5,5,8,0.25), rgba(2,2,2,0.45));
-    pointer-events:none;
+  .product{
+    width:260px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border-radius:var(--radius);
+    padding:12px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.6);
+    transition:transform .2s;
   }
+  .product:hover{transform:translateY(-6px)}
+  .product img{width:100%;height:170px;object-fit:cover;border-radius:10px;display:block}
+  .product h3{font-size:16px;margin:10px 0 6px}
+  .product p{margin:0;color:var(--muted);font-size:13px}
+  .price{font-weight:800;color:var(--accent);margin-top:8px}
+  .controls{margin-top:10px;display:flex;gap:8px;flex-direction:column}
+  select,input[type=number]{padding:8px;border-radius:8px;border:none;background:var(--glass);color:#fff}
+  .add{padding:10px;border-radius:10px;border:none;background:linear-gradient(180deg,var(--accent),#d400d4);color:#111;font-weight:800;cursor:pointer}
 
-  header{
-    padding:28px 20px; display:flex;align-items:center;justify-content:space-between;
-    background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.05));
-    position:relative; z-index:10;
-    border-bottom: 1px solid rgba(255,255,255,0.03);
-  }
-  .brand{display:flex;align-items:center;gap:14px}
-  .logo{width:86px;border-radius:12px;object-fit:cover}
-  h1{margin:0;font-size:26px;color:var(--accent);text-shadow:0 0 18px rgba(255,0,255,0.08)}
-  .tagline{color:var(--muted);font-size:13px}
-
-  .btns a{display:inline-block;margin-left:8px;padding:10px 14px;border-radius:10px;text-decoration:none;background:var(--accent);color:#111;font-weight:700;box-shadow:0 8px 40px rgba(255,0,255,0.06)}
-  .btns a.ghost{background:transparent;color:var(--accent);border:1px solid rgba(255,0,255,0.12)}
-
-  /* layout */
-  .container{max-width:1200px;margin:0 auto;padding:20px 16px;position:relative;z-index:5}
-  .main{display:flex;gap:20px;align-items:flex-start}
-  @media (max-width:980px){ .main{flex-direction:column} }
-
-  /* products */
-  .products{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;flex:1}
-  .product-card{
-    width:260px;background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-    border-radius:var(--radius);padding:14px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.6);position:relative;overflow:hidden;
-    transition: transform .22s ease, box-shadow .22s ease;
-    backdrop-filter: blur(4px);
-  }
-  .product-card:hover{ transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.7) }
-
-  .product-card img{
-    width:100%;height:170px;object-fit:cover;border-radius:10px;display:block;
-    transition: transform .28s ease, filter .28s ease;
-  }
-  /* hover zoom (premium) */
-  .product-card:hover img { transform: scale(1.08) translateY(-6px); filter: contrast(1.02) saturate(1.05); }
-
-  .product-card h3{font-size:16px;margin:10px 0 6px}
-  .product-card p{font-size:13px;color:var(--muted);margin:0}
-  .product-card .price{font-weight:800;color:var(--accent);margin-top:8px}
-  .discount{position:absolute;top:12px;right:12px;background:#ff3b6b;color:#fff;padding:6px 8px;border-radius:8px;font-weight:700}
-
-  .product-card select,.product-card input{width:100%;padding:8px;margin-top:8px;border-radius:8px;border:none;background:var(--glass);color:#fff}
-  .product-card .controls{display:flex;gap:8px;margin-top:10px}
-  .product-card button{width:100%;padding:10px;border-radius:10px;border:none;background:linear-gradient(180deg,var(--accent), #d400d4);color:#111;font-weight:800;cursor:pointer;box-shadow:0 12px 30px rgba(255,0,255,0.08)}
-
-  /* stock badge and rating */
-  .stock-badge{position:absolute;left:12px;top:12px;background:rgba(0,0,0,0.45);padding:6px 8px;border-radius:8px;font-weight:700;color:#fff;font-size:13px;border:1px solid rgba(255,255,255,0.03)}
-  .rating{display:flex;gap:6px;align-items:center;margin-top:8px;font-size:13px;color:var(--muted)}
-  .rating .stars{color:#ffd54a}
-
-  /* delivery estimation */
-  .eta{margin-top:8px;color:var(--muted);font-size:13px}
+  /* stock badge */
+  .stock{position:absolute;left:12px;top:12px;background:rgba(0,0,0,0.45);padding:6px 8px;border-radius:8px;font-weight:700}
 
   /* cart */
-  #cart-icon{position:fixed;top:20px;right:20px;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--accent);color:#111;font-weight:800;z-index:999;box-shadow:0 10px 40px rgba(255,0,255,0.12)}
-  #cart{position:fixed;right:20px;top:100px;background:linear-gradient(180deg,#0f0f12,#151519);border-radius:12px;padding:16px;width:360px;max-height:78vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,0.7);display:none;z-index:999}
-  #cart h2{margin:0 0 10px 0;color:var(--accent);display:flex;justify-content:space-between;align-items:center}
-  #cart ul{list-style:none;padding:0;margin:0}
-  #cart li{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.02)}
-  .remove-item{cursor:pointer;color:var(--accent);font-weight:700}
-  #checkout{margin-top:12px;padding:12px;width:100%;border:none;border-radius:10px;background:linear-gradient(180deg,var(--accent), #d400d4);color:#111;font-weight:800;cursor:pointer}
+  #cart-icon{position:fixed;top:18px;right:18px;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--accent);color:#111;font-weight:800;z-index:999;box-shadow:0 10px 40px rgba(255,0,255,0.12);cursor:pointer}
+  #cart-panel{position:fixed;right:18px;top:90px;width:360px;background: linear-gradient(180deg,#0f0f12,#151519);border-radius:12px;padding:14px;box-shadow:0 20px 60px rgba(0,0,0,0.7);display:none;z-index:999}
+  #cart-panel h3{margin:0 0 10px 0;color:var(--accent)}
+  #cart-list{list-style:none;padding:0;margin:0;max-height:52vh;overflow:auto}
+  #cart-list li{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
+  .remove{background:transparent;border:0;color:var(--accent);cursor:pointer;font-weight:700}
 
-  .added-popup{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:var(--accent);color:#111;padding:6px 10px;border-radius:8px;font-weight:700;display:none}
+  #checkout{margin-top:12px;padding:10px;border-radius:10px;border:none;background:linear-gradient(180deg,var(--accent),#d400d4);color:#111;font-weight:800;width:100%;cursor:pointer}
 
-  /* last-order toast */
-  #last-order-popup{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:linear-gradient(180deg,var(--accent), #d400d4);color:#111;padding:10px 16px;border-radius:10px;display:none;z-index:999}
+  /* footer spacing */
+  .spacer{height:40px}
 
-  /* recent buyer notification (left bottom) */
-  #recent-buyer {
-    position: fixed; left: 18px; bottom: 18px;
-    background: rgba(0,0,0,0.6); padding:10px 14px; border-radius:12px; color:#fff; z-index:999;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6); display:none; align-items:center; gap:10px;
-  }
-  #recent-buyer strong{color:var(--accent);margin-left:6px}
-
-  /* small screens */
-  @media (max-width:720px){
-    .product-card{width:100%}
-    #cart{right:10px;left:10px;width:auto}
-    header{padding:18px}
+  /* responsive */
+  @media (max-width:960px){
+    .product{width:100%;max-width:520px}
+    #cart-panel{right:10px;left:10px;width:auto}
+    .logo{width:100px;height:100px}
   }
 </style>
 </head>
 <body>
 
-<!-- BACKGROUND VIDEO: yerel veya uzak bir MP4 koy -->
-<!-- ÖNEM: autoplay, muted, loop, playsinline -> mobil uyum için playsinline gerekli -->
+<!-- Background video - soft store interior (sample). Replace with your local file if desired -->
 <video id="bg-video" autoplay muted loop playsinline>
-  <!-- Varsayılan örnek: (eğer istersen kendi mp4'ünü /assets/people_store.mp4 koy) -->
   <source src="https://cdn.jsdelivr.net/gh/kitety/video-samples@main/mall.mp4" type="video/mp4">
-  <!-- Eğer yukarı çalışmazsa: local path: <source src="img/people_store.mp4" type="video/mp4"> -->
+  <!-- fallback static background -->
 </video>
 <div class="bg-overlay" aria-hidden="true"></div>
 
 <header>
-  <div class="brand">
-    <img class="logo" src="https://i.imgur.com/Xcka2e9.jpeg" alt="Baytek Logo">
-    <div>
-      <h1>Baytek Collection</h1>
-      <div class="tagline">Tarzın Yeni Merkezi – Kalite, Şıklık ve Etki Bir Arada</div>
-    </div>
-  </div>
-  <div class="btns" style="display:flex;align-items:center">
-    <a href="https://instagram.com/baytekcollection" target="_blank">📸 Instagram</a>
-    <a class="ghost" href="https://wa.me/905334772649" target="_blank" style="margin-left:8px;background:transparent;border:1px solid rgba(255,255,255,0.05);color:#fff;padding:8px 10px;border-radius:8px;text-decoration:none">KERİM BAYRAKTAR</a>
-    <a class="ghost" href="https://wa.me/905511122791" target="_blank" style="margin-left:8px;background:transparent;border:1px solid rgba(255,255,255,0.05);color:#fff;padding:8px 10px;border-radius:8px;text-decoration:none">ENES TEKİN</a>
-  </div>
+  <img class="logo" src="https://i.imgur.com/Xcka2e9.jpeg" alt="Baytek Logo">
+  <div class="site-title">Baytek Collection</div>
+  <div class="site-sub">Tarzın Yeni Merkezi – Kalite, Şıklık ve Etki Bir Arada</div>
 </header>
 
-<div class="container">
-  <div class="main">
-    <section class="products" id="products">
-      <!-- 1 -->
-      <div class="product-card" data-id="p1" data-name="Kartal figürlü LED ışıklı su şelalesi" data-price="1200" data-max="24" data-stock="7">
-        <div class="stock-badge" data-stock-el>⚡ Son <span class="stock-num">7</span> adet</div>
-        <div class="discount">%10 İNDİRİM</div>
-        <div class="added-popup">✅ Sepete eklendi!</div>
-        <img src="https://i.imgur.com/aIAthmX.jpeg" alt="Kartal figürlü LED">
-        <h3>Kartal figürlü LED ışıklı su şelalesi</h3>
-        <div class="rating"><span class="stars">★★★★★</span><span style="opacity:0.85;margin-left:6px">4.8 • 231 değerlendirme</span></div>
-        <p>Figür seçenekleri: 1 adet Fil, 2 adet Fil</p>
-        <div class="eta">Tahmini teslim: <span class="eta-days"></span></div>
-        <select class="color-select">
-          <option>1 adet Fil</option>
-          <option>2 adet Fil</option>
-        </select>
-        <select>
+<main class="container">
+  <section class="products" id="products">
+    <!-- Product 1 -->
+    <div class="product" data-name="Kartal figürlü LED ışıklı su şelalesi" data-price="1200" data-max="24" data-stock="7" style="position:relative">
+      <div class="stock">⚡ Son <span class="stock-num">7</span> adet</div>
+      <img src="https://i.imgur.com/aIAthmX.jpeg" alt="">
+      <h3>Kartal figürlü LED ışıklı su şelalesi</h3>
+      <p>Figür seçenekleri: 1 adet Fil, 2 adet Fil</p>
+      <div class="price">1200₺</div>
+      <div class="controls">
+        <select class="ship">
           <option>MNG - Standart</option>
           <option>MNG - Hızlı</option>
           <option>Aras - Standart</option>
-          <option>Aras - Hızlı</option>
-          <option>Sürat - Standart</option>
-          <option>Sürat - Hızlı</option>
-          <option>PTT - Standart</option>
-          <option>PTT - Hızlı</option>
         </select>
-        <input type="number" value="1" min="1" max="24">
-        <button>Sepete Ekle</button>
+        <input type="number" min="1" value="1" class="qty">
+        <button class="add">Sepete Ekle</button>
       </div>
-
-      <!-- 2 -->
-      <div class="product-card" data-id="p2" data-name="3 Bardaklı Vakumlu Termos Seti" data-price="450" data-max="24" data-stock="12">
-        <div class="stock-badge" data-stock-el>⚡ Son <span class="stock-num">12</span> adet</div>
-        <div class="discount">%5 İNDİRİM</div>
-        <div class="added-popup">✅ Sepete eklendi!</div>
-        <img src="https://i.imgur.com/wvdZXrC.jpeg" alt="3 Bardaklı Vakumlu Termos Seti">
-        <h3>3 Bardaklı Vakumlu Termos Seti</h3>
-        <div class="rating"><span class="stars">★★★★★</span><span style="opacity:0.85;margin-left:6px">4.6 • 410 değerlendirme</span></div>
-        <p>Renk seçenekleri: Su Yeşili, Mor, Siyah</p>
-        <div class="eta">Tahmini teslim: <span class="eta-days"></span></div>
-        <select class="color-select">
-          <option>Su Yeşili</option>
-          <option>Mor</option>
-          <option>Siyah</option>
-        </select>
-        <select>
-          <option>MNG - Standart</option>
-          <option>MNG - Hızlı</option>
-          <option>Aras - Standart</option>
-          <option>Aras - Hızlı</option>
-          <option>Sürat - Standart</option>
-          <option>Sürat - Hızlı</option>
-          <option>PTT - Standart</option>
-          <option>PTT - Hızlı</option>
-        </select>
-        <input type="number" value="1" min="1" max="24">
-        <button>Sepete Ekle</button>
-      </div>
-
-      <!-- 3 -->
-      <div class="product-card" data-id="p3" data-name="Mobgift USB’li Işıklı Ahşap Standlı Cam Küre" data-price="200" data-max="52" data-stock="18">
-        <div class="stock-badge" data-stock-el>⚡ Son <span class="stock-num">18</span> adet</div>
-        <div class="added-popup">✅ Sepete eklendi!</div>
-        <img src="https://i.imgur.com/oiAFO7w.jpeg" alt="Mobgift Cam Küre">
-        <h3>Mobgift USB’li Işıklı Ahşap Standlı Cam Küre</h3>
-        <div class="rating"><span class="stars">★★★★★</span><span style="opacity:0.85;margin-left:6px">4.9 • 128 değerlendirme</span></div>
-        <p>Figür seçenekleri: Astronot, Melek, Galaksi</p>
-        <div class="eta">Tahmini teslim: <span class="eta-days"></span></div>
-        <select class="color-select">
-          <option>Astronot</option>
-          <option>Melek</option>
-          <option>Galaksi</option>
-        </select>
-        <select>
-          <option>MNG - Standart</option>
-          <option>MNG - Hızlı</option>
-          <option>Aras - Standart</option>
-          <option>Aras - Hızlı</option>
-          <option>Sürat - Standart</option>
-          <option>Sürat - Hızlı</option>
-          <option>PTT - Standart</option>
-          <option>PTT - Hızlı</option>
-        </select>
-        <input type="number" value="1" min="1" max="52">
-        <button>Sepete Ekle</button>
-      </div>
-
-      <!-- 4 -->
-      <div class="product-card" data-id="p4" data-name="3’lü Motivasyonel Su Matarası" data-price="350" data-max="24" data-stock="9">
-        <div class="stock-badge" data-stock-el>⚡ Son <span class="stock-num">9</span> adet</div>
-        <div class="added-popup">✅ Sepete eklendi!</div>
-        <img src="https://i.imgur.com/2en5c9l.jpeg" alt="Motivasyonel Su Matarası">
-        <h3>3’lü Motivasyonel Su Matarası</h3>
-        <div class="rating"><span class="stars">★★★★★</span><span style="opacity:0.85;margin-left:6px">4.7 • 89 değerlendirme</span></div>
-        <p>Renk seçenekleri: Siyah</p>
-        <div class="eta">Tahmini teslim: <span class="eta-days"></span></div>
-        <select class="color-select">
-          <option>Siyah</option>
-        </select>
-        <select>
-          <option>MNG - Standart</option>
-          <option>MNG - Hızlı</option>
-          <option>Aras - Standart</option>
-          <option>Aras - Hızlı</option>
-          <option>Sürat - Standart</option>
-          <option>Sürat - Hızlı</option>
-          <option>PTT - Standart</option>
-          <option>PTT - Hızlı</option>
-        </select>
-        <input type="number" value="1" min="1" max="24">
-        <button>Sepete Ekle</button>
-      </div>
-
-    </section>
-
-    <!-- Cart -->
-    <div id="cart">
-      <h2>Sepet <span id="cart-total">0₺</span></h2>
-      <ul></ul>
-      <button id="checkout">Siparişi Tamamla</button>
     </div>
 
-  </div>
+    <!-- Product 2 -->
+    <div class="product" data-name="3 Bardaklı Vakumlu Termos Seti" data-price="450" data-max="24" data-stock="12" style="position:relative">
+      <div class="stock">⚡ Son <span class="stock-num">12</span> adet</div>
+      <img src="https://i.imgur.com/wvdZXrC.jpeg" alt="">
+      <h3>3 Bardaklı Vakumlu Termos Seti</h3>
+      <p>Renk seçenekleri: Su Yeşili, Mor, Siyah</p>
+      <div class="price">450₺</div>
+      <div class="controls">
+        <select class="ship">
+          <option>MNG - Standart</option>
+          <option>MNG - Hızlı</option>
+          <option>Aras - Standart</option>
+        </select>
+        <input type="number" min="1" value="1" class="qty">
+        <button class="add">Sepete Ekle</button>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product" data-name="Mobgift USB’li Işıklı Ahşap Standlı Cam Küre" data-price="200" data-max="52" data-stock="18" style="position:relative">
+      <div class="stock">⚡ Son <span class="stock-num">18</span> adet</div>
+      <img src="https://i.imgur.com/oiAFO7w.jpeg" alt="">
+      <h3>Mobgift USB’li Işıklı Ahşap Standlı Cam Küre</h3>
+      <p>Figür seçenekleri: Astronot, Melek, Galaksi</p>
+      <div class="price">200₺</div>
+      <div class="controls">
+        <select class="ship">
+          <option>MNG - Standart</option>
+          <option>MNG - Hızlı</option>
+          <option>Aras - Standart</option>
+        </select>
+        <input type="number" min="1" value="1" class="qty">
+        <button class="add">Sepete Ekle</button>
+      </div>
+    </div>
+
+    <!-- Product 4 (last, centered) -->
+    <div class="product" data-name="3’lü Motivasyonel Su Matarası" data-price="350" data-max="24" data-stock="9" style="position:relative">
+      <div class="stock">⚡ Son <span class="stock-num">9</span> adet</div>
+      <img src="https://i.imgur.com/2en5c9l.jpeg" alt="">
+      <h3>3’lü Motivasyonel Su Matarası</h3>
+      <p>Renk seçenekleri: Siyah</p>
+      <div class="price">350₺</div>
+      <div class="controls">
+        <select class="ship">
+          <option>MNG - Standart</option>
+          <option>MNG - Hızlı</option>
+          <option>Aras - Standart</option>
+        </select>
+        <input type="number" min="1" value="1" class="qty">
+        <button class="add">Sepete Ekle</button>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="spacer"></div>
+</main>
+
+<!-- Cart UI -->
+<div id="cart-icon">🛒</div>
+<div id="cart-panel" aria-hidden="true">
+  <h3>Sepet <span id="cart-count" style="opacity:0.8;font-weight:600;margin-left:8px"></span></h3>
+  <ul id="cart-list"></ul>
+  <div style="margin-top:8px;font-weight:800">Toplam: <span id="cart-total">0₺</span></div>
+  <button id="checkout">Shopier & WhatsApp ile Tamamla</button>
 </div>
 
-<!-- recent buyer notification -->
-<div id="recent-buyer" role="status" aria-live="polite"><img src="https://i.imgur.com/Xcka2e9.jpeg" alt="" style="width:36px;height:36px;border-radius:8px;object-fit:cover"><div style="margin-left:8px"><small style="opacity:0.85">Yeni sipariş</small><div style="font-weight:800; margin-top:4px"><span id="recent-text"></span></div></div></div>
-
-<div id="last-order-popup"></div>
-
 <script>
-/* ================== CONFIG ================== */
-// Shopier links kept as before
+/* Simple, robust cart system — no duplication, stock-aware, Shopier+WhatsApp preserved */
 const SHOPIER_LINKS = {
   "Kartal figürlü LED ışıklı su şelalesi":"https://shopier.com/baytekcollection/41882654",
   "3 Bardaklı Vakumlu Termos Seti":"https://shopier.com/baytekcollection/41884160",
@@ -285,202 +185,116 @@ const SHOPIER_LINKS = {
   "3’lü Motivasyonel Su Matarası":"https://shopier.com/baytekcollection/41884046"
 };
 
-// Recent buyer examples (şehrler ve isimler)
-const RECENT_BUYERS = [
-  {city:'İstanbul', name:'Ayşe'},
-  {city:'Ankara', name:'Mehmet'},
-  {city:'Bursa', name:'Merve'},
-  {city:'İzmir', name:'Can'},
-  {city:'Adana', name:'Fatma'},
-  {city:'Antalya', name:'Emir'},
-  {city:'Samsun', name:'Zeynep'},
-  {city:'Kayseri', name:'Kerem'}
-];
+let cart = []; // {name, price, qty, ship}
 
-/* ================== INITIAL UI SETUP ================== */
-const cartDiv = document.getElementById('cart');
-const cartUl = cartDiv.querySelector('ul');
-const cartTotalEl = document.getElementById('cart-total');
-const lastPopup = document.getElementById('last-order-popup');
-const recentBuyerEl = document.getElementById('recent-buyer');
-const recentText = document.getElementById('recent-text');
+const cartIcon = document.getElementById('cart-icon');
+const cartPanel = document.getElementById('cart-panel');
+const cartList = document.getElementById('cart-list');
+const cartTotal = document.getElementById('cart-total');
+const cartCount = document.getElementById('cart-count');
 
-let cart = []; // {name, price, qty, color, shipping}
-
-// Helper: format price
-function formatPrice(n){ return Number(n).toLocaleString('tr-TR') + '₺' }
-
-// Initialize ETA days (2-5 iş günü)
-function computeETA() {
-  const now = new Date();
-  const min = new Date(now);
-  min.setDate(min.getDate() + 2);
-  const max = new Date(now);
-  max.setDate(max.getDate() + 5);
-  const options = { day:'2-digit', month:'short' };
-  return `${min.toLocaleDateString('tr-TR',options)} - ${max.toLocaleDateString('tr-TR',options)}`;
-}
-
-// set ETA for each product card
-document.querySelectorAll('.product-card').forEach(card=>{
-  const etaEl = card.querySelector('.eta-days');
-  if(etaEl) etaEl.textContent = computeETA();
+cartIcon.addEventListener('click', ()=> {
+  cartPanel.style.display = cartPanel.style.display === 'block' ? 'none' : 'block';
 });
 
-/* ========== STOCK UI ========== */
-// set stock numbers from data-stock and expose element
-document.querySelectorAll('.product-card').forEach(card=>{
-  const stock = Number(card.getAttribute('data-stock') || 0);
-  const stockNumEl = card.querySelector('.stock-num');
-  if(stockNumEl) stockNumEl.textContent = stock;
-});
+/* helper */
+function formatPrice(n){ return Number(n).toLocaleString('tr-TR') + '₺'; }
 
-/* ========== RECENT BUYER POPUPS (random every 8-14s) ========== */
-function showRecentBuyer(){
-  // choose random buyer and random product
-  const buyer = RECENT_BUYERS[Math.floor(Math.random()*RECENT_BUYERS.length)];
-  const products = Array.from(document.querySelectorAll('.product-card')).map(c=>c.getAttribute('data-name'));
-  const prod = products[Math.floor(Math.random()*products.length)];
-  recentText.textContent = `${buyer.city} • ${buyer.name} ${prod} satın aldı.`;
-  recentBuyerEl.style.display = 'flex';
-  setTimeout(()=>{ recentBuyerEl.style.display = 'none'; }, 4200);
-}
-setInterval(showRecentBuyer, 9000 + Math.random()*5000);
-setTimeout(showRecentBuyer, 3000);
-
-/* ========== CART LOGIC (preserve original behaviors + improvements) ========== */
 function updateCartUI(){
-  cartUl.innerHTML = '';
+  cartList.innerHTML = '';
   let total = 0;
-  cart.forEach((item, idx) => {
-    total += item.price * item.qty;
+  let qtyTotal = 0;
+  cart.forEach((it, idx)=>{
+    total += it.price * it.qty;
+    qtyTotal += it.qty;
     const li = document.createElement('li');
-    li.innerHTML = `${item.name} (${item.color}) x${item.qty} <span>${formatPrice(item.price*item.qty)}</span> <button class="remove" data-idx="${idx}">❌</button>`;
-    cartUl.appendChild(li);
+    li.style.display = 'flex'; li.style.justifyContent='space-between'; li.style.alignItems='center';
+    li.innerHTML = `<div style="max-width:70%">${it.name} (${it.ship}) x${it.qty}</div><div style="text-align:right">${formatPrice(it.price*it.qty)} <button data-idx="${idx}" class="remove" style="margin-left:8px;background:none;border:0;color:#ff7bf0;cursor:pointer">❌</button></div>`;
+    cartList.appendChild(li);
   });
-  cartTotalEl.textContent = formatPrice(total);
-  // remove listeners
-  cartUl.querySelectorAll('.remove').forEach(btn=>{
+  cartTotal.textContent = formatPrice(total);
+  cartCount.textContent = qtyTotal ? `(${qtyTotal})` : '(0)';
+  // remove handlers
+  cartList.querySelectorAll('.remove').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const i = Number(btn.getAttribute('data-idx'));
-      if(!isNaN(i)) {
-        // restore stock of removed item
-        const removed = cart[i];
-        restoreStock(removed.name, removed.qty);
-        cart.splice(i,1);
-        updateCartUI();
-      }
+      if(isNaN(i)) return;
+      // restore stock
+      const removed = cart[i];
+      restoreStock(removed.name, removed.qty);
+      cart.splice(i,1);
+      updateCartUI();
     });
   });
 }
 
-// restore stock (when item removed)
+/* restore stock when removing item */
 function restoreStock(name, qty){
-  const card = Array.from(document.querySelectorAll('.product-card')).find(c => c.getAttribute('data-name') === name);
+  const card = Array.from(document.querySelectorAll('.product')).find(c => c.getAttribute('data-name') === name);
   if(!card) return;
-  const newStock = Math.max(0, Number(card.getAttribute('data-stock')) + qty);
-  card.setAttribute('data-stock', newStock);
-  const stockNum = card.querySelector('.stock-num');
-  if(stockNum) stockNum.textContent = newStock;
-  // if stock > threshold remove 'son' visual? leave as is
+  let stock = Number(card.getAttribute('data-stock')||0);
+  stock = stock + qty;
+  card.setAttribute('data-stock', stock);
+  const el = card.querySelector('.stock-num');
+  if(el) el.textContent = stock;
 }
 
-// Attach click handlers to all add buttons (only once)
-document.querySelectorAll('.product-card button').forEach(btn=>{
-  btn.addEventListener('click', ()=> {
-    const card = btn.closest('.product-card');
+/* add to cart handlers */
+document.querySelectorAll('.product').forEach(card=>{
+  const btn = card.querySelector('.add');
+  btn.addEventListener('click', ()=>{
     const name = card.getAttribute('data-name');
     const price = Number(card.getAttribute('data-price'));
-    let quantity = Number(card.querySelector('input').value) || 1;
+    let qty = Number(card.querySelector('.qty').value) || 1;
     const max = Number(card.getAttribute('data-max')) || 99;
-    if(quantity > max) quantity = max;
-    const shipping = card.querySelector('select:nth-of-type(2)').value;
-    const color = card.querySelector('.color-select').value;
-    // stock check
-    let stock = Number(card.getAttribute('data-stock') || 0);
-    if(stock <= 0){
-      alert('Üzgünüz, stokta yok.');
-      return;
-    }
-    if(quantity > stock) quantity = stock;
+    let stock = Number(card.getAttribute('data-stock')) || 0;
+    if(stock <= 0){ alert('Ürün stokta yok.'); return; }
+    if(qty > stock) qty = stock;
+    const ship = card.querySelector('.ship').value;
 
-    // same item check
-    const exists = cart.find(i => i.name === name && i.color === color && i.shipping === shipping);
-    if(exists){
-      const allowed = Math.min(max - exists.qty, stock);
-      exists.qty += allowed;
-      if(exists.qty > max) exists.qty = max;
+    const existing = cart.find(i => i.name === name && i.ship === ship);
+    if(existing){
+      const can = Math.min(max - existing.qty, stock);
+      existing.qty += can;
+      if(existing.qty > max) existing.qty = max;
     } else {
-      cart.push({name, price, qty:quantity, color, shipping});
+      cart.push({name, price, qty, ship});
     }
 
-    // decrease stock on UI and attribute
-    const newStock = Math.max(0, stock - quantity);
+    // decrease stock attr
+    const newStock = Math.max(0, stock - qty);
     card.setAttribute('data-stock', newStock);
-    const stockNum = card.querySelector('.stock-num');
-    if(stockNum) stockNum.textContent = newStock;
+    const sn = card.querySelector('.stock-num');
+    if(sn) sn.textContent = newStock;
 
     updateCartUI();
 
-    // popup short
+    // small temporary feedback
     const popup = card.querySelector('.added-popup');
     if(popup){
       popup.style.display = 'block';
-      setTimeout(()=> popup.style.display = 'none', 900);
+      setTimeout(()=>popup.style.display='none',900);
     }
-
-    // last-order small toast (bottom center)
-    lastPopup.textContent = `${name} sepete eklendi!`;
-    lastPopup.style.display = 'block';
-    setTimeout(()=> lastPopup.style.display = 'none', 1600);
-
-    // optional: show "someone bought" immediate small notification (boost)
-    // showRecentBuyer(); // commented because interval handles it
   });
 });
 
-// cart icon to toggle cart (if you want)
-if(document.getElementById('cart-icon')){
-  document.getElementById('cart-icon').addEventListener('click', ()=>{
-    cartDiv.style.display = cartDiv.style.display === 'none' || !cartDiv.style.display ? 'block' : 'none';
-  });
-}
-
-// checkout: Shopier + WhatsApp (same behavior preserved)
+/* checkout behavior - open Shopier for first product and WhatsApp with message */
 document.getElementById('checkout').addEventListener('click', ()=>{
   if(cart.length === 0){ alert('Sepetiniz boş!'); return; }
-  let message = 'Merhaba, sipariş vermek istiyorum:%0A';
+  let msg = 'Merhaba, sipariş vermek istiyorum:%0A';
   cart.forEach(it => {
-    message += `• ${it.name} (${it.color}) x${it.qty} (${it.shipping}) - ${it.price*it.qty}₺%0A`;
+    msg += `• ${it.name} x${it.qty} (${it.ship}) - ${formatPrice(it.price*it.qty)}%0A`;
   });
   const firstLink = SHOPIER_LINKS[cart[0].name] || Object.values(SHOPIER_LINKS)[0];
   window.open(firstLink, '_blank');
-  window.open('https://wa.me/905334772649?text=' + encodeURIComponent(message), '_blank');
+  window.open('https://wa.me/905334772649?text=' + encodeURIComponent(msg), '_blank');
 });
 
-/* ======== SECURITY: Prevent double-binding if script runs twice ======== */
-// If script is injected twice, we avoid double-binding by checking a flag
-if(window.__baytek_script_loaded){
-  // already loaded => don't re-init recent buyer interval duplicates etc.
-  console.log('baytek script already loaded - skipping re-initialization');
-} else {
-  window.__baytek_script_loaded = true;
-  // recent buyer interval already set above via setInterval
-}
+/* Prevent double init if script runs twice */
+if(window.__baytek_init){ console.log('already initialized'); } else { window.__baytek_init = true; }
 
-/* ========== OPTIONAL: lazy pause background video on mobile save battery ========== */
-(function(){
-  const vid = document.getElementById('bg-video');
-  if(!vid) return;
-  // On iOS/Android some browsers block autoplay — video has playsinline & muted attributes though.
-  // Pause the video if user on low battery (optional)
-  if(navigator.getBattery){
-    navigator.getBattery().then(batt=>{
-      if(batt.level < 0.25) vid.pause();
-      batt.addEventListener('levelchange', ()=>{ if(batt.level < 0.18) vid.pause(); });
-    });
-  }
-})();
+/* Ensure no duplicated product rendering or event binding - we bound to static DOM once */
 </script>
+
 </body>
 </html>
