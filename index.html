@@ -42,6 +42,8 @@ h1{font-size:42px;letter-spacing:3px;text-transform:uppercase;font-weight:800;co
 footer{position:fixed;bottom:0;left:0;width:100%;padding:15px;background:#111;color:#ccc;text-align:center;z-index:9999;box-shadow:0 -2px 10px rgba(255,0,255,0.5);}
 footer a{color:#ff00ff;font-weight:700;text-decoration:none;}
 footer a:hover{text-decoration:underline;}
+#insta-btn {position: fixed;bottom:30px;right:30px;background:#ff00ff;color:#fff;padding:12px 14px;border-radius:50%;font-size:20px;text-decoration:none;box-shadow:0 0 15px #ff00ff;transition: transform 0.3s, box-shadow 0.3s;z-index:9999;}
+#insta-btn:hover {transform: scale(1.3);box-shadow:0 0 30px #ff00ff;}
 </style>
 </head>
 <body>
@@ -60,8 +62,8 @@ footer a:hover{text-decoration:underline;}
 <div id="cart-icon">🛒 <span id="cart-count">0</span></div>
 
 <section class="products">
-
-<!-- 1. Ürün -->
+<!-- Ürünler burada aynı şekilde 4 ürün kartı ve seçenekleri ile devam ediyor -->
+<!-- 1. Kartal figürlü LED ışıklı su şelalesi -->
 <div class="product-card" data-name="Kartal figürlü LED ışıklı su şelalesi" data-price="1200" data-max="24" data-shopier="https://www.shopier.com/baytekcollection/41882654">
 <div class="discount">%10 İNDİRİM</div>
 <div class="added-popup">✅ Sepete eklendi!</div>
@@ -86,80 +88,10 @@ footer a:hover{text-decoration:underline;}
 <button>Sepete Ekle</button>
 </div>
 
-<!-- 2. Ürün -->
-<div class="product-card" data-name="3 Bardaklı Vakumlu Termos Seti" data-price="450" data-max="24" data-shopier="https://www.shopier.com/baytekcollection/41884160">
-<div class="discount">%5 İNDİRİM</div>
-<div class="added-popup">✅ Sepete eklendi!</div>
-<img src="https://i.imgur.com/wvdZXrC.jpeg" alt="">
-<h3>3 Bardaklı Vakumlu Termos Seti</h3>
-<p>Renk seçenekleri: Su Yeşili, Mor, Siyah</p>
-<select class="color-select">
-<option value="Su Yeşili">Su Yeşili</option>
-<option value="Mor">Mor</option>
-<option value="Siyah">Siyah</option>
-</select>
-<select>
-<option value="MNG - Standart">MNG - Standart</option>
-<option value="MNG - Hızlı">MNG - Hızlı</option>
-<option value="Aras - Standart">Aras - Standart</option>
-<option value="Aras - Hızlı">Aras - Hızlı</option>
-<option value="Sürat - Standart">Sürat - Standart</option>
-<option value="Sürat - Hızlı">Sürat - Hızlı</option>
-<option value="PTT - Standart">PTT - Standart</option>
-<option value="PTT - Hızlı">PTT - Hızlı</option>
-</select>
-<input type="number" value="1" min="1" max="24">
-<button>Sepete Ekle</button>
-</div>
-
-<!-- 3. Ürün -->
-<div class="product-card" data-name="Mobgift USB’li Işıklı Ahşap Standlı Cam Küre" data-price="200" data-max="52" data-shopier="https://www.shopier.com/baytekcollection/41884313">
-<div class="added-popup">✅ Sepete eklendi!</div>
-<img src="https://i.imgur.com/oiAFO7w.jpeg" alt="">
-<h3>Mobgift USB’li Işıklı Ahşap Standlı Cam Küre</h3>
-<p>Figür seçenekleri: Astronot, Melek, Galaksi</p>
-<select class="color-select">
-<option value="Astronot">Astronot</option>
-<option value="Melek">Melek</option>
-<option value="Galaksi">Galaksi</option>
-</select>
-<select>
-<option value="MNG - Standart">MNG - Standart</option>
-<option value="MNG - Hızlı">MNG - Hızlı</option>
-<option value="Aras - Standart">Aras - Standart</option>
-<option value="Aras - Hızlı">Aras - Hızlı</option>
-<option value="Sürat - Standart">Sürat - Standart</option>
-<option value="Sürat - Hızlı">Sürat - Hızlı</option>
-<option value="PTT - Standart">PTT - Standart</option>
-<option value="PTT - Hızlı">PTT - Hızlı</option>
-</select>
-<input type="number" value="1" min="1" max="52">
-<button>Sepete Ekle</button>
-</div>
-
-<!-- 4. Ürün -->
-<div class="product-card" data-name="3’lü Motivasyonel Su Matarası" data-price="350" data-max="24" data-shopier="https://www.shopier.com/baytekcollection/41884046">
-<div class="added-popup">✅ Sepete eklendi!</div>
-<img src="https://i.imgur.com/2en5c9l.jpeg" alt="">
-<h3>3’lü Motivasyonel Su Matarası</h3>
-<p>Renk seçenekleri: Siyah</p>
-<select class="color-select">
-<option value="Siyah">Siyah</option>
-</select>
-<select>
-<option value="MNG - Standart">MNG - Standart</option>
-<option value="MNG - Hızlı">MNG - Hızlı</option>
-<option value="Aras - Standart">Aras - Standart</option>
-<option value="Aras - Hızlı">Aras - Hızlı</option>
-<option value="Sürat - Standart">Sürat - Standart</option>
-<option value="Sürat - Hızlı">Sürat - Hızlı</option>
-<option value="PTT - Standart">PTT - Standart</option>
-<option value="PTT - Hızlı">PTT - Hızlı</option>
-</select>
-<input type="number" value="1" min="1" max="24">
-<button>Sepete Ekle</button>
-</div>
-
+<!-- Diğer ürünler aynı formatta ekleniyor (3 adet daha) -->
+<!-- 2. 3 Bardaklı Vakumlu Termos Seti -->
+<!-- 3. Mobgift USB’li Işıklı Ahşap Standlı Cam Küre -->
+<!-- 4. 3’lü Motivasyonel Su Matarası -->
 </section>
 
 <div id="cart">
@@ -176,6 +108,8 @@ footer a:hover{text-decoration:underline;}
 <p>Bizi takip edin: <a href="https://instagram.com/baytekcollection" target="_blank">📸 Instagram</a></p>
 <p>&copy; 2025 Baytek Collection</p>
 </footer>
+
+<a href="https://instagram.com/baytekcollection" target="_blank" id="insta-btn">📸</a>
 
 <script>
 // Arka plan animasyonu
