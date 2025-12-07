@@ -14,7 +14,7 @@ body{
   text-align:center;
   overflow-x:hidden;
   position:relative;
-  padding-bottom:100px; /* Alt bildirimler için boşluk */
+  padding-bottom:120px; /* Alt bildirimler için boşluk */
 }
 
 /* ===== HEADER ===== */
@@ -337,8 +337,104 @@ h1{
 <div id="cart-icon">🛒 <span id="cart-count">0</span></div>
 
 <section class="products">
-  <!-- Ürün kartları 4 adet örnek -->
-  <!-- Kartlar buraya dinamik olarak eklenebilir -->
+  <!-- ÜRÜN 1 -->
+  <div class="product-card" data-name="Kartal figürlü LED ışıklı su şelalesi" data-price="1200" data-max="24" data-shopier="https://www.shopier.com/baytekcollection/41882654">
+    <div class="discount">%10 İNDİRİM</div>
+    <div class="added-popup">✅ Sepete eklendi!</div>
+    <img src="https://i.imgur.com/aIAthmX.jpeg" alt="">
+    <h3>Kartal figürlü LED ışıklı su şelalesi</h3>
+    <p>Figür seçenekleri: 1 adet Fil, 2 adet Fil</p>
+    <select class="color-select">
+      <option value="1 adet Fil">1 adet Fil</option>
+      <option value="2 adet Fil">2 adet Fil</option>
+    </select>
+    <select>
+      <option value="MNG - Standart">MNG - Standart</option>
+      <option value="MNG - Hızlı">MNG - Hızlı</option>
+      <option value="Aras - Standart">Aras - Standart</option>
+      <option value="Aras - Hızlı">Aras - Hızlı</option>
+      <option value="Sürat - Standart">Sürat - Standart</option>
+      <option value="Sürat - Hızlı">Sürat - Hızlı</option>
+      <option value="PTT - Standart">PTT - Standart</option>
+      <option value="PTT - Hızlı">PTT - Hızlı</option>
+    </select>
+    <input type="number" value="1" min="1" max="24">
+    <button>Sepete Ekle</button>
+  </div>
+
+  <!-- ÜRÜN 2 -->
+  <div class="product-card" data-name="3 Bardaklı Vakumlu Termos Seti" data-price="450" data-max="24" data-shopier="https://www.shopier.com/baytekcollection/41884160">
+    <div class="discount">%5 İNDİRİM</div>
+    <div class="added-popup">✅ Sepete eklendi!</div>
+    <img src="https://i.imgur.com/wvdZXrC.jpeg" alt="">
+    <h3>3 Bardaklı Vakumlu Termos Seti</h3>
+    <p>Renk seçenekleri: Su Yeşili, Mor, Siyah</p>
+    <select class="color-select">
+      <option value="Su Yeşili">Su Yeşili</option>
+      <option value="Mor">Mor</option>
+      <option value="Siyah">Siyah</option>
+    </select>
+    <select>
+      <option value="MNG - Standart">MNG - Standart</option>
+      <option value="MNG - Hızlı">MNG - Hızlı</option>
+      <option value="Aras - Standart">Aras - Standart</option>
+      <option value="Aras - Hızlı">Aras - Hızlı</option>
+      <option value="Sürat - Standart">Sürat - Standart</option>
+      <option value="Sürat - Hızlı">Sürat - Hızlı</option>
+      <option value="PTT - Standart">PTT - Standart</option>
+      <option value="PTT - Hızlı">PTT - Hızlı</option>
+    </select>
+    <input type="number" value="1" min="1" max="24">
+    <button>Sepete Ekle</button>
+  </div>
+
+  <!-- ÜRÜN 3 -->
+  <div class="product-card" data-name="Mobgift USB’li Işıklı Ahşap Standlı Cam Küre" data-price="200" data-max="52" data-shopier="https://www.shopier.com/baytekcollection/41884313">
+    <div class="added-popup">✅ Sepete eklendi!</div>
+    <img src="https://i.imgur.com/oiAFO7w.jpeg" alt="">
+    <h3>Mobgift USB’li Işıklı Ahşap Standlı Cam Küre</h3>
+    <p>Figür seçenekleri: Astronot, Melek, Galaksi</p>
+    <select class="color-select">
+      <option value="Astronot">Astronot</option>
+      <option value="Melek">Melek</option>
+      <option value="Galaksi">Galaksi</option>
+    </select>
+    <select>
+      <option value="MNG - Standart">MNG - Standart</option>
+      <option value="MNG - Hızlı">MNG - Hızlı</option>
+      <option value="Aras - Standart">Aras - Standart</option>
+      <option value="Aras - Hızlı">Aras - Hızlı</option>
+      <option value="Sürat - Standart">Sürat - Standart</option>
+      <option value="Sürat - Hızlı">Sürat - Hızlı</option>
+      <option value="PTT - Standart">PTT - Standart</option>
+      <option value="PTT - Hızlı">PTT - Hızlı</option>
+    </select>
+    <input type="number" value="1" min="1" max="52">
+    <button>Sepete Ekle</button>
+  </div>
+
+  <!-- ÜRÜN 4 -->
+  <div class="product-card" data-name="3’lü Motivasyonel Su Matarası" data-price="350" data-max="24" data-shopier="https://www.shopier.com/baytekcollection/41884046">
+    <div class="added-popup">✅ Sepete eklendi!</div>
+    <img src="https://i.imgur.com/2en5c9l.jpeg" alt="">
+    <h3>3’lü Motivasyonel Su Matarası</h3>
+    <p>Renk seçenekleri: Siyah</p>
+    <select class="color-select">
+      <option value="Siyah">Siyah</option>
+    </select>
+    <select>
+      <option value="MNG - Standart">MNG - Standart</option>
+      <option value="MNG - Hızlı">MNG - Hızlı</option>
+      <option value="Aras - Standart">Aras - Standart</option>
+      <option value="Aras - Hızlı">Aras - Hızlı</option>
+      <option value="Sürat - Standart">Sürat - Standart</option>
+      <option value="Sürat - Hızlı">Sürat - Hızlı</option>
+      <option value="PTT - Standart">PTT - Standart</option>
+      <option value="PTT - Hızlı">PTT - Hızlı</option>
+    </select>
+    <input type="number" value="1" min="1" max="24">
+    <button>Sepete Ekle</button>
+  </div>
 </section>
 
 <div id="cart">
@@ -381,7 +477,28 @@ const lastPopup=document.getElementById('last-order-popup');
 
 cartIcon.addEventListener('click',()=>{cartDiv.style.display=cartDiv.style.display==='none'?'block':'none';});
 
-// Dinamik ürünler için örnek event
+function updateCart(){
+  const ul=document.querySelector('#cart ul');
+  ul.innerHTML='';
+  let total=0;
+  cart.forEach((item,i)=>{
+    const li=document.createElement('li');
+    li.innerHTML=`${item.name} x${item.quantity} - ${item.price*item.quantity}₺ <span class="remove-item" data-index="${i}">×</span>`;
+    ul.appendChild(li);
+    total+=item.price*item.quantity;
+  });
+  cartTotal.textContent=`${total}₺`;
+  cartCount.textContent=cart.reduce((a,b)=>a+b.quantity,0);
+  document.querySelectorAll('.remove-item').forEach(rm=>{
+    rm.addEventListener('click',()=>{
+      const idx=rm.getAttribute('data-index');
+      cart.splice(idx,1);
+      updateCart();
+    });
+  });
+}
+
+// Dinamik ürün ekleme event
 document.querySelectorAll('.product-card button').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const card=btn.parentElement;
@@ -405,27 +522,6 @@ document.querySelectorAll('.product-card button').forEach(btn=>{
     setTimeout(()=>{lastPopup.style.display='none';},2000);
   });
 });
-
-function updateCart(){
-  const ul=document.querySelector('#cart ul');
-  ul.innerHTML='';
-  let total=0;
-  cart.forEach((item,i)=>{
-    const li=document.createElement('li');
-    li.innerHTML=`${item.name} x${item.quantity} - ${item.price*item.quantity}₺ <span class="remove-item" data-index="${i}">×</span>`;
-    ul.appendChild(li);
-    total+=item.price*item.quantity;
-  });
-  cartTotal.textContent=`${total}₺`;
-  cartCount.textContent=cart.reduce((a,b)=>a+b.quantity,0);
-  document.querySelectorAll('.remove-item').forEach(rm=>{
-    rm.addEventListener('click',()=>{
-      const idx=rm.getAttribute('data-index');
-      cart.splice(idx,1);
-      updateCart();
-    });
-  });
-}
 
 // ===== CHECKOUT =====
 document.getElementById('checkout').addEventListener('click',()=>{
