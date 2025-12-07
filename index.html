@@ -337,16 +337,16 @@ h1{
 <div id="cart-icon">🛒 <span id="cart-count">0</span></div>
 
 <section class="products">
-  <!-- ÜRÜN 1 -->
-  <div class="product-card" data-name="Kartal figürlü LED ışıklı su şelalesi" data-price="1200" data-max="24" data-shopier="https://www.shopier.com/baytekcollection/41882654">
+  <!-- ÜRÜN 1 GÜNCELLENMİŞ -->
+  <div class="product-card" data-name="Figürlü LED ışıklı su şelalesi" data-price="1200" data-max="24" data-shopier="https://www.shopier.com/baytekcollection/41882654">
     <div class="discount">%10 İNDİRİM</div>
     <div class="added-popup">✅ Sepete eklendi!</div>
-    <img src="https://i.imgur.com/aIAthmX.jpeg" alt="">
-    <h3>Kartal figürlü LED ışıklı su şelalesi</h3>
-    <p>Figür seçenekleri: 1 adet Fil, 2 adet Fil</p>
+    <img class="main-img" src="https://i.imgur.com/fhHJ6QA.jpeg" alt="">
+    <h3>Figürlü LED ışıklı su şelalesi</h3>
+    <p>Figür seçenekleri: Kartal Figürlü, Fil Figürlü</p>
     <select class="color-select">
-      <option value="1 adet Fil">1 adet Fil</option>
-      <option value="2 adet Fil">2 adet Fil</option>
+      <option value="Kartal Figürlü" data-images='["https://i.imgur.com/fhHJ6QA.jpeg"]'>Kartal Figürlü</option>
+      <option value="Fil Figürlü" data-images='["https://i.imgur.com/aIAthmX.jpeg","https://i.imgur.com/Up167rY.jpeg"]'>Fil Figürlü</option>
     </select>
     <select>
       <option value="MNG - Standart">MNG - Standart</option>
@@ -435,6 +435,7 @@ h1{
     <input type="number" value="1" min="1" max="24">
     <button>Sepete Ekle</button>
   </div>
+
 </section>
 
 <div id="cart">
@@ -555,6 +556,29 @@ setInterval(() => {
   showRandomNotification();
 }, Math.random() * 5000 + 7000);
 
+// ===== FIGÜR SEÇİMİ İLE FOTO DEĞİŞTİRME =====
+document.querySelectorAll('.product-card').forEach(card => {
+  const select = card.querySelector('.color-select');
+  const mainImg = card.querySelector('.main-img');
+  if(!mainImg) return; // diğer ürünlerde main-img yok
+
+  select.addEventListener('change', () => {
+    const selectedOption = select.options[select.selectedIndex];
+    const images = JSON.parse(selectedOption.getAttribute('data-images'));
+    mainImg.src = images[0]; // ilk fotoğrafı göster
+
+    if (images.length > 1) {
+      let index = 0;
+      if(card.slideInterval) clearInterval(card.slideInterval);
+      card.slideInterval = setInterval(() => {
+        index = (index + 1) % images.length;
+        mainImg.src = images[index];
+      }, 2000);
+    } else {
+      if(card.slideInterval) clearInterval(card.slideInterval);
+    }
+  });
+});
 </script>
 </body>
 </html>
