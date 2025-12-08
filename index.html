@@ -1,253 +1,409 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Baytek Collection</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Baytek Collection — Tam Profesyonel Mağaza</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  :root {
-    --primary: #111;
-    --accent: #ff00ff;
-    --text: #222;
-    --bg: #ffffff;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-  body { background: var(--bg); }
-
-  /* HEADER */
-  .nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 50px;
-    background: #fff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  .nav .logo { font-size: 27px; font-weight: 800; color: var(--accent); }
-  .nav ul { list-style: none; display: flex; gap: 25px; }
-  .nav ul li a {
-    text-decoration: none;
-    color: var(--primary);
-    font-weight: 600;
-    transition: 0.3s;
-  }
-  .nav ul li a:hover { color: var(--accent); }
-  .cart-btn { font-size: 24px; cursor: pointer; color: var(--primary); }
-
-  /* HERO */
-  .hero {
-    width: 100%;
-    height: 420px;
-    background: url('https://i.imgur.com/UQW8Zsp.jpeg') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    padding-left: 80px;
-  }
-  .hero h1 {
-    font-size: 58px;
-    max-width: 500px;
-    color: #fff;
-    text-shadow: 0 0 10px #000;
-  }
-
-  /* PRODUCT GRID */
-  .container { max-width: 1250px; margin: 60px auto; padding: 0 20px; }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 35px;
-  }
-  .card {
-    background: #fff;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-    transition: 0.3s;
-  }
-  .card:hover { transform: translateY(-6px); }
-  .card img { width: 100%; border-radius: 12px; }
-  .card h3 { margin-top: 10px; font-size: 19px; font-weight: 700; }
-  .card p { color: #666; font-size: 14px; margin: 5px 0; }
-  .price { font-size: 20px; font-weight: bold; color: var(--accent); margin: 8px 0; }
-  .buy-btn {
-    width: 100%;
-    padding: 12px 0;
-    background: var(--accent);
-    border: none;
-    color: #fff;
-    font-size: 16px;
-    border-radius: 10px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  .buy-btn:hover { background: #000; }
-
-  /* FLOAT BUTTONS */
-  #insta, #wp {
-    position: fixed;
-    right: 25px;
-    padding: 14px;
-    font-size: 22px;
-    border-radius: 50%;
-    color: #fff;
-    text-decoration: none;
-  }
-  #insta { bottom: 110px; background: var(--accent); }
-  #wp { bottom: 40px; background: #25d366; }
-
+:root{
+  --bg:#0f0f11;--card:#0b0b0b;--muted:#bdbdbd;--accent:#ff00ff;--success:#25d366;--danger:#ff5252;--glass:rgba(255,255,255,0.02);
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:#fff;background:linear-gradient(180deg,#07070a 0%,#0f0f11 100%)}
+.container{max-width:1200px;margin:0 auto;padding:28px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px;border-radius:12px;background:linear-gradient(90deg, rgba(255,0,255,0.04), transparent);box-shadow:0 6px 30px rgba(0,0,0,0.6);backdrop-filter:blur(6px);margin:18px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:76px;height:76px;border-radius:12px;object-fit:cover;box-shadow:0 8px 30px rgba(255,0,255,0.06)}
+.brand h1{font-size:22px;margin:0;color:var(--accent);letter-spacing:1px}
+.brand p{margin:0;font-size:13px;color:var(--muted)}
+.header-actions{display:flex;gap:10px;align-items:center}
+.btn{background:var(--accent);color:#111;padding:10px 14px;border-radius:10px;font-weight:700;text-decoration:none}
+.icon-btn{background:var(--card);padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+.search{display:flex;gap:10px;align-items:center}
+.search input{padding:10px 12px;border-radius:10px;border:none;background:var(--glass);color:#fff;width:300px}
+.filters{display:flex;gap:10px;align-items:center}
+/* HERO + CTA */
+.hero{display:flex;gap:20px;align-items:center;padding:32px;border-radius:16px;margin:18px;background:linear-gradient(90deg, rgba(255,0,255,0.04), rgba(255,255,255,0.02));position:relative;overflow:hidden}
+.hero .left{flex:1}
+.hero h2{color:var(--accent);font-size:36px;margin:0}
+.hero p{color:var(--muted)}
+.hero .cta{margin-top:14px}
+.hero .cta .btn{padding:12px 18px}
+.hero .hero-image{width:420px;height:260px;border-radius:12px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.6)}
+.hero .hero-image img{width:100%;height:100%;object-fit:cover}
+/* GRID */
+.grid{display:grid;grid-template-columns:1fr 320px;gap:22px;margin-top:22px}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:12px;border-radius:12px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.03);transition:transform .22s}
+.card:hover{transform:translateY(-8px)}
+.card img{width:100%;height:200px;object-fit:cover;border-radius:8px}
+.card h3{font-size:16px;margin:10px 0 4px}
+.card p{color:var(--muted);font-size:13px;margin:0}
+.price{font-weight:800;color:var(--accent);font-size:16px;margin-top:8px}
+.controls{display:flex;gap:8px;margin-top:10px}
+select,input[type=number]{padding:8px;border-radius:8px;border:none;background:var(--glass);color:#fff}
+.add{flex:1;padding:10px;border-radius:8px;background:var(--accent);border:none;color:#111;font-weight:700;cursor:pointer}
+.details{width:110px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--muted);cursor:pointer}
+.badge{position:absolute;left:12px;top:12px;background:var(--danger);color:#111;padding:6px 8px;border-radius:8px;font-weight:800}
+.stock-tag{position:absolute;right:12px;top:12px;background:rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;font-weight:700;color:var(--muted)}
+/* SIDEBAR */
+.sidebar{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:12px;border-radius:12px}
+.widget{background:var(--card);padding:12px;border-radius:10px;margin-bottom:12px}
+.widget h4{margin:0 0 8px;color:var(--accent)}
+.sort-select{width:100%;padding:10px;border-radius:8px;border:none;background:var(--glass)}
+/* CART PANEL */
+.cart-panel{position:fixed;right:18px;top:90px;width:420px;max-height:80vh;background:linear-gradient(180deg,#0b0b0b,#141414);border-radius:12px;padding:16px;box-shadow:0 40px 100px rgba(0,0,0,0.4);transform:translateX(480px);transition:transform .32s;z-index:3000}
+.cart-panel.open{transform:translateX(0)}
+.cart-panel h4{margin:0;color:var(--accent)}
+.cart-items{max-height:46vh;overflow:auto;margin-top:12px}
+.cart-item{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.03)}
+.cart-item img{width:64px;height:64px;object-fit:cover;border-radius:8px}
+.cart-bottom{margin-top:12px}
+.checkout-btn{width:100%;padding:12px;border-radius:10px;border:none;background:var(--accent);color:#111;font-weight:800}
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;padding:20px;z-index:4000}
+.modal.open{display:flex}
+.modal .box{background:var(--card);padding:18px;border-radius:12px;max-width:980px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal img{width:100%;height:420px;object-fit:cover;border-radius:10px}
+.modal h3{margin:0;color:var(--accent);font-size:20px}
+/* REVIEWS */
+.reviews{margin-top:12px;background:rgba(255,255,255,0.02);padding:12px;border-radius:8px}
+.review{border-bottom:1px dashed rgba(255,255,255,0.03);padding:8px 0}
+/* CTA BAR */
+.cta-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;background:linear-gradient(90deg,var(--accent),#ff78ff);padding:10px 18px;border-radius:999px;display:flex;gap:10px;align-items:center;box-shadow:0 10px 40px rgba(255,0,255,0.06)}
+/* Footer */
+.footer{margin-top:40px;background:#070707;padding:40px;border-radius:12px;color:var(--muted)}
+.footer a{color:var(--muted);text-decoration:none}
+/* Misc */
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:90px;background:var(--accent);color:#111;padding:10px 16px;border-radius:10px;font-weight:800;box-shadow:0 10px 40px rgba(255,0,255,0.06);display:none;z-index:4000}
+.back-to-top{position:fixed;right:18px;bottom:160px;background:rgba(255,255,255,0.04);padding:10px;border-radius:10px;cursor:pointer}
+.cookie{position:fixed;left:18px;bottom:18px;background:#111;padding:10px 12px;border-radius:8px}
+/* Responsive */
+@media(max-width:900px){.grid{grid-template-columns:1fr}.hero{flex-direction:column;align-items:flex-start}.modal .box{grid-template-columns:1fr}.cart-panel{width:92vw;right:4vw}}
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
-<nav class="nav">
-  <div class="logo">Baytek Collection</div>
-  <ul>
-    <li><a href="#">Ana Sayfa</a></li>
-    <li><a href="#products">Ürünler</a></li>
-    <li><a href="https://instagram.com/baytekcollection" target="_blank">Instagram</a></li>
-  </ul>
-  <i class="fa-solid fa-cart-shopping cart-btn"></i>
-</nav>
+<header class="header container">
+  <div class="brand">
+    <img class="logo" src="https://i.imgur.com/Xcka2e9.jpeg" alt="Baytek">
+    <div>
+      <h1>Baytek Collection</h1>
+      <p>Tarzın Yeni Merkezi — Kalite & Şıklık</p>
+    </div>
+  </div>
+  <div class="header-actions">
+    <div class="search">
+      <input id="searchInput" placeholder="Ürün ara... (ör: termos, su matara)" />
+      <button id="searchBtn" class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="filters">
+      <select id="sortSelect" class="sort-select">
+        <option value="popular">Öne Çıkan</option>
+        <option value="price-asc">Fiyata Göre (Artan)</option>
+        <option value="price-desc">Fiyata Göre (Azalan)</option>
+      </select>
+      <button id="openCart" class="icon-btn"><i class="fa-solid fa-cart-shopping"></i> <span id="miniCount">0</span></button>
+    </div>
+  </div>
+</header>
 
 <!-- HERO -->
-<section class="hero">
-  <h1>Premium Ürünler ile Evine Şıklık Kat!</h1>
+<section class="hero container" aria-label="Hero">
+  <div class="left">
+    <h2>El Yapımı Figürlerden, Günlük Hayatın Vazgeçilmezi Termoslara</h2>
+    <p>Özel tasarım ürünler, hızlı kargo ve %100 müşteri memnuniyetiyle.</p>
+    <div class="cta">
+      <a href="#products" class="btn">Hemen Keşfet</a>
+      <a href="https://wa.me/905334772649" class="btn" style="background:var(--success);margin-left:8px">Canlı Destek</a>
+    </div>
+  </div>
+  <div class="hero-image"><img src="https://i.imgur.com/ciCSHO2.jpeg" alt="Hero image"></div>
 </section>
 
-<!-- PRODUCTS -->
-<div class="container" id="products">
-  <div class="grid">
-
-    <!-- 1 -->
-    <div class="card">
-      <img src="https://i.imgur.com/aIAthmX.jpeg" />
-      <h3>Kartal Figürlü LED Şelale</h3>
-      <p>Figür Seçenekleri: 1 Fil / 2 Fil</p>
-      <div class="price">149 TL</div>
-      <button class="buy-btn">Satın Al</button>
+<!-- MAIN GRID -->
+<section class="grid container">
+  <!-- PRODUCTS -->
+  <div>
+    <div class="products" id="productsList">
+      <!-- Product cards will be injected here -->
     </div>
 
-    <!-- 2 -->
-    <div class="card">
-      <img src="https://i.imgur.com/wvdZXrC.jpeg" />
-      <h3>3 Bardaklı Vakum Termos</h3>
-      <p>Renk: Siyah, Su Yeşili, Mor</p>
-      <div class="price">219 TL</div>
-      <button class="buy-btn">Satın Al</button>
+    <!-- PAGINATION -->
+    <div style="display:flex;justify-content:center;margin-top:18px;gap:8px">
+      <button id="prevPage" class="icon-btn">«</button>
+      <div id="pageNumbers" style="display:flex;gap:6px;align-items:center"></div>
+      <button id="nextPage" class="icon-btn">»</button>
     </div>
 
-    <!-- 3 -->
-    <div class="card">
-      <img src="https://i.imgur.com/oiAFO7w.jpeg" />
-      <h3>Mobgift USB Işıklı Cam Küre</h3>
-      <p>Astronot / Melek / Galaksi</p>
-      <div class="price">179 TL</div>
-      <button class="buy-btn">Satın Al</button>
-    </div>
+    <!-- Reviews & FAQ -->
+    <div style="margin-top:28px;display:flex;gap:18px;flex-direction:column">
+      <div class="widget" style="padding:18px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)">
+        <h3 style="color:var(--accent);margin:0 0 8px">Müşteri Yorumları</h3>
+        <div class="reviews" id="reviewsArea"></div>
+      </div>
 
-    <!-- 4 -->
-    <div class="card">
-      <img src="https://i.imgur.com/2en5c9l.jpeg" />
-      <h3>3’lü Motivasyon Matarası</h3>
-      <p>Tek Renk: Siyah</p>
-      <div class="price">129 TL</div>
-      <button class="buy-btn">Satın Al</button>
-    </div>
+      <div class="widget" style="padding:18px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)">
+        <h3 style="color:var(--accent);margin:0 0 8px">Sıkça Sorulan Sorular</h3>
+        <details style="margin-bottom:8px"><summary>Kargo ne kadar sürede gelir?</summary><p style="color:var(--muted);padding:8px 0">Türkiye içi 2-5 iş günü. Bölgesel farklılık olabilir.</p></details>
+        <details style="margin-bottom:8px"><summary>İade politikası nasıl?</summary><p style="color:var(--muted);padding:8px 0">Ürün tesliminden itibaren 14 gün içinde hasarsız iade kabul edilir.</p></details>
+      </div>
 
+    </div>
   </div>
-</div>
 
-<!-- FLOAT BUTTONS -->
-<a id="insta" href="https://instagram.com/baytekcollection" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-<a id="wp" href="https://wa.me/905334772649" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="widget">
+      <h4>Filtreler</h4>
+      <label style="font-size:13px;color:var(--muted)">Kategori</label>
+      <select id="categoryFilter" style="width:100%;padding:10px;border-radius:8px;margin-top:8px;background:var(--glass);border:none;color:#fff">
+        <option value="all">Tümü</option>
+        <option value="dekor">Dekor</option>
+        <option value="termos">Termos</option>
+        <option value="matara">Matara</option>
+      </select>
+    </div>
 
-<!-- EXTRA PRO SECTIONS -->
+    <div class="widget">
+      <h4>İndirim Sayaç</h4>
+      <div style="font-weight:800;color:var(--accent);font-size:18px" id="countdown">00:00:00</div>
+      <p style="color:var(--muted);margin-top:8px">Sınırlı süre kampanyası!</p>
+    </div>
 
-<!-- SLIDER SECTION -->
-<section class="slider-area" style="width:100%;margin-top:40px;">
-  <style>
-    .slider-area{position:relative;height:380px;overflow:hidden;border-radius:20px;box-shadow:0 4px 20px rgba(0,0,0,0.15);} 
-    .slide-track{display:flex;width:400%;height:100%;animation:slideAnim 18s infinite;} 
-    .slide-item{width:100%;background-size:cover;background-position:center;} 
-    @keyframes slideAnim {0%{transform:translateX(0);}25%{transform:translateX(-100%);}50%{transform:translateX(-200%);}75%{transform:translateX(-300%);}100%{transform:translateX(0);} }
-  </style>
-  <div class="slide-track">
-    <div class="slide-item" style="background-image:url('https://i.imgur.com/XGfQltA.jpeg');"></div>
-    <div class="slide-item" style="background-image:url('https://i.imgur.com/oiAFO7w.jpeg');"></div>
-    <div class="slide-item" style="background-image:url('https://i.imgur.com/aIAthmX.jpeg');"></div>
-    <div class="slide-item" style="background-image:url('https://i.imgur.com/wvdZXrC.jpeg');"></div>
-  </div>
+    <div class="widget">
+      <h4>Hızlı Kargo</h4>
+      <p style="color:var(--muted)">Tüm siparişlerde 1-3 iş günü</p>
+    </div>
+
+    <div class="widget">
+      <h4>Bültene Kayıt Ol</h4>
+      <input id="newsletterEmail" placeholder="E-posta adresin" style="width:100%;padding:10px;border-radius:8px;border:none;background:var(--glass);color:#fff;margin-top:8px" />
+      <button id="subscribeBtn" class="btn" style="width:100%;margin-top:8px">Abone Ol</button>
+    </div>
+
+  </aside>
 </section>
 
-<!-- POPUP NOTIFICATION -->
-<div id="notif" style="position:fixed;left:20px;bottom:20px;background:#fff;padding:15px 18px;border-radius:12px;box-shadow:0 2px 15px rgba(0,0,0,0.2);display:none;z-index:9999;font-weight:600;">
-  <i class="fa-solid fa-bag-shopping"></i> <span id="notifText">Ayşe az önce 1 ürün satın aldı!</span>
-</div>
-<script>
-  const notifs=["Ayşe az önce 1 ürün satın aldı!","Fatma 2 adet termos aldı!","Mehmet LED şelale satın aldı!","Burak sipariş verdi!","Selin sepete ürün ekledi!"];
-  setInterval(()=>{
-    const box=document.getElementById('notif');
-    document.getElementById('notifText').innerText=notifs[Math.floor(Math.random()*notifs.length)];
-    box.style.display='block';
-    setTimeout(()=> box.style.display='none',3500);
-  },7000);
-</script>
+<!-- CART PANEL -->
+<aside class="cart-panel" id="cartPanel" aria-hidden="true">
+  <h4>Sepet - <span id="cartItemsCount">0</span> adet</h4>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-bottom">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+      <strong>Toplam</strong>
+      <strong id="cartTotal">0₺</strong>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:10px">
+      <input id="couponInput" placeholder="Kupon kodu" style="flex:1;padding:10px;border-radius:8px;border:none;background:var(--glass);color:#fff" />
+      <button id="applyCoupon" class="details">Uygula</button>
+    </div>
+    <button id="checkoutBtn" class="checkout-btn" style="margin-top:12px">Shopier ile Öde</button>
+  </div>
+</aside>
 
-<!-- ABOUT SECTION -->
-<section class="about" style="padding:60px 20px;background:#fafafa;margin-top:60px;">
-  <div style="max-width:1100px;margin:auto;display:flex;gap:40px;align-items:center;">
-    <img src="https://i.imgur.com/2en5c9l.jpeg" style="width:380px;border-radius:18px;box-shadow:0 4px 15px rgba(0,0,0,0.15);" />
+<!-- MODAL -->
+<div class="modal" id="productModal" aria-hidden="true">
+  <div class="box">
     <div>
-      <h2 style="font-size:32px;font-weight:800;margin-bottom:15px;color:#111;">Neden Baytek Collection?</h2>
-      <p style="font-size:16px;color:#555;line-height:1.6;">Tüm ürünlerimiz birinci sınıf kalite ile üretilir, özel kutulama ile gönderilir ve %100 müşteri memnuniyeti garantilidir. Türkiye'nin en trend dekoratif ürünlerini ayağınıza getiriyoruz.</p>
-      <ul style="margin-top:20px;line-height:1.9;color:#444;">
-        <li>✔ Hızlı Kargo & Güvenli Paketleme</li>
-        <li>✔ 7/24 WhatsApp Destek</li>
-        <li>✔ Kapıda Ödeme Seçeneği</li>
-        <li>✔ Premium Kalite Garantisi</li>
-      </ul>
+      <img id="modalImg" src="" alt="">
+    </div>
+    <div>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc" style="color:var(--muted)"></p>
+      <p style="margin-top:12px"><strong>Fiyat: <span id="modalPrice"></span>₺</strong></p>
+      <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+        <select id="modalVariant" style="padding:10px;border-radius:8px;background:var(--glass);border:none;color:#fff"></select>
+        <input id="modalQty" type="number" value="1" min="1" style="width:80px;padding:10px;border-radius:8px;border:none;background:var(--glass);color:#fff" />
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <button id="modalAddBtn" class="add">Sepete Ekle</button>
+        <button id="modalBuyBtn" class="details">Hemen Al</button>
+      </div>
+
+      <div class="reviews" id="modalReviews"></div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- CTA BAR -->
+<div class="cta-bar" id="ctaBar">
+  <div style="font-weight:800">Özel Teklif: Kargonun%50'si Bizden — İlk 50 siparişe özel!</div>
+  <button id="ctaShop" class="btn" style="margin-left:12px">Hemen Alışverişe Başla</button>
+</div>
 
 <!-- FOOTER -->
-<footer style="width:100%;background:#111;color:#fff;padding:40px 20px;margin-top:40px;">
-  <div style="max-width:1100px;margin:auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px;">
-    <div style="width:250px;">
-      <h3 style="margin-bottom:15px;color:#ff00ff;">Baytek Collection</h3>
-      <p>Premium dekorasyon, termos ve hediye ürünlerinde Türkiye’nin en güvenilir mağazası.</p>
+<footer class="footer container">
+  <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <div style="max-width:360px"><h3 style="color:var(--accent)">Baytek Collection</h3><p style="color:var(--muted)">Premium dekorasyon & hediyelik ürünler — Güvenli alışveriş.</p></div>
+    <div>
+      <h4 style="color:var(--muted)">Hızlı Linkler</h4>
+      <p><a href="#products">Ürünler</a></p>
+      <p><a href="#">İade & Değişim</a></p>
     </div>
     <div>
-      <h4 style="margin-bottom:10px;">Menü</h4>
-      <p>Ana Sayfa</p>
-      <p>Ürünler</p>
-      <p>İletişim</p>
-    </div>
-    <div>
-      <h4 style="margin-bottom:10px;">İletişim</h4>
-      <p>WhatsApp: 0533 477 26 49</p>
+      <h4 style="color:var(--muted)">İletişim</h4>
+      <p>WhatsApp: <a href="https://wa.me/905334772649">0533 477 26 49</a></p>
       <p>Email: destek@baytek.com</p>
     </div>
   </div>
-  <p style="text-align:center;margin-top:25px;color:#777;">© 2025 Baytek Collection. Tüm Hakları Saklıdır.</p>
+  <p style="text-align:center;color:#777;margin-top:18px">© 2025 Baytek Collection</p>
 </footer>
 
-<script>
-// CARD POPUP BUY MODAL
-const cards=document.querySelectorAll('.buy-btn');
-cards.forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    alert('Sipariş ekranı yakında aktif olacak!');
-  });
-});
-</script>
+<!-- TOAST + NOTIFICATIONS + COOKIE -->
+<div class="toast" id="toast">Sepete eklendi!</div>
+<div id="orderNotif" style="position:fixed;left:18px;bottom:18px;background:var(--card);padding:12px;border-radius:8px;display:none;z-index:5000">Yeni sipariş geldi!</div>
+<div class="cookie" id="cookie">Bu site çerez kullanır. <button id="acceptCookie" style="margin-left:8px">Kabul Et</button></div>
+<button class="back-to-top" id="backToTop" title="Yukarı">↑</button>
 
+<script>
+/* --------------------------- Data (products) --------------------------- */
+const PRODUCTS = [
+  {id:1,name:'Kartal figürlü LED ışıklı su şelalesi',price:1200,category:'dekor',stock:24,img:'https://i.imgur.com/aIAthmX.jpeg',shopier:'https://www.shopier.com/baytekcollection/41882654',variants:[{name:'1 Fil',stock:12},{name:'2 Fil',stock:12}],reviews:[{user:'Ayşe',text:'Muhteşem!'}, {user:'Emre',text:'Beklediğimden daha güzel.'}]},
+  {id:2,name:'3 Bardaklı Vakumlu Termos Seti',price:450,category:'termos',stock:24,img:'https://i.imgur.com/wvdZXrC.jpeg',shopier:'https://www.shopier.com/baytekcollection/41884160',variants:[{name:'Su Yeşili',stock:8},{name:'Mor',stock:8},{name:'Siyah',stock:8}],reviews:[{user:'Merve',text:'Çok kullanışlı.'}]},
+  {id:3,name:"Mobgift USB’li Işıklı Ahşap Standlı Cam Küre",price:200,category:'dekor',stock:52,img:'https://i.imgur.com/oiAFO7w.jpeg',shopier:'https://www.shopier.com/baytekcollection/41884313',variants:[{name:'Astronot',stock:20},{name:'Melek',stock:16},{name:'Galaksi',stock:16}],reviews:[{user:'Kerem',text:'Gayet başarılı.'}]},
+  {id:4,name:"3’lü Motivasyonel Su Matarası",price:350,category:'matara',stock:24,img:'https://i.imgur.com/2en5c9l.jpeg',shopier:'https://www.shopier.com/baytekcollection/41884046',variants:[{name:'Siyah',stock:24}],reviews:[{user:'Zeynep',text:'Harika baskılar.'}]} 
+];
+
+/* --------------------------- App State --------------------------- */
+let state = {
+  cart:[],
+  page:1,
+  perPage:8,
+  sort:'popular',
+  filterCategory:'all',
+  search:'',
+  coupon:null
+};
+
+/* --------------------------- Utilities --------------------------- */
+function q(sel,root=document){return root.querySelector(sel)}
+function qa(sel,root=document){return Array.from(root.querySelectorAll(sel))}
+function formatTL(n){return Number.isInteger(n)?`${n}₺`:`${n.toFixed(2)}₺`}
+
+/* --------------------------- Render Products --------------------------- */
+function getFiltered(){
+  let list = PRODUCTS.slice();
+  if(state.filterCategory !== 'all') list = list.filter(p=>p.category===state.filterCategory);
+  if(state.search) list = list.filter(p=>p.name.toLowerCase().includes(state.search.toLowerCase()));
+  if(state.sort==='price-asc') list.sort((a,b)=>a.price-b.price);
+  if(state.sort==='price-desc') list.sort((a,b)=>b.price-a.price);
+  return list;
+}
+
+function renderProducts(){
+  const productsEl = q('#productsList'); productsEl.innerHTML='';
+  const list = getFiltered();
+  const start = (state.page-1)*state.perPage; const pageItems = list.slice(start,start+state.perPage);
+  pageItems.forEach(p=>{
+    const card = document.createElement('article'); card.className='card';
+    card.innerHTML = `
+      ${p.stock<=5?'<div class="badge">SON</div>':''}
+      <div class="stock-tag">Stok: ${p.stock}</div>
+      <img loading="lazy" src="${p.img}" alt="${p.name}">
+      <h3>${p.name}</h3>
+      <p>${p.category.charAt(0).toUpperCase()+p.category.slice(1)}</p>
+      <div class="price">${formatTL(p.price)}</div>
+      <div class="controls">
+        <select class="variant-select">${p.variants.map(v=>`<option data-stock="${v.stock}">${v.name}</option>`).join('')}</select>
+        <button class="details">Detay</button>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px;align-items:center">
+        <input type="number" class="qty" value="1" min="1" max="${p.stock}" style="width:86px">
+        <button class="add">Sepete Ekle</button>
+      </div>
+    `;
+    productsEl.appendChild(card);
+    // events
+    card.querySelector('.add').addEventListener('click',()=> addToCart(p.id, card));
+    card.querySelector('.details').addEventListener('click',()=> openModal(p.id));
+  });
+  renderPagination();
+}
+
+/* --------------------------- Pagination --------------------------- */
+function renderPagination(){
+  const list = getFiltered(); const total = Math.ceil(list.length/state.perPage); const container = q('#pageNumbers'); container.innerHTML='';
+  for(let i=1;i<=total;i++){ const btn=document.createElement('button'); btn.className='icon-btn'; btn.textContent=i; if(i===state.page) btn.style.background='var(--accent)'; btn.addEventListener('click',()=>{state.page=i;renderProducts()}); container.appendChild(btn)}
+}
+q('#prevPage').addEventListener('click',()=>{ if(state.page>1){state.page--; renderProducts()} });
+q('#nextPage').addEventListener('click',()=>{ state.page++; renderProducts()});
+
+/* --------------------------- Cart functions --------------------------- */
+function addToCart(productId, card=null){
+  const product = PRODUCTS.find(p=>p.id===productId);
+  const variantName = card ? card.querySelector('.variant-select').value : product.variants[0].name;
+  const variantStock = card ? Number(card.querySelector('.variant-select').selectedOptions[0].dataset.stock) : product.variants[0].stock;
+  let qty = card ? Number(card.querySelector('.qty').value) : 1; if(qty<1) qty=1; if(qty>variantStock){alert('Seçilen adet stoktan fazla.'); return}
+  const key = `${productId}::${variantName}`;
+  const found = state.cart.find(i=>i.key===key);
+  if(found){ found.qty = Math.min(variantStock, found.qty + qty); }
+  else { state.cart.push({key,productId,variant:variantName,qty,price:product.price,img:product.img,name:product.name,shopier:product.shopier}); }
+  renderCart(); showToast('Sepete eklendi');
+}
+
+function renderCart(){
+  const container=q('#cartItems'); container.innerHTML=''; let total=0; state.cart.forEach((it,idx)=>{
+    total += it.qty * it.price; const div=document.createElement('div'); div.className='cart-item'; div.innerHTML = `<img src="${it.img}"><div style="flex:1"><strong>${it.name}</strong><div style="font-size:13px;color:var(--muted)">${it.variant}</div></div><div style="text-align:right">${it.qty} x ${it.price}₺<div style="margin-top:6px"><button data-idx="${idx}" class="remove" style="background:transparent;border:none;color:var(--muted);cursor:pointer">Sil</button></div></div>`; container.appendChild(div);
+  });
+  q('#cartItemsCount').textContent = state.cart.reduce((a,b)=>a+b.qty,0);
+  q('#miniCount').textContent = q('#cartItemsCount').textContent;
+  q('#cartTotal').textContent = formatTL(total);
+  qa('.remove').forEach(btn=>btn.addEventListener('click',e=>{ const i=Number(e.currentTarget.dataset.idx); if(isFinite(i)) state.cart.splice(i,1); renderCart(); }));
+}
+
+q('#openCart').addEventListener('click',()=> q('#cartPanel').classList.toggle('open'));
+q('#checkoutBtn').addEventListener('click',()=>{
+  if(state.cart.length===0){ alert('Sepet boş!'); return }
+  state.cart.forEach(i=>{ if(i.shopier) window.open(i.shopier,'_blank') });
+  showToast('Ödeme sayfalarına yönlendiriliyorsunuz'); state.cart.length=0; renderCart();
+});
+
+/* --------------------------- Modal --------------------------- */
+function openModal(id){ const p = PRODUCTS.find(x=>x.id===id); if(!p) return; q('#productModal').classList.add('open'); q('#modalImg').src = p.img; q('#modalTitle').textContent = p.name; q('#modalDesc').textContent = `Kategori: ${p.category} — ${p.stock} adet stokta`; q('#modalPrice').textContent = p.price; q('#modalVariant').innerHTML = p.variants.map(v=>`<option data-stock="${v.stock}">${v.name}</option>`).join(''); q('#modalReviews').innerHTML = p.reviews.map(r=>`<div class="review"><strong>${r.user}</strong><p style="color:var(--muted)">${r.text}</p></div>`).join(''); q('#modalAddBtn').onclick = ()=>{ addToCart(p.id, document.querySelector(`article.card[data-id='${p.id}']`) || { querySelector: ()=>null }); q('#productModal').classList.remove('open') }; q('#modalBuyBtn').onclick = ()=> window.open(p.shopier,'_blank'); }
+q('#productModal').addEventListener('click', e=>{ if(e.target===q('#productModal')) q('#productModal').classList.remove('open') });
+
+/* --------------------------- Search, Filter, Sort --------------------------- */
+q('#searchBtn').addEventListener('click',()=>{ state.search = q('#searchInput').value; state.page=1; renderProducts(); });
+q('#sortSelect').addEventListener('change', e=>{ state.sort = e.target.value; renderProducts()});
+q('#categoryFilter').addEventListener('change', e=>{ state.filterCategory = e.target.value; state.page=1; renderProducts()});
+q('#subscribeBtn').addEventListener('click',()=>{ const em = q('#newsletterEmail').value; if(!em.includes('@')) return alert('Geçerli e-posta girin'); showToast('Abone olduk!'); q('#newsletterEmail').value=''; });
+
+/* --------------------------- Countdown --------------------------- */
+const dealEnds = Date.now() + 1000 * 60 * 60 * 6; // 6 saat
+function updateCountdown(){ const diff = Math.max(0, dealEnds - Date.now()); const h = String(Math.floor(diff/3600000)).padStart(2,'0'); const m = String(Math.floor(diff%3600000/60000)).padStart(2,'0'); const s = String(Math.floor(diff%60000/1000)).padStart(2,'0'); q('#countdown').textContent = `${h}:${m}:${s}`; }
+setInterval(updateCountdown,1000); updateCountdown();
+
+/* --------------------------- Fake order notifications --------------------------- */
+const names = ['Ayşe','Fatma','Elif','Merve','Zeynep','Ali','Mehmet','Kerem'];
+setInterval(()=>{
+  const p = PRODUCTS[Math.floor(Math.random()*PRODUCTS.length)]; const n = names[Math.floor(Math.random()*names.length)]; const qty = Math.floor(Math.random()*2)+1; q('#orderNotif').textContent = `${n} ${qty} adet ${p.name} satın aldı!`; q('#orderNotif').style.display='block'; setTimeout(()=>q('#orderNotif').style.display='none',3500);
+}, Math.random()*7000 + 9000);
+
+/* --------------------------- Reviews area --------------------------- */
+function renderReviews(){ const area = q('#reviewsArea'); area.innerHTML = PRODUCTS.flatMap(p=>p.reviews.map(r=>`<div style="padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.03)"><strong style="color:var(--accent)">${p.name}</strong><div style="color:var(--muted)"><strong>${r.user}:</strong> ${r.text}</div></div>`)).join(''); }
+
+/* --------------------------- Coupon --------------------------- */
+q('#applyCoupon').addEventListener('click', ()=>{
+  const code = q('#couponInput').value.trim(); if(!code) return alert('Kod girin'); if(code.toLowerCase()==='baytek10'){ state.coupon = {code:'BAYTEK10',discount:0.1}; showToast('Kupon uygulandı: %10 indirim'); } else { alert('Geçersiz kupon') }
+});
+
+/* --------------------------- Cookie */
+q('#acceptCookie').addEventListener('click', ()=> q('#cookie').style.display='none');
+
+/* --------------------------- Back to top */
+q('#backToTop').addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+window.addEventListener('scroll', ()=> q('#backToTop').style.display = window.scrollY>300? 'block':'none');
+
+/* --------------------------- Init */
+function init(){ renderProducts(); renderReviews(); renderCart(); }
+init();
+
+/* --------------------------- Analytics placeholder --------------------------- */
+// TODO: Add Google Analytics / Meta Pixel script here
+
+</script>
 </body>
 </html>
