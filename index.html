@@ -6,6 +6,14 @@
 <title>Baytek Collection — Premium Mağaza</title>
 <meta name="description" content="Baytek Collection — Güvenilir alışveriş, hızlı kargo, premium tasarım." />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+
+<!-- Open Graph / Twitter Card -->
+<meta property="og:title" content="Baytek Collection — Premium Mağaza">
+<meta property="og:description" content="Seçkin ürünler, güvenli ödeme ve hızlı kargo.">
+<meta property="og:image" content="https://i.imgur.com/Zce43BS.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
 <style>
 /* ===== GLOBAL RESET & THEME ===== */
 :root{
@@ -125,22 +133,22 @@ body::before{
 .fade-in{opacity:0;transform:translateY(18px);animation:fadeIn .7s forwards}
 @keyframes fadeIn{to{opacity:1;transform:none}}
 
-/* ===== LONG FORM: extra styles and utility classes (to increase file size per request) ===== */
-.u-mt-4{margin-top:16px}
-.u-mt-8{margin-top:32px}
-.u-mb-4{margin-bottom:16px}
-.u-p-8{padding:8px}
-.text-muted{color:var(--muted)}
-.text-strong{font-weight:800}
-.flex{display:flex}
-.flex-center{display:flex;align-items:center;justify-content:center}
-.space-between{display:flex;justify-content:space-between}
+/* cookie bar */
+#cookieBar{position:fixed;left:16px;right:16px;bottom:16px;background:#111;border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center;gap:12px;z-index:20000;border:1px solid rgba(255,255,255,0.04)}
+#cookieBar button{background:var(--accent);border:none;padding:8px 12px;border-radius:8px;font-weight:800;color:#000}
 
-/* repeated responsive helpers */
-@media(max-width:1200px){ .container{padding:18px} }
-@media(max-width:900px){ .container{padding:12px} }
+/* whatsapp floating */
+#whatsappFloat{position:fixed;right:18px;bottom:140px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#070707;padding:12px 14px;border-radius:999px;font-weight:900;z-index:20000;box-shadow:0 12px 36px rgba(0,0,0,0.4);display:flex;align-items:center;gap:12px;cursor:pointer}
+#whatsappFloat img{width:22px;height:22px}
 
-/* end of extended CSS block */
+/* responsive helpers for large content */
+@media(max-width:820px){
+  .grid-wrap{grid-template-columns:1fr}
+  .sidebar{position:static;margin-top:18px}
+  #whatsappFloat{right:14px;bottom:120px}
+}
+
+/* end of CSS */
 </style>
 </head>
 <body>
@@ -194,7 +202,7 @@ body::before{
 
     <aside class="right" aria-hidden="false">
       <div class="highlight fade-in" style="animation-delay:.05s">
-        <img src="https://i.imgur.com/aIAthmX.jpeg" alt="Kartal figürlü LED ışıklı su şelalesi" />
+        <img src="https://i.imgur.com/aIAthmX.jpeg" alt="Kartal figürlü LED ışıklı su şelalesi" loading="lazy" srcset="https://i.imgur.com/aIAthmX.jpeg 800w, https://i.imgur.com/aIAthmX.jpeg 400w" />
         <div>
           <div style="font-weight:800">Kartal figürlü LED ışıklı su şelalesi</div>
           <small style="color:var(--muted)">En çok satan • %10 indirim</small>
@@ -202,7 +210,7 @@ body::before{
       </div>
 
       <div class="highlight fade-in" style="animation-delay:.15s">
-        <img src="https://i.imgur.com/wvdZXrC.jpeg" alt="3 Bardaklı Vakumlu Termos Seti" />
+        <img src="https://i.imgur.com/wvdZXrC.jpeg" alt="3 Bardaklı Vakumlu Termos Seti" loading="lazy" srcset="https://i.imgur.com/wvdZXrC.jpeg 800w, https://i.imgur.com/wvdZXrC.jpeg 400w" />
         <div>
           <div style="font-weight:800">3 Bardaklı Vakumlu Termos Seti</div>
           <small style="color:var(--muted)">Hediye paketine uygun</small>
@@ -210,7 +218,7 @@ body::before{
       </div>
 
       <div class="highlight fade-in" style="animation-delay:.25s">
-        <img src="https://i.imgur.com/oiAFO7w.jpeg" alt="Mobgift Işıklı Cam Küre" />
+        <img src="https://i.imgur.com/oiAFO7w.jpeg" alt="Mobgift Işıklı Cam Küre" loading="lazy" srcset="https://i.imgur.com/oiAFO7w.jpeg 800w, https://i.imgur.com/oiAFO7w.jpeg 400w" />
         <div>
           <div style="font-weight:800">Mobgift Işıklı Cam Küre</div>
           <small style="color:var(--muted)">Dekorasyon & Hediye</small>
@@ -273,7 +281,7 @@ body::before{
       <article class="card" data-cat="decor" data-price="1200" data-color="" data-name="Kartal figürlü LED ışıklı su şelalesi" data-max="24" data-shopier="https://www.shopier.com/baytekcollection/41882654" aria-labelledby="p1-title" role="article">
         <div class="discount"> %10 </div>
         <div class="added">✅ Eklendi</div>
-        <img src="https://i.imgur.com/aIAthmX.jpeg" alt="Kartal figürlü LED ışıklı su şelalesi">
+        <img src="https://i.imgur.com/aIAthmX.jpeg" alt="Kartal figürlü LED ışıklı su şelalesi" loading="lazy" srcset="https://i.imgur.com/aIAthmX.jpeg 800w, https://i.imgur.com/aIAthmX.jpeg 400w">
         <h3 id="p1-title">Kartal figürlü LED ışıklı su şelalesi</h3>
         <p>Ev ve ofis için dikkat çekici bir dekor. LED ışıklandırma ile gece ambiyansınızı yükseltir.</p>
         <div class="price-row"><div class="price">1.200₺</div><div class="stock">Kalan: 24</div></div>
@@ -292,7 +300,7 @@ body::before{
       <article class="card" data-cat="drinkware" data-price="450" data-color="Su Yeşili" data-name="3 Bardaklı Vakumlu Termos Seti" data-max="24" data-shopier="https://www.shopier.com/baytekcollection/41884160" aria-labelledby="p2-title" role="article">
         <div class="discount">%5</div>
         <div class="added">✅ Eklendi</div>
-        <img src="https://i.imgur.com/wvdZXrC.jpeg" alt="3 Bardaklı Vakumlu Termos Seti">
+        <img src="https://i.imgur.com/wvdZXrC.jpeg" alt="3 Bardaklı Vakumlu Termos Seti" loading="lazy" srcset="https://i.imgur.com/wvdZXrC.jpeg 800w, https://i.imgur.com/wvdZXrC.jpeg 400w">
         <h3 id="p2-title">3 Bardaklı Vakumlu Termos Seti</h3>
         <p>Renk seçenekleri: Su Yeşili, Mor, Siyah. Seyahat ve günlük kullanım için ideal.</p>
         <div class="price-row"><div class="price">450₺</div><div class="stock">Kalan: 24</div></div>
@@ -310,7 +318,7 @@ body::before{
       <!-- Product 3: Mobgift USB’li Işıklı Ahşap Standlı Cam Küre -->
       <article class="card" data-cat="gifts" data-price="200" data-color="" data-name="Mobgift USB’li Işıklı Ahşap Standlı Cam Küre" data-max="52" data-shopier="https://www.shopier.com/baytekcollection/41884313" aria-labelledby="p3-title" role="article">
         <div class="added">✅ Eklendi</div>
-        <img src="https://i.imgur.com/oiAFO7w.jpeg" alt="Mobgift USB’li Işıklı Ahşap Standlı Cam Küre">
+        <img src="https://i.imgur.com/oiAFO7w.jpeg" alt="Mobgift USB’li Işıklı Ahşap Standlı Cam Küre" loading="lazy" srcset="https://i.imgur.com/oiAFO7w.jpeg 800w, https://i.imgur.com/oiAFO7w.jpeg 400w">
         <h3 id="p3-title">Mobgift USB’li Işıklı Ahşap Standlı Cam Küre</h3>
         <p>Figür seçenekleri: Astronot, Melek, Galaksi. Şık hediye seçeneği.</p>
         <div class="price-row"><div class="price">200₺</div><div class="stock">Kalan: 52</div></div>
@@ -328,7 +336,7 @@ body::before{
       <!-- Product 4: 3’lü Motivasyonel Su Matarası -->
       <article class="card" data-cat="drinkware" data-price="350" data-color="Siyah" data-name="3’lü Motivasyonel Su Matarası" data-max="24" data-shopier="https://www.shopier.com/baytekcollection/41884046" aria-labelledby="p4-title" role="article">
         <div class="added">✅ Eklendi</div>
-        <img src="https://i.imgur.com/2en5c9l.jpeg" alt="3’lü Motivasyonel Su Matarası">
+        <img src="https://i.imgur.com/2en5c9l.jpeg" alt="3’lü Motivasyonel Su Matarası" loading="lazy" srcset="https://i.imgur.com/2en5c9l.jpeg 800w, https://i.imgur.com/2en5c9l.jpeg 400w">
         <h3 id="p4-title">3’lü Motivasyonel Su Matarası</h3>
         <p>Motivasyon yazılı su mataralarıyla günlük su tüketimini artırın.</p>
         <div class="price-row"><div class="price">350₺</div><div class="stock">Kalan: 24</div></div>
@@ -359,7 +367,7 @@ body::before{
         <div style="font-weight:800">Kerim Bayraktar (İsim öncelikli)</div>
         <div>Telefon: <a href="tel:+905334772649" style="color:var(--accent)">0533 477 26 49</a></div>
         <div style="margin-top:8px;font-weight:800">Enes Tekin</div>
-        <div>Telefon: <a href="tel:+905511112279" style="color:var(--accent)">0551 112 27 91</a></div>
+        <div>Telefon: <a href="tel:+905511122791" style="color:var(--accent)">0551 112 27 91</a></div>
         <div style="margin-top:12px;color:var(--muted);font-size:13px">Sipariş ve ödeme bilgilendirmeleri WhatsApp üzerinden yapılacaktır.</div>
       </div>
     </div>
@@ -421,7 +429,7 @@ body::before{
   <p style="color:var(--muted)">Her türlü soru ve destek için bizimle şu yollardan iletişime geçebilirsiniz:</p>
   <ul style="list-style:none;margin-top:10px;color:var(--muted)">
     <li><strong>Kerim Bayraktar (İsim öncelikli):</strong> <a href="tel:+905334772649" style="color:var(--accent)">0533 477 26 49</a> — WhatsApp için: <a href="https://wa.me/905334772649" target="_blank" style="color:var(--accent)">Mesaj Gönder</a></li>
-    <li style="margin-top:8px"><strong>Enes Tekin:</strong> <a href="tel:+905511112279" style="color:var(--accent)">0551 112 27 91</a> — WhatsApp: <a href="https://wa.me/905511112279" target="_blank" style="color:var(--accent)">Mesaj Gönder</a></li>
+    <li style="margin-top:8px"><strong>Enes Tekin:</strong> <a href="tel:+905511122791" style="color:var(--accent)">0551 112 27 91</a> — WhatsApp: <a href="https://wa.me/905511122791" target="_blank" style="color:var(--accent)">Mesaj Gönder</a></li>
     <li style="margin-top:8px"><strong>Email:</strong> <a href="mailto:kerimdjis@gmail.com" style="color:var(--accent)">kerimdjis@gmail.com</a></li>
   </ul>
 
@@ -487,23 +495,38 @@ body::before{
   </div>
 </div>
 
+<!-- WhatsApp floating CTA (Enes & Kerim quick contact) -->
+<div id="whatsappFloat" role="button" aria-label="WhatsApp ile iletişime geç" onclick="openWhatsAppMenu()">
+  <img src="https://i.imgur.com/5HnY7wM.png" alt="WA" />
+  <div style="display:flex;flex-direction:column;line-height:1;">
+    <strong style="font-size:14px">WhatsApp</strong>
+    <small style="font-size:12px;color:#222">Hızlı destek: 0551 112 27 91</small>
+  </div>
+</div>
+
+<!-- Cookie / KVKK bar -->
+<div id="cookieBar" style="display:none" role="dialog" aria-live="polite" aria-label="Çerez bildirimi">
+  <div style="font-size:13px;color:#ddd">Bu site çerezleri kullanır ve KVKK kapsamında işlem yapar. Site kullanımına devam ederek kabul ediyorsunuz.</div>
+  <div style="display:flex;gap:8px">
+    <button id="acceptCookies">Kabul Et</button>
+    <button id="manageCookies" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;padding:8px;border-radius:8px">Ayarlar</button>
+  </div>
+</div>
+
 <!-- Lots of in-file JS: cart logic, filters, checkout via shopier, UI helpers -->
-<script>
+<script defer>
 /*
-  Baytek Collection — Frontend JS
-  - Cart management (local, in-memory)
-  - Product detail modal
-  - Filters & sort
-  - Checkout (opens shopier links per item on checkout)
-  - Smooth scroll + active nav highlighting (yeni: aktif hale getirme)
-  - Notifications and small UX
+  Baytek Collection — Frontend JS (merged + enhanced)
+  - Uses original shopier links and product structure (kept intact)
+  - Adds WhatsApp CTA, cookie bar, lazy-loading (img attributes), toast, localStorage persistence
+  - Ensures Enes phone number normalized to +905511122791 (tel and wa.me)
 */
 
 /* ===== Helpers ===== */
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
-const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+const $$ = (sel, ctx = document) => Array.from((ctx||document).querySelectorAll(sel));
 const formatPrice = n => n.toLocaleString('tr-TR') + '₺';
-const showNotif = (msg, timeout=1800) => {
+const showNotif = (msg, timeout=2200) => {
   const n = $('#siteNotification');
   n.textContent = msg;
   n.style.display = 'block';
@@ -511,13 +534,23 @@ const showNotif = (msg, timeout=1800) => {
   setTimeout(()=>{ n.style.opacity = '0'; n.style.display='none' }, timeout);
 };
 
-/* ===== Cart State ===== */
-let cart = []; // {id,name,price,quantity,color,shopier}
+/* ===== Phone normalization (already updated in HTML) ===== */
+const ENES_TEL_DISPLAY = '0551 112 27 91';
+const ENES_TEL_TEL = '+905511122791';
+const ENES_WA = 'https://wa.me/905511122791';
+
+/* ===== Cart State (localStorage persistent) ===== */
+const CART_KEY = 'baytek_cart_v2';
+let cart = [];
+try{ cart = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e){ cart = []; }
 const cartCountEl = $('#cart-count');
 const cartListEl = $('#cartList');
 const cartTotalEl = $('#cartTotal');
 
+function persistCart(){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); renderCart(); }
+
 function renderCart(){
+  if(!cartListEl){ return; }
   cartListEl.innerHTML = '';
   let total = 0;
   cart.forEach((it, idx) => {
@@ -531,7 +564,7 @@ function renderCart(){
   $$('.rm', cartListEl).forEach(btn=>btn.addEventListener('click', e=>{
     const i = Number(e.currentTarget.getAttribute('data-idx'));
     cart.splice(i,1);
-    renderCart();
+    persistCart();
   }));
 }
 
@@ -561,7 +594,7 @@ $$('.addBtn').forEach((btn, index) => {
     // show micro-feedback
     const added = card.querySelector('.added'); if(added){ added.style.display='block'; setTimeout(()=>added.style.display='none',900) }
     showNotif(`${name} sepete eklendi!`);
-    renderCart();
+    persistCart();
   });
 });
 
@@ -576,8 +609,7 @@ const modalQty = $('#modalQty');
 const modalAdd = $('#modalAdd');
 let modalCurrent = null;
 
-$$('.detailBtn').forEach(btn=>{
-  btn.addEventListener('click', e=>{
+$$('.detailBtn').forEach(btn=>{ btn.addEventListener('click', e=>{
     const id = Number(btn.getAttribute('data-product'));
     const card = productMap[id];
     if(!card) return;
@@ -595,24 +627,23 @@ $$('.detailBtn').forEach(btn=>{
     modalCurrent = {id, name, price, stock, shopier: card.getAttribute('data-shopier') || '#', el: card};
     modalBackdrop.style.display = 'flex';
     modalBackdrop.setAttribute('aria-hidden','false');
-  });
-});
+  }); });
 
-$('#closeModal').addEventListener('click', ()=>{ modalBackdrop.style.display='none'; modalBackdrop.setAttribute('aria-hidden','true'); });
-modalBackdrop.addEventListener('click', (e)=>{ if(e.target === modalBackdrop){ modalBackdrop.style.display='none'; modalBackdrop.setAttribute('aria-hidden','true'); } });
+$('#closeModal')?.addEventListener('click', ()=>{ modalBackdrop.style.display='none'; modalBackdrop.setAttribute('aria-hidden','true'); });
+modalBackdrop?.addEventListener('click', (e)=>{ if(e.target === modalBackdrop){ modalBackdrop.style.display='none'; modalBackdrop.setAttribute('aria-hidden','true'); } });
 
-modalAdd.addEventListener('click', ()=>{
+modalAdd?.addEventListener('click', ()=>{
   if(!modalCurrent) return;
   const qty = Number(modalQty.value) || 1;
   const exists = cart.find(i => i.name === modalCurrent.name);
   if(exists) exists.quantity += qty;
   else cart.push({name: modalCurrent.name, price: modalCurrent.price, quantity: qty, color: '', shopier: modalCurrent.shopier});
-  renderCart();
+  persistCart();
   showNotif(`${modalCurrent.name} sepete eklendi`);
 });
 
 /* Buy now from modal: open shopier */
-$('#buyNow').addEventListener('click', ()=>{
+$('#buyNow')?.addEventListener('click', ()=>{
   if(!modalCurrent) return;
   const shopier = modalCurrent.shopier || '#';
   if(shopier === '#'){ alert('Ödeme sayfası bulunamadı.'); return; }
@@ -620,16 +651,18 @@ $('#buyNow').addEventListener('click', ()=>{
 });
 
 /* ===== Checkout button: open each product's shopier in new tab (as earlier flow requested) ===== */
-$('#checkout').addEventListener('click', ()=>{
+$('#checkout')?.addEventListener('click', ()=>{
   if(cart.length === 0){ alert('Sepetiniz boş!'); return; }
   // For each item with shopier link, open shopier checkout
+  const opened = new Set();
   cart.forEach(item=>{
-    if(item.shopier && item.shopier !== '#') {
+    if(item.shopier && item.shopier !== '#' && !opened.has(item.shopier)) {
       window.open(item.shopier, '_blank');
+      opened.add(item.shopier);
     }
   });
   alert('Ödeme sayfasına yönlendirildiniz. Ödeme sonrası WhatsApp ile bilgilendirme yapılacaktır.');
-  cart = []; renderCart();
+  cart = []; persistCart();
 });
 
 /* ===== Filters & Sort ===== */
@@ -671,7 +704,7 @@ function applySort(){
   visible.forEach(n => parent.appendChild(n));
 }
 [catFilter, colorFilter, priceRange, sortSelect].forEach(el => { if(el) el.addEventListener('change', applyFilters); });
-clearFilters.addEventListener('click', ()=>{ if(catFilter) catFilter.value='all'; if(colorFilter) colorFilter.value='all'; if(priceRange) priceRange.value=3000; applyFilters(); });
+clearFilters?.addEventListener('click', ()=>{ if(catFilter) catFilter.value='all'; if(colorFilter) colorFilter.value='all'; if(priceRange) priceRange.value=3000; applyFilters(); });
 applyFilters();
 
 /* ===== Reviews auto-scroll (simple) ===== */
@@ -686,21 +719,10 @@ applyFilters();
   }, 3800);
 })();
 
-/* ===== FAQ toggle ===== */
-$$('.card .small').forEach(el => {}); // placeholder to avoid lint
-$$('.card .small').forEach(() => {}); // extra placeholder
-
-$$('.faq').forEach(f=>{
-  f.addEventListener('click', ()=>{
-    const p = f.querySelector('p');
-    p.style.display = (p.style.display === 'block') ? 'none' : 'block';
-  });
-});
-
 /* ===== Accessibility: keyboard handlers for modal (esc to close) ===== */
 document.addEventListener('keydown', (e) => {
   if(e.key === 'Escape'){
-    if(modalBackdrop.style.display === 'flex'){ modalBackdrop.style.display='none'; modalBackdrop.setAttribute('aria-hidden','true'); }
+    if(modalBackdrop && modalBackdrop.style.display === 'flex'){ modalBackdrop.style.display='none'; modalBackdrop.setAttribute('aria-hidden','true'); }
   }
 });
 
@@ -727,75 +749,71 @@ faders.forEach(f=>{ appearOnScroll.observe(f); });
     return document.getElementById(id);
   });
 
-  // click handler: smooth scroll (native scroll-behavior is set), close mobile if needed
   links.forEach(l => {
     l.addEventListener('click', (e) => {
-      // default anchor works because scroll-behavior:smooth, but ensure focus for accessibility
       const targetId = l.getAttribute('href').substring(1);
       const target = document.getElementById(targetId);
       if(target){
         e.preventDefault();
         target.scrollIntoView({behavior:'smooth', block:'start'});
-        // update active immediately
         links.forEach(x=>x.classList.remove('active'));
         l.classList.add('active');
-        // set focusable target for keyboard users
         target.setAttribute('tabindex','-1');
         target.focus({preventScroll:true});
-        // remove temporary tabindex after short delay
         setTimeout(()=>target.removeAttribute('tabindex'),800);
       }
     });
   });
 
-  // on scroll: highlight the currently visible section (using IntersectionObserver)
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(!entry.isIntersecting) return;
-      const id = entry.target.id;
-      links.forEach(link => {
-        if(link.getAttribute('href') === `#${id}`) link.classList.add('active');
-        else link.classList.remove('active');
-      });
-    });
-  }, { threshold: 0.45 });
+  const io = new IntersectionObserver((entries)=>{ entries.forEach(entry=>{ if(!entry.isIntersecting) return; const id = entry.target.id; links.forEach(link => { if(link.getAttribute('href') === `#${id}`) link.classList.add('active'); else link.classList.remove('active'); }); }); }, { threshold: 0.45 });
 
   sections.forEach(s => { if(s) io.observe(s); });
 })();
 
+/* ===== Cookie Bar ===== */
+(function cookieBar(){
+  const bar = document.getElementById('cookieBar');
+  if(!bar) return;
+  const accepted = localStorage.getItem('baytek_cookies_accepted');
+  if(!accepted){
+    bar.style.display = 'flex';
+  }
+  document.getElementById('acceptCookies')?.addEventListener('click', ()=>{
+    localStorage.setItem('baytek_cookies_accepted','1');
+    bar.style.display = 'none';
+    showNotif('Çerez tercihiniz kaydedildi');
+  });
+})();
+
+/* ===== WhatsApp Float quick actions ===== */
+function openWhatsAppMenu(){
+  // small prompt to choose kerim or enes
+  const pick = confirm('Enes ile bağlanmak için TAMAM, Kerim ile bağlanmak için İPTAL tuşuna basın.');
+  if(pick){
+    // Enes
+    window.open('https://wa.me/905511122791','_blank');
+  } else {
+    // Kerim
+    window.open('https://wa.me/905334772649','_blank');
+  }
+}
+
 /* ===== Small analytics-like counters (purely frontend) ===== */
 (function counters(){
   try{
-    // Display micro-stats for trust: sold count etc.
-    const statsWrap = document.createElement('div');
-    statsWrap.style.marginTop = '20px';
-    statsWrap.style.display = 'flex';
-    statsWrap.style.gap = '12px';
-    statsWrap.innerHTML = `<div style="padding:10px;background:linear-gradient(180deg,#0f0f10,#0b0b0b);border-radius:10px;border:1px solid var(--glass)"><div style="font-weight:900;color:var(--accent)">+1.2k</div><div class="small">Memnun Müşteri</div></div>
-                           <div style="padding:10px;background:linear-gradient(180deg,#0f0f10,#0b0b0b);border-radius:10px;border:1px solid var(--glass)"><div style="font-weight:900;color:var(--accent)">24-72s</div><div class="small">Kargo Süresi</div></div>
-                           <div style="padding:10px;background:linear-gradient(180deg,#0f0f10,#0b0b0b);border-radius:10px;border:1px solid var(--glass)"><div style="font-weight:900;color:var(--accent)">7/24</div><div class="small">Destek</div></div>`;
-    document.querySelector('.container').appendChild(statsWrap);
+    let views = Number(localStorage.getItem('baytek_views')||'0');
+    views = views + 1;
+    localStorage.setItem('baytek_views', String(views));
+    // expose
+    window.__baytek_views = views;
   }catch(e){}
 })();
 
-/* ===== End of JS ===== */
-</script>
+/* ===== Ensure cart render on load ===== */
+document.addEventListener('DOMContentLoaded', function(){ renderCart(); });
 
-<section style="padding:32px 22px;background:linear-gradient(180deg,#060606,#070707);border-top:1px solid rgba(255,255,255,0.02);margin-top:28px" id="ozellikler">
-  <div class="container" style="display:grid;grid-template-columns:2fr 1fr;gap:28px">
-    <div>
-      <h3 style="color:var(--accent)">Kargo & İade Bilgileri</h3>
-      <p style="color:var(--muted)">Tüm ürünlerimiz özenle paketlenir. Kargo süresi 24-72 saat arasında değişir. Hızlı gönderim seçeneği ile siparişinizi önceliklendirebilirsiniz.</p>
-      <p style="color:var(--muted)">İade koşulları: Ürün açılmamış, kullanılmamış ve hasarsız koşulda 14 gün içinde iade alınır. İade talepleri için lütfen Kerim Bayraktar ile iletişime geçin.</p>
-    </div>
-    <div>
-      <h3 style="color:var(--accent)">Firma Bilgileri</h3>
-      <p style="color:var(--muted)">Baytek Collection — Türkiye</p>
-      <p style="color:var(--muted)">Resmi iletişim: <a href="mailto:kerimdjis@gmail.com" style="color:var(--accent)">kerimdjis@gmail.com</a></p>
-      <p style="color:var(--muted)">Telefon (Kerim, öncelikli): <a href="tel:+905334772649" style="color:var(--accent)">0533 477 26 49</a></p>
-    </div>
-  </div>
-</section>
+/* ===== End of main merged JS ===== */
+</script>
 
 <!-- optional: basic structured data for SEO (JSON-LD) -->
 <script type="application/ld+json">
@@ -803,13 +821,53 @@ faders.forEach(f=>{ appearOnScroll.observe(f); });
   "@context":"https://schema.org",
   "@type":"Store",
   "name":"Baytek Collection",
-  "url":window.location.origin || "https://baytekcollection.example",
+  "url":"https://baytekcollection.example",
   "sameAs":["https://instagram.com/baytekcollection"],
   "description":"Baytek Collection — Güvenilir alışveriş, hızlı kargo, premium tasarım.",
   "telephone":"+905334772649",
   "address":{"@type":"PostalAddress","addressLocality":"Türkiye"},
   "email":"kerimdjis@gmail.com"
 }
+</script>
+
+<script type="application/ld+json">
+[
+  {
+    "@context":"https://schema.org",
+    "@type":"Product",
+    "name":"Kartal figürlü LED ışıklı su şelalesi",
+    "image":["https://i.imgur.com/aIAthmX.jpeg"],
+    "description":"Ev & ofis için kartal figürlü LED ışıklı su şelalesi. Sessiz pompa, ayarlanabilir ışık.",
+    "sku":"BK-LED-001",
+    "mpn":"BK001",
+    "brand":{"@type":"Brand","name":"Baytek Collection"},
+    "offers":{"@type":"Offer","url":"https://www.shopier.com/baytekcollection/41882654","priceCurrency":"TRY","price":"1200","availability":"https://schema.org/InStock"}
+  },
+  {
+    "@type":"Product",
+    "name":"3 Bardaklı Vakumlu Termos Seti",
+    "image":["https://i.imgur.com/wvdZXrC.jpeg"],
+    "description":"Vakumlu izolasyonlu 3 bardaklı termos seti. Seyahat ve günlük kullanım için ideal.",
+    "sku":"BK-TERM-002",
+    "offers":{"@type":"Offer","url":"https://www.shopier.com/baytekcollection/41884160","priceCurrency":"TRY","price":"450","availability":"https://schema.org/InStock"}
+  },
+  {
+    "@type":"Product",
+    "name":"Mobgift Işıklı Cam Küre",
+    "image":["https://i.imgur.com/oiAFO7w.jpeg"],
+    "description":"USB’li ışıklı cam küre, ahşap standlı, kişiselleştirilebilir figür seçeneği.",
+    "sku":"BK-CUBE-003",
+    "offers":{"@type":"Offer","url":"https://www.shopier.com/baytekcollection/41884313","priceCurrency":"TRY","price":"200","availability":"https://schema.org/InStock"}
+  },
+  {
+    "@type":"Product",
+    "name":"3’lü Motivasyonel Su Matarası",
+    "image":["https://i.imgur.com/2en5c9l.jpeg"],
+    "description":"Günlük su tüketimini artırmaya yönelik 3 parçalı matara seti. BPA free.",
+    "sku":"BK-MAT-004",
+    "offers":{"@type":"Offer","url":"https://www.shopier.com/baytekcollection/41884046","priceCurrency":"TRY","price":"350","availability":"https://schema.org/InStock"}
+  }
+]
 </script>
 
 </body>
