@@ -3,1180 +3,1589 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Baytek Collection | Premium Alışverişin Adresi</title>
-<meta name="description" content="Baytek Collection - En trend ürünler, güvenli ödeme ve hızlı teslimat.">
-<meta name="theme-color" content="#f27a1a"> <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3081/3081559.png">
-
+<title>Baytek Collection | Premium Alışveriş Platformu</title>
+<meta name="description" content="Baytek Collection ile en trend ürünlere ulaşın. Güvenli ödeme, hızlı teslimat ve koşulsuz iade garantisi.">
+<meta name="keywords" content="alışveriş, e-ticaret, baytek, collection, trend, moda, aksesuar">
+<meta name="theme-color" content="#FF8A00">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 /* ==========================================================================
-   1. RESET & TEMEL AYARLAR (CORE)
+   1. RESET & BASE STYLES
    ==========================================================================
 */
 :root {
-    --ty-orange: #f27a1a; /* Ana Marka Rengi */
-    --ty-orange-dark: #d66209;
-    --ty-black: #333333;
-    --ty-dark-bg: #1b1b1b; /* Dark Mode Zemin */
-    --ty-card-bg: #252525; /* Kart Rengi */
-    --ty-gray: #999999;
-    --ty-border: #3e3e3e;
-    --ty-green: #16c60c;
-    --ty-red: #dd2e2e;
-    --radius: 8px;
-    --shadow: 0 2px 10px rgba(0,0,0,0.3);
-    --container: 1200px;
-    --header-height: 70px;
-    --bottom-nav-height: 60px;
+    /* Color Palette - Baytek Orange & Dark Mode Base */
+    --color-primary: #ff8a00;
+    --color-primary-dark: #cc6e00;
+    --color-primary-light: rgba(255, 138, 0, 0.1);
+    
+    --bg-body: #090909;
+    --bg-surface: #121212;
+    --bg-card: #1a1a1a;
+    --bg-input: #242424;
+    --bg-hover: #2a2a2a;
+    
+    --text-main: #ffffff;
+    --text-secondary: #a1a1a1;
+    --text-muted: #666666;
+    
+    --border-color: #2a2a2a;
+    --border-focus: #ff8a00;
+    
+    --status-success: #00d16d;
+    --status-error: #ff4757;
+    --status-warning: #ffa502;
+    --status-info: #3742fa;
+
+    /* Spacing System */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    
+    /* Layout */
+    --container-width: 1280px;
+    --header-height: 85px;
+    --mobile-nav-height: 60px;
+    
+    /* Borders & Shadows */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-full: 9999px;
+    
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.2);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.5);
+    --shadow-glow: 0 0 15px rgba(255, 138, 0, 0.3);
+    
+    /* Transitions */
+    --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+    --duration-fast: 0.2s;
+    --duration-normal: 0.3s;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-html { font-size: 14px; scroll-behavior: smooth; height: 100%; }
-body { 
-    background-color: #121212; /* Tam siyah değil, yumuşak koyu */
-    color: #f5f5f5; 
-    font-family: 'Open Sans', 'Inter', sans-serif; 
-    line-height: 1.5; 
-    padding-bottom: var(--bottom-nav-height); /* Mobil nav için boşluk */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
     overflow-x: hidden;
+    padding-bottom: var(--mobile-nav-height); /* Mobile nav padding */
 }
 
-a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+a { text-decoration: none; color: inherit; transition: color var(--duration-fast); }
 ul { list-style: none; }
-img { max-width: 100%; display: block; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
-input { outline: none; font-family: inherit; }
+img { display: block; max-width: 100%; height: auto; }
+input, select, textarea { font-family: inherit; outline: none; }
 
-/* Scrollbar Özelleştirme */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #121212; }
-::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--ty-orange); }
-
-/* Utility Classes */
-.container { max-width: var(--container); margin: 0 auto; padding: 0 15px; }
-.flex { display: flex; }
-.flex-col { flex-direction: column; }
-.items-center { align-items: center; }
-.justify-between { justify-content: space-between; }
-.justify-center { justify-content: center; }
-.w-full { width: 100%; }
-.text-center { text-align: center; }
-.font-bold { font-weight: 700; }
-.text-orange { color: var(--ty-orange); }
-.hidden { display: none !important; }
-.pointer { cursor: pointer; }
+/* Scrollbar Customization */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-body); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
 
 /* ==========================================================================
-   2. HEADER & NAVIGASYON
+   2. UTILITY CLASSES (Grid, Flex, Typography)
    ==========================================================================
 */
-.top-bar {
-    background: linear-gradient(90deg, #d66209, #f27a1a);
-    color: #fff;
-    font-size: 11px;
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-end { justify-content: flex-end; }
+.gap-xs { gap: var(--space-xs); }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+
+.grid { display: grid; }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-3xl { font-size: 2rem; }
+
+.text-primary { color: var(--color-primary); }
+.text-muted { color: var(--text-muted); }
+.text-secondary { color: var(--text-secondary); }
+.text-success { color: var(--status-success); }
+.text-error { color: var(--status-error); }
+
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-50 { z-index: 50; }
+.z-max { z-index: 9999; }
+
+.hidden { display: none !important; }
+.block { display: block; }
+
+/* ==========================================================================
+   3. COMPONENTS (Buttons, Inputs, Badges, Cards)
+   ==========================================================================
+*/
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all var(--duration-normal) var(--ease-out);
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: #000;
+}
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+.btn-outline:hover {
+    border-color: var(--text-main);
+    background: rgba(255,255,255,0.05);
+}
+
+.btn-icon {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+    transition: 0.2s;
+    background: var(--bg-surface);
+}
+.btn-icon:hover {
+    background: var(--bg-hover);
+    color: var(--color-primary);
+}
+
+/* Form Elements */
+.form-group { margin-bottom: 15px; }
+.form-label { display: block; margin-bottom: 6px; font-size: 0.85rem; color: var(--text-secondary); }
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    transition: 0.2s;
+    font-size: 0.95rem;
+}
+.form-control:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(255, 138, 0, 0.2);
+}
+.form-control.error { border-color: var(--status-error); }
+.form-error-text { color: var(--status-error); font-size: 0.75rem; margin-top: 4px; display: none; }
+
+/* Badges */
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
     font-weight: 700;
-    text-align: center;
-    padding: 6px 0;
+    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+.badge-new { background: #3498db; color: #fff; }
+.badge-sale { background: var(--status-error); color: #fff; }
+.badge-fast { background: var(--status-success); color: #fff; }
 
+/* Toast Notification */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+.toast {
+    background: var(--bg-card);
+    border-left: 4px solid var(--color-primary);
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 300px;
+    pointer-events: auto;
+    animation: slideInRight 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.toast.success { border-color: var(--status-success); }
+.toast.error { border-color: var(--status-error); }
+.toast-content h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; }
+.toast-content p { font-size: 0.8rem; color: var(--text-secondary); }
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+@keyframes fadeOutRight {
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+/* ==========================================================================
+   4. LAYOUT SECTIONS (Header, Nav, Footer)
+   ==========================================================================
+*/
+
+/* Top Strip */
+.top-strip {
+    background-color: #000;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 11px;
+    padding: 8px 0;
+    color: var(--text-secondary);
+}
+.top-strip a:hover { color: #fff; text-decoration: underline; }
+
+/* Main Header */
 .main-header {
-    background-color: #1b1b1b;
-    border-bottom: 1px solid var(--ty-border);
-    height: var(--header-height);
+    background: rgba(9, 9, 9, 0.95);
+    backdrop-filter: blur(10px);
     position: sticky;
     top: 0;
-    z-index: 999;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.header-inner {
-    height: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    height: var(--header-height);
     display: flex;
     align-items: center;
-    gap: 30px;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: 800;
-    color: #fff;
+.brand-logo {
+    font-size: 26px;
+    font-weight: 900;
     letter-spacing: -1px;
+    color: #fff;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
 }
-.logo span { color: var(--ty-orange); }
+.brand-logo span { color: var(--color-primary); font-size: 32px; line-height: 0; margin-bottom: 10px; }
 
-/* Arama Çubuğu */
-.search-container {
+/* Search Bar */
+.search-wrapper {
     flex: 1;
-    position: relative;
     max-width: 600px;
+    margin: 0 40px;
+    position: relative;
 }
 .search-input {
     width: 100%;
-    padding: 12px 45px 12px 20px;
-    border-radius: 6px;
-    background: #2b2b2b;
-    border: 2px solid transparent;
+    padding: 12px 50px 12px 20px;
+    border-radius: 50px;
+    background: var(--bg-input);
+    border: 1px solid transparent;
     color: #fff;
     font-size: 14px;
     transition: 0.3s;
 }
 .search-input:focus {
-    background: #333;
-    border-color: var(--ty-orange);
+    background: #000;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(255,138,0,0.1);
 }
-.search-icon {
+.search-btn {
     position: absolute;
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--ty-orange);
-    font-size: 18px;
+    color: var(--text-muted);
 }
 
-/* Header İkonlar */
-.account-nav {
+/* Header Actions */
+.header-actions { display: flex; gap: 15px; align-items: center; }
+.action-item {
     display: flex;
-    gap: 20px;
-}
-.nav-item {
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    color: #ccc;
-    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 500;
+    gap: 4px;
+    position: relative;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: 0.2s;
 }
-.nav-item:hover { color: var(--ty-orange); }
-.nav-item svg { width: 20px; height: 20px; }
-.nav-badge-wrap { position: relative; }
-.nav-badge {
+.action-item:hover { color: #fff; background: rgba(255,255,255,0.05); }
+.action-item svg { width: 22px; height: 22px; stroke-width: 1.5; }
+.badge-count {
     position: absolute;
-    top: -8px;
-    right: -8px;
-    background: var(--ty-orange);
-    color: #fff;
+    top: -2px;
+    right: 0px;
+    background: var(--color-primary);
+    color: #000;
     font-size: 10px;
     font-weight: 800;
-    width: 16px;
-    height: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+    padding: 1px 5px;
+    border-radius: 10px;
+    min-width: 16px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    animation: bounceIn 0.3s;
 }
+
+@keyframes bounceIn {
+    0% { transform: scale(0); }
+    80% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Mobile Nav */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(18, 18, 18, 0.98);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border-color);
+    z-index: 1001;
+    padding: 8px 0 20px; /* Safe area padding */
+    justify-content: space-around;
+}
+.mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-muted);
+    font-size: 10px;
+    width: 20%;
+}
+.mobile-nav-item.active { color: var(--color-primary); }
+.mobile-nav-item svg { width: 24px; height: 24px; }
 
 /* ==========================================================================
-   3. HERO SLIDER & BANNERLAR
+   5. HERO SECTION & SLIDER
    ==========================================================================
 */
-.hero-wrapper {
+.hero-section {
     margin-top: 20px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 15px;
-    height: 350px;
+    margin-bottom: 40px;
 }
-
-.main-slider {
-    background: #252525;
-    border-radius: var(--radius);
-    overflow: hidden;
+.hero-slider-container {
     position: relative;
-    box-shadow: var(--shadow);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    height: 400px;
+    box-shadow: var(--shadow-lg);
 }
-
-.slide {
+.hero-slide {
     position: absolute;
     inset: 0;
     background-size: cover;
     background-position: center;
-    opacity: 0;
-    transition: opacity 0.6s ease-in-out;
-    display: flex;
-    align-items: flex-end;
-    padding: 40px;
-}
-.slide.active { opacity: 1; }
-.slide-content {
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(5px);
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 4px solid var(--ty-orange);
-    max-width: 500px;
-}
-.slide-title { font-size: 28px; font-weight: 800; margin-bottom: 10px; color: #fff; }
-.slide-desc { color: #ddd; margin-bottom: 15px; }
-
-.side-banners {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-.banner-card {
-    flex: 1;
-    background: #252525;
-    border-radius: var(--radius);
     display: flex;
     align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
+    padding: 0 80px;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    z-index: 1;
 }
-.banner-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-.banner-card:hover img { transform: scale(1.05); }
+.hero-slide.active { opacity: 1; z-index: 2; }
+.hero-slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #000 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+    z-index: 1;
+}
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 500px;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: 0.8s 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.hero-slide.active .hero-content { transform: translateY(0); opacity: 1; }
+.hero-tag {
+    display: inline-block;
+    padding: 6px 12px;
+    background: rgba(255, 138, 0, 0.2);
+    border: 1px solid rgba(255, 138, 0, 0.4);
+    color: var(--color-primary);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    backdrop-filter: blur(5px);
+}
+.hero-title {
+    font-size: 48px;
+    line-height: 1.1;
+    font-weight: 900;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #fff, #bbb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero-desc {
+    color: #ccc;
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.slider-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+}
+.slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.slider-dot.active { background: var(--color-primary); width: 30px; border-radius: 10px; }
 
 /* ==========================================================================
-   4. ÜRÜN KARTLARI (TRENDYOL STYLE)
+   6. PRODUCT LISTING & SIDEBAR
    ==========================================================================
 */
-.section-title {
-    font-size: 22px;
-    font-weight: 700;
-    margin: 40px 0 20px;
+.page-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* Sidebar Filter */
+.sidebar {
+    position: sticky;
+    top: 110px;
+    height: fit-content;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+}
+.filter-section {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.filter-section:last-child { border: none; padding-bottom: 0; margin-bottom: 0; }
+.filter-title { font-weight: 700; margin-bottom: 15px; font-size: 14px; display: flex; justify-content: space-between; }
+.filter-list { display: flex; flex-direction: column; gap: 10px; }
+.filter-item {
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: 0.2s;
 }
-.section-title::before {
-    content: '';
-    width: 6px;
-    height: 24px;
-    background: var(--ty-orange);
-    border-radius: 2px;
-    display: block;
+.filter-item:hover { color: #fff; }
+.checkbox-custom {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #444;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+.filter-item.active .checkbox-custom {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.filter-item.active .checkbox-custom::after {
+    content: '✓';
+    font-size: 12px;
+    color: #000;
+    font-weight: 800;
+}
+
+/* Product Grid */
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: var(--bg-card);
+    padding: 15px 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+.sort-select {
+    background: var(--bg-input);
+    color: #fff;
+    border: 1px solid var(--border-color);
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Masaüstünde 5'li */
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
 }
 
+/* Product Card */
 .product-card {
-    background: var(--ty-card-bg);
-    border: 1px solid #333;
-    border-radius: 8px;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
     overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
     position: relative;
     display: flex;
     flex-direction: column;
 }
-
 .product-card:hover {
+    border-color: rgba(255,138,0,0.3);
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-    border-color: var(--ty-orange);
+    box-shadow: var(--shadow-md);
 }
+.card-badges {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.card-fav-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 5;
+    width: 32px;
+    height: 32px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: 0.2s;
+}
+.card-fav-btn.active { color: var(--status-error); background: #fff; opacity: 1; transform: translateX(0); }
+.product-card:hover .card-fav-btn { opacity: 1; transform: translateX(0); }
 
-.card-image-wrap {
+.card-img-wrapper {
     position: relative;
-    padding-top: 120%; /* Dikey dikdörtgen */
+    padding-top: 120%; /* 5:6 Aspect Ratio */
+    background: #202020;
     overflow: hidden;
-    background: #fff; /* Görsel zemini */
 }
-
 .card-img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Görseli kesmeden sığdır */
-    background: #fff; /* Görsel arkası beyaz */
+    object-fit: cover;
+    transition: transform 0.5s ease;
 }
+.product-card:hover .card-img { transform: scale(1.1); }
 
-.fav-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 32px;
-    height: 32px;
-    background: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 5;
-    color: #ccc;
-    transition: 0.2s;
-}
-.fav-btn.active { color: var(--ty-orange); }
-.fav-btn:hover { transform: scale(1.1); }
-
-.card-badges {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    z-index: 5;
-}
-.badge {
-    padding: 3px 8px;
-    font-size: 10px;
-    font-weight: 700;
-    border-radius: 3px;
-    color: #fff;
-}
-.bg-orange { background: var(--ty-orange); }
-.bg-dark { background: rgba(0,0,0,0.8); backdrop-filter: blur(2px); }
-
-.card-info {
-    padding: 12px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
+.card-content { padding: 15px; flex: 1; display: flex; flex-direction: column; }
 .card-brand {
     font-size: 11px;
-    font-weight: 700;
-    color: var(--ty-orange);
+    color: var(--text-secondary);
     text-transform: uppercase;
-    margin-bottom: 4px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
 }
-
 .card-title {
-    font-size: 13px;
-    color: #e0e0e0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 10px;
     line-height: 1.4;
-    height: 38px;
-    overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    margin-bottom: 8px;
+    overflow: hidden;
+    height: 40px;
 }
-
-.rating-wrap {
+.card-rating {
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: 11px;
-    margin-bottom: 10px;
+    font-size: 12px;
+    color: var(--status-warning);
+    margin-bottom: 12px;
 }
-.stars { color: #f2c94c; }
-.rating-count { color: #888; }
-
-.price-box {
+.card-price-container {
     margin-top: auto;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 8px;
 }
-.current-price {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--ty-orange);
-}
-.old-price {
-    font-size: 12px;
-    text-decoration: line-through;
-    color: #777;
-}
+.card-price { font-size: 18px; font-weight: 800; color: #fff; }
+.card-old-price { font-size: 13px; color: var(--text-muted); text-decoration: line-through; margin-bottom: 2px; }
 
-.btn-card-add {
+.add-cart-overlay-btn {
     width: 100%;
-    margin-top: 10px;
-    background: transparent;
-    border: 1px solid #444;
-    color: #fff;
-    padding: 8px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 600;
-    transition: 0.2s;
-}
-.btn-card-add:hover {
-    background: #fff;
+    padding: 10px;
+    background: var(--color-primary);
     color: #000;
-    border-color: #fff;
-}
-
-/* ==========================================================================
-   5. FOOTER & UYGULAMA ALANI
-   ==========================================================================
-*/
-.app-banner-section {
-    background: #252525;
-    padding: 40px 0;
-    margin-top: 60px;
-    border-top: 1px solid #333;
-}
-.app-grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.app-text h3 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
-.app-text p { color: #aaa; }
-.app-buttons { display: flex; gap: 10px; }
-.app-btn {
-    background: #000;
-    border: 1px solid #444;
-    border-radius: 8px;
-    padding: 8px 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #fff;
-    width: 160px;
-}
-.app-btn svg { width: 24px; height: 24px; }
-
-footer {
-    background: #0f0f0f;
-    padding: 60px 0 100px; /* Alttan nav bar için pay */
-    border-top: 1px solid #222;
+    border: none;
+    font-weight: 700;
     font-size: 13px;
-    color: #888;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: var(--radius-sm);
+    transform: translateY(10px);
+    opacity: 0;
+    transition: 0.3s;
 }
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 40px;
-}
-.footer-col h4 { color: #fff; font-size: 16px; margin-bottom: 20px; font-weight: 600; }
-.footer-links li { margin-bottom: 10px; }
-.footer-links a:hover { color: var(--ty-orange); text-decoration: underline; }
-.social-links { display: flex; gap: 10px; margin-top: 15px; }
-.social-icon {
-    width: 36px; height: 36px;
-    background: #222;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: #fff;
-    transition: 0.2s;
-}
-.social-icon:hover { background: var(--ty-orange); }
+.product-card:hover .add-cart-overlay-btn { transform: translateY(0); opacity: 1; }
 
 /* ==========================================================================
-   6. MOBİL NAVIGASYON & DRAWER (SEPET)
+   7. DRAWERS & MODALS
    ==========================================================================
 */
-.mobile-bottom-nav {
-    display: none; /* Desktopta gizli */
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: var(--bottom-nav-height);
-    background: #1b1b1b;
-    border-top: 1px solid #333;
-    z-index: 1000;
-    justify-content: space-around;
-    align-items: center;
-    padding-bottom: env(safe-area-inset-bottom);
-}
-.mobile-nav-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #888;
-    font-size: 10px;
-    height: 100%;
-}
-.mobile-nav-item.active { color: var(--ty-orange); }
-.mobile-nav-item svg { width: 22px; height: 22px; margin-bottom: 3px; }
-
-/* Sepet Drawer (Sağdan Açılan) */
 .overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(4px);
     z-index: 2000;
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
-    backdrop-filter: blur(3px);
 }
 .overlay.active { opacity: 1; visibility: visible; }
 
+/* Right Drawer (Cart/Favorites) */
 .drawer {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
-    width: 380px;
-    max-width: 85%;
-    background: #1b1b1b;
+    width: 400px;
+    max-width: 90%;
+    background: var(--bg-surface);
     z-index: 2001;
     transform: translateX(100%);
-    transition: transform 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
-    border-left: 1px solid #333;
+    border-left: 1px solid var(--border-color);
 }
-.drawer.active { transform: translateX(0); }
-
+.drawer.open { transform: translateX(0); }
 .drawer-header {
     padding: 20px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.drawer-body { flex: 1; overflow-y: auto; padding: 20px; }
+.drawer-title { font-size: 18px; font-weight: 700; }
+.drawer-close { font-size: 24px; padding: 5px; color: var(--text-secondary); cursor: pointer; }
+.drawer-content { flex: 1; overflow-y: auto; padding: 20px; }
 .drawer-footer {
     padding: 20px;
-    background: #252525;
-    border-top: 1px solid #333;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-card);
 }
 
-/* Modal */
-.modal {
+/* Cart Item */
+.cart-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    animation: fadeIn 0.3s;
+}
+.cart-item-img { width: 70px; height: 90px; object-fit: cover; border-radius: 6px; background: #333; }
+.cart-item-info { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.cart-item-title { font-size: 14px; font-weight: 600; line-height: 1.3; }
+.cart-item-meta { font-size: 12px; color: var(--text-secondary); }
+.cart-item-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 5px; }
+.qty-control { display: flex; align-items: center; gap: 8px; background: var(--bg-input); padding: 4px; border-radius: 4px; }
+.qty-btn { width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; }
+.cart-item-price { font-weight: 700; color: var(--color-primary); }
+.cart-remove-btn { color: var(--status-error); font-size: 12px; cursor: pointer; }
+
+/* Auth Modal */
+.modal-container {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.9);
-    background: #252525;
-    width: 90%;
-    max-width: 400px;
-    border-radius: 12px;
-    z-index: 3000;
-    padding: 25px;
+    width: 420px;
+    max-width: 95%;
+    background: var(--bg-surface);
+    z-index: 2005;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     opacity: 0;
     visibility: hidden;
-    transition: 0.3s;
+    transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
 }
-.modal.active { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
-
-/* Toast Bildirim */
-.toast-box {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.modal-container.active { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+.auth-header { display: flex; background: #000; }
+.auth-tab {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-muted);
+    border-bottom: 2px solid transparent;
 }
-.toast {
-    background: #333;
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 6px;
-    border-left: 4px solid var(--ty-orange);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    animation: slideInRight 0.3s;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-@keyframes slideInRight {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
+.auth-tab.active { color: var(--color-primary); border-color: var(--color-primary); background: var(--bg-surface); }
+.auth-body { padding: 30px; }
+.auth-title { font-size: 20px; font-weight: 800; margin-bottom: 20px; text-align: center; }
 
 /* ==========================================================================
-   7. RESPONSIVE (MOBİL UYUM)
+   8. FOOTER
+   ==========================================================================
+*/
+footer {
+    background: #050505;
+    border-top: 1px solid var(--border-color);
+    padding: 60px 0 30px;
+    font-size: 14px;
+    margin-top: auto;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+.footer-col h5 { color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 20px; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a { color: var(--text-muted); transition: 0.2s; }
+.footer-links a:hover { color: var(--color-primary); padding-left: 5px; }
+.social-icons { display: flex; gap: 10px; margin-top: 20px; }
+.social-btn {
+    width: 36px; height: 36px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    transition: 0.3s;
+}
+.social-btn:hover { background: var(--color-primary); color: #000; transform: translateY(-3px); }
+
+/* ==========================================================================
+   9. RESPONSIVE DESIGN
    ==========================================================================
 */
 @media (max-width: 1024px) {
-    .product-grid { grid-template-columns: repeat(3, 1fr); }
-    .hero-wrapper { grid-template-columns: 1fr; height: auto; }
-    .side-banners { display: none; }
-    .main-slider { height: 250px; }
+    .page-layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; } /* Hide sidebar on small screens for this demo */
+    .hero-slider-container { height: 300px; }
+    .hero-title { font-size: 32px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 768px) {
-    .main-header { display: none; } /* Desktop header gizle */
-    .mobile-header { display: flex; padding: 10px 15px; background: #1b1b1b; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 900; border-bottom: 1px solid #333; }
-    .mobile-bottom-nav { display: flex; }
+    .top-strip, .search-wrapper { display: none; }
+    .header-actions { display: none; } /* Move to bottom nav */
+    .mobile-nav { display: flex; }
+    .hero-slide { padding: 0 20px; }
     .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .footer-grid { grid-template-columns: 1fr; gap: 20px; }
-    .app-grid { flex-direction: column; text-align: center; gap: 20px; }
-    .app-buttons { justify-content: center; }
-    .container { padding: 0 10px; }
-    .slide { padding: 20px; align-items: center; }
-    .slide-content { text-align: center; }
-    .slide-title { font-size: 20px; }
+    .modal-container { width: 90%; }
+    .drawer { width: 100%; }
 }
-
-/* Sepet Öğe Stili */
-.cart-item { display: flex; gap: 10px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #333; }
-.cart-img { width: 60px; height: 80px; object-fit: cover; border-radius: 4px; background: #fff; }
-.cart-info { flex: 1; }
-.cart-title { font-size: 12px; margin-bottom: 5px; color: #fff; }
-.cart-price { color: var(--ty-orange); font-weight: 700; }
-.cart-qty-ctrl { display: flex; align-items: center; gap: 10px; margin-top: 5px; background: #333; width: fit-content; padding: 2px 5px; border-radius: 4px; }
-.qty-btn { font-size: 16px; padding: 0 5px; color: #fff; }
 
 </style>
 </head>
 <body>
 
-<div class="overlay" id="overlay" onclick="closeAll()"></div>
-<div class="toast-box" id="toastBox"></div>
+<div class="overlay" id="globalOverlay" onclick="app.closeAll()"></div>
 
-<div class="modal" id="contactModal">
-    <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
-        <h3 style="font-size:18px; font-weight:700;">İletişim Bilgileri</h3>
-        <button onclick="closeAll()" style="font-size:20px;">&times;</button>
+<div class="toast-container" id="toastArea"></div>
+
+<div class="modal-container" id="authModal">
+    <div class="auth-header">
+        <div class="auth-tab active" onclick="app.switchAuth('login')">Giriş Yap</div>
+        <div class="auth-tab" onclick="app.switchAuth('register')">Üye Ol</div>
     </div>
-    <div style="text-align:center; padding: 20px 0;">
-        <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png" style="width:60px; margin:0 auto 15px;">
-        <h4 style="color:#fff; margin-bottom:5px;">Kerim Bayraktar</h4>
-        <p style="color:#888; font-size:13px; margin-bottom:20px;">Baytek Collection Kurucusu</p>
-        
-        <div style="background:#333; padding:15px; border-radius:8px; margin-bottom:10px; display:flex; align-items:center; gap:10px;">
-            <span style="font-size:20px;">📞</span>
-            <div style="text-align:left;">
-                <div style="font-size:10px; color:#aaa;">Telefon / WhatsApp</div>
-                <div style="font-weight:700;">0533 477 26 49</div>
+    
+    <div class="auth-body" id="loginForm">
+        <h3 class="auth-title">Hoşgeldiniz</h3>
+        <form onsubmit="app.handleLogin(event)">
+            <div class="form-group">
+                <label class="form-label">E-Posta Adresi</label>
+                <input type="email" class="form-control" id="loginEmail" placeholder="ornek@email.com" required>
             </div>
-        </div>
-        
-        <div style="background:#333; padding:15px; border-radius:8px; display:flex; align-items:center; gap:10px;">
-            <span style="font-size:20px;">✉️</span>
-            <div style="text-align:left;">
-                <div style="font-size:10px; color:#aaa;">E-Posta</div>
-                <div style="font-weight:700;">kerimdjis@gmail.com</div>
+            <div class="form-group">
+                <label class="form-label">Şifre</label>
+                <input type="password" class="form-control" id="loginPass" placeholder="•••••••" required>
+                <div class="text-right" style="margin-top:5px;">
+                    <a href="#" class="text-xs text-muted">Şifremi Unuttum?</a>
+                </div>
             </div>
-        </div>
-        
-        <a href="https://www.instagram.com/baytekcollection" target="_blank" style="display:block; background:linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); color:white; padding:12px; border-radius:8px; margin-top:20px; font-weight:700;">
-            Instagram'da Takip Et
-        </a>
+            <button type="submit" class="btn btn-primary w-full">GİRİŞ YAP</button>
+        </form>
+    </div>
+
+    <div class="auth-body hidden" id="registerForm">
+        <h3 class="auth-title">Hızlı Kayıt</h3>
+        <form onsubmit="app.handleRegister(event)">
+            <div class="flex gap-10">
+                <div class="form-group w-full">
+                    <label class="form-label">Ad</label>
+                    <input type="text" class="form-control" placeholder="Adınız">
+                </div>
+                <div class="form-group w-full">
+                    <label class="form-label">Soyad</label>
+                    <input type="text" class="form-control" placeholder="Soyadınız">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">E-Posta</label>
+                <input type="email" class="form-control" placeholder="E-Posta" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Şifre Oluştur</label>
+                <input type="password" class="form-control" placeholder="En az 6 karakter" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-full">KAYIT OL</button>
+        </form>
+        <p class="text-xs text-muted text-center" style="margin-top:15px;">
+            Kayıt olarak <a href="#" style="text-decoration:underline">Kullanım Koşullarını</a> kabul etmiş olursunuz.
+        </p>
     </div>
 </div>
 
 <div class="drawer" id="cartDrawer">
     <div class="drawer-header">
-        <h3>Sepetim (<span id="cartCountHeader">0</span>)</h3>
-        <button onclick="closeAll()" style="color:#fff; font-size:24px;">&times;</button>
+        <div class="drawer-title">Sepetim (<span id="cartCountHeader">0</span>)</div>
+        <div class="drawer-close" onclick="app.closeAll()">&times;</div>
     </div>
-    <div class="drawer-body" id="cartContent">
+    <div class="drawer-content" id="cartContent">
         </div>
-    <div class="drawer-footer">
-        <div class="flex justify-between" style="margin-bottom:15px;">
-            <span>Toplam</span>
-            <span class="text-orange font-bold text-lg" id="cartTotal">0.00 TL</span>
+    <div class="drawer-footer" id="cartFooter">
+        <div class="flex justify-between items-center mb-4" style="margin-bottom:15px">
+            <span class="text-secondary">Toplam Tutar</span>
+            <span class="text-xl font-bold text-primary" id="cartTotal">0.00 TL</span>
         </div>
-        <button class="w-full" style="background:var(--ty-orange); color:#fff; padding:15px; border-radius:6px; font-weight:700;" onclick="handleCheckout()">
-            SEPETİ ONAYLA
-        </button>
-        <div style="text-align:center; margin-top:10px; font-size:11px; color:#666;">
-            Güvenli ödeme altyapısı Shopier tarafından sağlanmaktadır.
-        </div>
+        <button class="btn btn-primary w-full">SEPETİ ONAYLA</button>
     </div>
 </div>
 
-<div class="top-bar">
-    🔥 İLK SİPARİŞE ÖZEL KAMPANYALAR BAYTEK COLLECTION'DA!
-</div>
-
-<div class="mobile-header hidden">
-    <div class="logo">Baytek<span>.</span></div>
-    <div style="display:flex; gap:15px;">
-        <button onclick="openModal('contactModal')">📞</button>
-        <div class="nav-badge-wrap" onclick="toggleCart()">
-            <span>🛒</span>
-            <span class="nav-badge" id="mobileHeaderBadge">0</span>
-        </div>
+<div class="drawer" id="favDrawer">
+    <div class="drawer-header">
+        <div class="drawer-title">Favorilerim</div>
+        <div class="drawer-close" onclick="app.closeAll()">&times;</div>
     </div>
+    <div class="drawer-content" id="favContent">
+        </div>
 </div>
 
-<header class="main-header">
-    <div class="container header-inner">
-        <a href="#" class="logo" onclick="window.location.reload()">BAYTEK<span>COLLECTION</span></a>
-        
-        <div class="search-container">
-            <input type="text" class="search-input" id="searchInput" placeholder="Aradığınız ürün, kategori veya marka...">
-            <span class="search-icon">🔍</span>
-        </div>
-        
-        <div class="account-nav">
-            <div class="nav-item" onclick="openModal('contactModal')">
-                <span>📞</span>
-                <span>İletişim</span>
+<header>
+    <div class="top-strip">
+        <div class="container flex justify-between">
+            <div class="flex gap-md">
+                <span>🔥 İlk siparişe özel %10 indirim kodu: <strong>BAYTEK10</strong></span>
             </div>
-            <div class="nav-item" onclick="window.open('https://www.instagram.com/baytekcollection', '_blank')">
-                <span>📷</span>
-                <span>Instagram</span>
+            <div class="flex gap-lg">
+                <a href="#">Sipariş Takibi</a>
+                <a href="#">Yardım & Destek</a>
+                <a href="#">Blog</a>
             </div>
-            <div class="nav-item nav-badge-wrap" onclick="toggleCart()">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                <span>Sepetim</span>
-                <span class="nav-badge" id="desktopBadge">0</span>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container flex justify-between items-center w-full">
+            <a href="#" class="brand-logo" onclick="window.location.reload()">
+                BAYTEK<span>.</span>
+            </a>
+
+            <div class="search-wrapper">
+                <input type="text" class="search-input" id="searchInput" placeholder="Aradığınız ürün, kategori veya marka...">
+                <button class="search-btn">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+                </button>
+            </div>
+
+            <div class="header-actions">
+                <button class="action-item" onclick="app.openAuth()" id="userBtnLabel">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span id="userNameDisplay">Giriş Yap</span>
+                </button>
+                <button class="action-item" onclick="app.openFav()">
+                    <div class="relative">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        <span class="badge-count" id="favBadge">0</span>
+                    </div>
+                    <span>Favoriler</span>
+                </button>
+                <button class="action-item" onclick="app.openCart()">
+                    <div class="relative">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        <span class="badge-count" id="cartBadge">0</span>
+                    </div>
+                    <span>Sepetim</span>
+                </button>
             </div>
         </div>
     </div>
 </header>
-
 <main class="container">
     
-    <div class="hero-wrapper">
-        <div class="main-slider">
-            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=2000&auto=format&fit=crop');">
-                <div class="slide-content">
-                    <div class="slide-title">Premium Hediyelikler</div>
-                    <div class="slide-desc">Sevdiklerinizi mutlu edecek en özel tasarımlar.</div>
-                    <button style="background:var(--ty-orange); color:#fff; padding:10px 20px; border-radius:4px; font-weight:700;" onclick="scrollToProducts()">Alışverişe Başla</button>
+    <section class="hero-section">
+        <div class="hero-slider-container">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&q=80&w=2000');">
+                <div class="hero-content">
+                    <span class="hero-tag">YENİ SEZON</span>
+                    <h1 class="hero-title">Tarzını Yansıtacak<br>Premium Parçalar</h1>
+                    <p class="hero-desc">Evinizin havasını değiştirecek dekorasyon ürünlerinde lansmana özel %20 indirim fırsatı.</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('productsAnchor').scrollIntoView()">ALIŞVERİŞE BAŞLA</button>
                 </div>
             </div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1520121401995-928cd50d4e27?q=80&w=2000&auto=format&fit=crop');">
-                <div class="slide-content">
-                    <div class="slide-title">Doğa İle İç İçe</div>
-                    <div class="slide-desc">Kamp ve outdoor ürünlerinde kaçırılmayacak fırsatlar.</div>
-                    <button style="background:var(--ty-orange); color:#fff; padding:10px 20px; border-radius:4px; font-weight:700;" onclick="scrollToProducts()">Keşfet</button>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=2000');">
+                <div class="hero-content">
+                    <span class="hero-tag">HEDİYE FESTİVALİ</span>
+                    <h1 class="hero-title">Sevdiklerini<br>Mutlu Et</h1>
+                    <p class="hero-desc">Özel günler için hazırlanmış premium hediye kutularında ücretsiz kargo avantajı.</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('productsAnchor').scrollIntoView()">KEŞFET</button>
                 </div>
+            </div>
+            
+            <div class="slider-nav">
+                <div class="slider-dot active" onclick="app.setSlide(0)"></div>
+                <div class="slider-dot" onclick="app.setSlide(1)"></div>
             </div>
         </div>
-        <div class="side-banners">
-            <div class="banner-card" onclick="scrollToProducts()">
-                <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800&auto=format&fit=crop" alt="Ayakkabı">
-                <div style="position:absolute; bottom:10px; left:10px; font-weight:700; background:var(--ty-orange); padding:2px 8px; border-radius:4px; font-size:12px;">EN YENİLER</div>
-            </div>
-            <div class="banner-card" onclick="scrollToProducts()">
-                <img src="https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?q=80&w=800&auto=format&fit=crop" alt="Teknoloji">
-                <div style="position:absolute; bottom:10px; left:10px; font-weight:700; background:var(--ty-green); padding:2px 8px; border-radius:4px; font-size:12px;">KARGO BEDAVA</div>
-            </div>
+    </section>
+
+    <div class="grid grid-cols-4 gap-md" style="margin-bottom:40px; padding:20px; border:1px solid var(--border-color); border-radius:var(--radius-md); background:var(--bg-card);">
+        <div class="flex items-center gap-sm">
+            <div class="btn-icon text-primary"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></div>
+            <div><div class="font-bold text-sm">Hızlı Kargo</div><div class="text-xs text-secondary">24 saatte kargoda</div></div>
+        </div>
+        <div class="flex items-center gap-sm">
+            <div class="btn-icon text-primary"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+            <div><div class="font-bold text-sm">Güvenli Ödeme</div><div class="text-xs text-secondary">256-bit SSL Koruma</div></div>
+        </div>
+        <div class="flex items-center gap-sm">
+            <div class="btn-icon text-primary"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div>
+            <div><div class="font-bold text-sm">Orijinal Ürün</div><div class="text-xs text-secondary">Faturalı & Garantili</div></div>
+        </div>
+        <div class="flex items-center gap-sm">
+            <div class="btn-icon text-primary"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></div>
+            <div><div class="font-bold text-sm">7/24 Destek</div><div class="text-xs text-secondary">WhatsApp Hattı</div></div>
         </div>
     </div>
 
-    <div style="display:flex; gap:15px; overflow-x:auto; padding:30px 0; scrollbar-width:none;">
-        <div style="flex:0 0 auto; text-align:center; cursor:pointer;" onclick="filterCat('all')">
-            <div style="width:70px; height:70px; border-radius:50%; background:linear-gradient(135deg, #f27a1a, #ff9f5e); display:flex; align-items:center; justify-content:center; margin-bottom:5px; border:2px solid #fff;">
-                <span style="font-size:24px;">♾️</span>
-            </div>
-            <div style="font-size:12px; font-weight:600;">Tümü</div>
-        </div>
-        <div style="flex:0 0 auto; text-align:center; cursor:pointer;" onclick="filterCat('decor')">
-            <div style="width:70px; height:70px; border-radius:50%; background:#333; display:flex; align-items:center; justify-content:center; margin-bottom:5px; border:2px solid #555;">
-                <span style="font-size:24px;">🏠</span>
-            </div>
-            <div style="font-size:12px; font-weight:600;">Dekor</div>
-        </div>
-        <div style="flex:0 0 auto; text-align:center; cursor:pointer;" onclick="filterCat('drink')">
-            <div style="width:70px; height:70px; border-radius:50%; background:#333; display:flex; align-items:center; justify-content:center; margin-bottom:5px; border:2px solid #555;">
-                <span style="font-size:24px;">☕</span>
-            </div>
-            <div style="font-size:12px; font-weight:600;">Termos</div>
-        </div>
-        <div style="flex:0 0 auto; text-align:center; cursor:pointer;" onclick="filterCat('fashion')">
-            <div style="width:70px; height:70px; border-radius:50%; background:#333; display:flex; align-items:center; justify-content:center; margin-bottom:5px; border:2px solid #555;">
-                <span style="font-size:24px;">👜</span>
-            </div>
-            <div style="font-size:12px; font-weight:600;">Çanta</div>
-        </div>
-    </div>
-
-    <div id="products-anchor">
-        <div class="section-title">
-            <span>Sizin İçin Seçtiklerimiz</span>
-        </div>
+    <div class="page-layout" id="productsAnchor">
         
-        <div class="product-grid" id="productGrid">
+        <aside class="sidebar">
+            <div class="filter-section">
+                <div class="filter-title">Kategoriler</div>
+                <div class="filter-list" id="catFilterList">
+                    </div>
             </div>
-    </div>
 
-    <div class="app-banner-section">
-        <div class="app-grid">
-            <div class="app-text">
-                <h3>Baytek Collection Cebinde!</h3>
-                <p>En trend ürünler, özel indirimler ve kolay alışveriş deneyimi için hemen uygulamamızı indirin.</p>
+            <div class="filter-section">
+                <div class="filter-title">Fiyat Aralığı</div>
+                <div class="flex gap-sm items-center">
+                    <input type="number" class="form-control" placeholder="Min" style="padding:6px;">
+                    <span>-</span>
+                    <input type="number" class="form-control" placeholder="Max" style="padding:6px;">
+                    <button class="btn btn-primary" style="padding:6px 10px;">></button>
+                </div>
             </div>
-            <div class="app-buttons">
-                <button class="app-btn">
-                    <svg viewBox="0 0 384 512" fill="#fff"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 52.3-11.4 69.5-34.3z"/></svg>
-                    <div style="text-align:left">
-                        <div style="font-size:9px">App Store'dan</div>
-                        <div style="font-weight:700">İndir</div>
-                    </div>
-                </button>
-                <button class="app-btn">
-                    <svg viewBox="0 0 512 512" fill="#fff"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l220.7-221.3-60.1-60.1L47 499z"/></svg>
-                    <div style="text-align:left">
-                        <div style="font-size:9px">Google Play'den</div>
-                        <div style="font-weight:700">İndir</div>
-                    </div>
-                </button>
+
+            <div class="filter-section">
+                <div class="filter-title">Değerlendirme Puanı</div>
+                <div class="filter-list">
+                    <div class="filter-item"><span class="checkbox-custom"></span> ★★★★☆ ve üzeri</div>
+                    <div class="filter-item"><span class="checkbox-custom"></span> ★★★☆☆ ve üzeri</div>
+                </div>
             </div>
-        </div>
+            
+            <button class="btn btn-outline w-full text-xs" onclick="app.resetFilters()">Filtreleri Temizle</button>
+        </aside>
+
+        <section>
+            <div class="products-header">
+                <div>
+                    <h2 class="text-lg font-bold">Tüm Ürünler</h2>
+                    <p class="text-xs text-secondary"><span id="totalProductCount">0</span> ürün listeleniyor</p>
+                </div>
+                <select class="sort-select" onchange="app.sortProducts(this.value)">
+                    <option value="default">Önerilen Sıralama</option>
+                    <option value="price-asc">En Düşük Fiyat</option>
+                    <option value="price-desc">En Yüksek Fiyat</option>
+                    <option value="newest">En Yeniler</option>
+                </select>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+                </div>
+            
+            <div class="text-center" style="margin-top:40px;">
+                <button class="btn btn-outline" style="min-width:200px">Daha Fazla Göster</button>
+            </div>
+        </section>
     </div>
 
 </main>
 
-<footer>
-    <div class="container footer-grid">
-        <div class="footer-col">
-            <div class="logo" style="margin-bottom:20px;">Baytek<span>.</span></div>
-            <p style="margin-bottom:20px; line-height:1.6;">
-                Baytek Collection, ev dekorasyonundan kişisel aksesuarlara kadar en seçkin ürünleri güvenle kapınıza getirir.
-            </p>
-            <div class="social-links">
-                <a href="https://www.instagram.com/baytekcollection" target="_blank" class="social-icon">📷</a>
-                <a href="#" class="social-icon">f</a>
-                <a href="#" class="social-icon">🐦</a>
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="#" class="brand-logo" style="margin-bottom:20px">BAYTEK<span>.</span></a>
+                <p style="color:#888; margin-bottom:20px; max-width: 300px; line-height:1.6;">
+                    Eviniz ve sevdikleriniz için en özel parçalar. Kalite, güven ve estetiği bir araya getiriyoruz.
+                </p>
+                <div class="social-icons">
+                    <a href="#" class="social-btn"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                    <a href="#" class="social-btn"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                    <a href="#" class="social-btn"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h5>Hızlı Menü</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Yeni Gelenler</a></li>
+                    <li><a href="#">Çok Satanlar</a></li>
+                    <li><a href="#">Kampanyalar</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h5>Kurumsal</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Hakkımızda</a></li>
+                    <li><a href="#">İletişim</a></li>
+                    <li><a href="#">İade ve İptal</a></li>
+                    <li><a href="#">Gizlilik Politikası</a></li>
+                    <li><a href="#">KVKK Aydınlatma Metni</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h5>Müşteri Hizmetleri</h5>
+                <p style="color:#888; margin-bottom:10px">WhatsApp Destek Hattı</p>
+                <div style="font-size:24px; font-weight:800; color:#fff; margin-bottom:20px;">0850 123 45 67</div>
+                <div class="payment-badges flex gap-sm opacity-50">
+                    <div style="background:#fff; padding:2px 6px; border-radius:3px; color:#000; font-weight:bold; font-size:10px;">VISA</div>
+                    <div style="background:#fff; padding:2px 6px; border-radius:3px; color:#000; font-weight:bold; font-size:10px;">MASTER</div>
+                    <div style="background:#fff; padding:2px 6px; border-radius:3px; color:#000; font-weight:bold; font-size:10px;">TROY</div>
+                </div>
             </div>
         </div>
-        <div class="footer-col">
-            <h4>Kurumsal</h4>
-            <ul class="footer-links">
-                <li><a href="#">Hakkımızda</a></li>
-                <li><a href="#">Kariyer</a></li>
-                <li><a href="#">İletişim</a></li>
-                <li><a href="#">Blog</a></li>
-            </ul>
+        
+        <div style="border-top:1px solid #222; padding-top:20px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; color:#555; font-size:12px;">
+            <div>© 2026 Baytek Collection Inc. Tüm hakları saklıdır.</div>
         </div>
-        <div class="footer-col">
-            <h4>Yardım</h4>
-            <ul class="footer-links">
-                <li><a href="#">Sıkça Sorulan Sorular</a></li>
-                <li><a href="#">Canlı Yardım</a></li>
-                <li><a href="#">İade ve Değişim</a></li>
-                <li><a href="#">İşlem Rehberi</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Güvenli Ödeme</h4>
-            <p style="font-size:12px; margin-bottom:10px;">Shopier altyapısı ile %100 güvenli alışveriş.</p>
-            <div style="display:flex; gap:5px; opacity:0.7;">
-                <div style="background:#fff; width:40px; height:25px; border-radius:3px;"></div>
-                <div style="background:#fff; width:40px; height:25px; border-radius:3px;"></div>
-                <div style="background:#fff; width:40px; height:25px; border-radius:3px;"></div>
-            </div>
-            <div style="margin-top:20px;">
-                <h4 style="margin-bottom:5px; font-size:14px;">Kerim Bayraktar</h4>
-                <a href="tel:05334772649" style="color:#fff; font-weight:700;">0533 477 26 49</a>
-            </div>
-        </div>
-    </div>
-    <div class="container text-center" style="margin-top:40px; padding-top:20px; border-top:1px solid #222; font-size:11px;">
-        © 2026 Baytek Collection. Tüm hakları saklıdır.
     </div>
 </footer>
 
-<nav class="mobile-bottom-nav">
-    <div class="mobile-nav-item active" onclick="window.scrollTo(0,0)">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+<div class="mobile-nav">
+    <div class="mobile-nav-item active" onclick="app.closeAll(); window.scrollTo(0,0)">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         <span>Anasayfa</span>
     </div>
     <div class="mobile-nav-item" onclick="document.getElementById('searchInput').focus()">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
         <span>Ara</span>
     </div>
-    <div class="mobile-nav-item" onclick="toggleCart()" style="position:relative;">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-        <span>Sepetim</span>
-        <span class="nav-badge" id="mobileNavBadge" style="top:5px; right:20%;">0</span>
+    <div class="mobile-nav-item" onclick="app.openCart()">
+        <div class="relative">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span class="badge-count" id="mobileCartBadge">0</span>
+        </div>
+        <span>Sepet</span>
     </div>
-    <div class="mobile-nav-item" onclick="openModal('contactModal')">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+    <div class="mobile-nav-item" onclick="app.openFav()">
+        <div class="relative">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span class="badge-count" id="mobileFavBadge">0</span>
+        </div>
+        <span>Favoriler</span>
+    </div>
+    <div class="mobile-nav-item" onclick="app.openAuth()">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         <span>Hesabım</span>
     </div>
-</nav>
+</div>
 
 <script>
 /* ==========================================================================
-   UYGULAMA MANTIĞI (JAVASCRIPT ENGINE)
+   JAVASCRIPT APP ENGINE
    ==========================================================================
+   Includes: State Management, Data, Rendering, Interactions
 */
 
-// ÜRÜN VERİTABANI (Sadece senin 5 ürünün)
-const products = [
-    { 
-        id: 101, 
-        name: "Kartal Figürlü LED Işıklı Su Şelalesi", 
-        price: 1200, 
-        oldPrice: 1500,
-        cat: "decor", 
-        img: "https://i.imgur.com/aIAthmX.jpeg", 
-        shopier: "https://www.shopier.com/baytekcollection/41882654",
-        isNew: true,
-        rating: 4.8,
-        reviews: 124
-    },
-    { 
-        id: 102, 
-        name: "3 Bardaklı Vakumlu Termos Seti", 
-        price: 450, 
-        oldPrice: 600,
-        cat: "drink", 
-        img: "https://i.imgur.com/wvdZXrC.jpeg", 
-        shopier: "https://www.shopier.com/baytekcollection/41884160",
-        isNew: false,
-        rating: 4.9,
-        reviews: 85
-    },
-    { 
-        id: 103, 
-        name: "Mobgift USB’li Işıklı Cam Küre", 
-        price: 200, 
-        oldPrice: 250,
-        cat: "decor", 
-        img: "https://i.imgur.com/oiAFO7w.jpeg", 
-        shopier: "https://www.shopier.com/baytekcollection/41884313",
-        isNew: false,
-        rating: 4.7,
-        reviews: 210
-    },
-    { 
-        id: 104, 
-        name: "3’lü Motivasyonel Su Matarası", 
-        price: 350, 
-        oldPrice: 420,
-        cat: "drink", 
-        img: "https://i.imgur.com/2en5c9l.jpeg", 
-        shopier: "https://www.shopier.com/baytekcollection/41884046",
-        isNew: true,
-        rating: 4.6,
-        reviews: 45
-    },
-    { 
-        id: 105, 
-        name: "Lora Bordo Monogram Çanta", 
-        price: 400, 
-        oldPrice: 550,
-        cat: "fashion", 
-        img: "https://i.imgur.com/1a4ScDF.jpeg", 
-        shopier: "https://www.shopier.com/baytekcollection/42471489",
-        isNew: true,
-        rating: 5.0,
-        reviews: 18
-    }
-];
+const db = {
+    products: [
+        { id: 101, name: "Kartal Figürlü LED Işıklı Su Şelalesi", price: 1250, oldPrice: 1600, cat: "decor", img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=600", rating: 4.8, isNew: true, fastShipping: true },
+        { id: 102, name: "Premium Çelik Termos Seti (3 Bardaklı)", price: 450, oldPrice: 600, cat: "drink", img: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&q=80&w=600", rating: 4.9, isNew: false, fastShipping: true },
+        { id: 103, name: "Mobgift USB’li Işıklı Cam Küre", price: 290, oldPrice: 350, cat: "gift", img: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=600", rating: 4.5, isNew: false, fastShipping: false },
+        { id: 104, name: "Lora Bordo Monogram Çanta", price: 550, oldPrice: 850, cat: "fashion", img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=600", rating: 5.0, isNew: true, fastShipping: true },
+        { id: 105, name: "Ahşap Dekoratif Masa Saati", price: 320, oldPrice: 0, cat: "decor", img: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?auto=format&fit=crop&q=80&w=600", rating: 4.2, isNew: false, fastShipping: true },
+        { id: 106, name: "Kişiye Özel Deri Cüzdan", price: 180, oldPrice: 250, cat: "gift", img: "https://images.unsplash.com/photo-1627123424574-181ce5171c98?auto=format&fit=crop&q=80&w=600", rating: 4.7, isNew: false, fastShipping: true },
+        { id: 107, name: "Motivasyonel Matara 2L", price: 220, oldPrice: 300, cat: "drink", img: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&q=80&w=600", rating: 4.6, isNew: false, fastShipping: true },
+        { id: 108, name: "Minimalist Ofis Lambası", price: 890, oldPrice: 1200, cat: "decor", img: "https://images.unsplash.com/photo-1507473888900-52e1adad54cd?auto=format&fit=crop&q=80&w=600", rating: 4.9, isNew: true, fastShipping: true },
+        { id: 109, name: "Retro Kahve Öğütücü", price: 650, oldPrice: 750, cat: "kitchen", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600", rating: 4.4, isNew: false, fastShipping: false },
+        { id: 110, name: "Gümüş Kolye Sonsuzluk Temalı", price: 420, oldPrice: 500, cat: "fashion", img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=600", rating: 4.8, isNew: false, fastShipping: true },
+        { id: 111, name: "Bambu Sunum Tepsisi", price: 150, oldPrice: 0, cat: "kitchen", img: "https://images.unsplash.com/photo-1603199835773-6a589410ac44?auto=format&fit=crop&q=80&w=600", rating: 4.3, isNew: false, fastShipping: true },
+        { id: 112, name: "Akıllı Termos Göstergeli", price: 380, oldPrice: 500, cat: "drink", img: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&q=80&w=600", rating: 4.7, isNew: true, fastShipping: true }
+    ],
+    categories: [
+        { id: 'all', name: 'Tümü' },
+        { id: 'decor', name: 'Dekorasyon' },
+        { id: 'gift', name: 'Hediyelik' },
+        { id: 'drink', name: 'Termos & Kupa' },
+        { id: 'fashion', name: 'Moda & Aksesuar' },
+        { id: 'kitchen', name: 'Mutfak' }
+    ]
+};
 
-// DURUM YÖNETİMİ
-let cart = [];
-let slideIndex = 0;
+const app = {
+    state: {
+        cart: [],
+        favorites: [],
+        user: null,
+        activeCategory: 'all',
+        slideIndex: 0
+    },
 
-// BAŞLANGIÇ
-document.addEventListener('DOMContentLoaded', () => {
-    renderProducts(products);
-    startSlider();
-    updateCartUI();
-    
-    // Arama Dinleyici
-    document.getElementById('searchInput').addEventListener('input', (e) => {
-        const val = e.target.value.toLowerCase();
-        const filtered = products.filter(p => p.name.toLowerCase().includes(val));
-        renderProducts(filtered);
-    });
-});
+    init: function() {
+        this.renderProducts();
+        this.renderCategories();
+        this.updateBadges();
+        this.startSlider();
+        
+        // Search listener
+        document.getElementById('searchInput').addEventListener('input', (e) => this.handleSearch(e.target.value));
+        
+        console.log("Baytek App Initialized v2.0");
+    },
 
-// ÜRÜN LİSTELEME FONKSİYONU
-function renderProducts(data) {
-    const grid = document.getElementById('productGrid');
-    
-    if(data.length === 0) {
-        grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:50px; color:#666;">Aradığınız ürün bulunamadı.</div>';
-        return;
-    }
+    // --- PRODUCT LOGIC ---
+    renderProducts: function(productsToRender = db.products) {
+        const grid = document.getElementById('productGrid');
+        const countEl = document.getElementById('totalProductCount');
+        
+        if (productsToRender.length === 0) {
+            grid.innerHTML = '<div class="text-center text-muted" style="grid-column:1/-1; padding:40px;">Aradığınız kriterlere uygun ürün bulunamadı.</div>';
+            countEl.innerText = 0;
+            return;
+        }
 
-    grid.innerHTML = data.map(p => {
-        const discount = Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100);
-        return `
-        <div class="product-card">
-            <div class="card-image-wrap">
-                <img src="${p.img}" class="card-img" loading="lazy">
-                
+        grid.innerHTML = productsToRender.map(p => {
+            const hasDiscount = p.oldPrice > p.price;
+            const discountRate = hasDiscount ? Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100) : 0;
+            const isFav = this.state.favorites.includes(p.id);
+
+            return `
+            <article class="product-card">
                 <div class="card-badges">
-                    ${p.isNew ? '<span class="badge bg-orange">YENİ</span>' : ''}
-                    <span class="badge bg-dark">%${discount} İndirim</span>
-                    <span class="badge" style="background:#16c60c">HIZLI KARGO</span>
+                    ${p.isNew ? '<span class="badge badge-new">YENİ</span>' : ''}
+                    ${hasDiscount ? `<span class="badge badge-sale">%${discountRate}</span>` : ''}
+                    ${p.fastShipping ? '<span class="badge badge-fast">🚀 HIZLI</span>' : ''}
                 </div>
-
-                <button class="fav-btn" onclick="toggleFav(this)">
-                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <button class="card-fav-btn ${isFav ? 'active' : ''}" onclick="app.toggleFav(${p.id}, this)">
+                    <svg width="18" height="18" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                 </button>
-            </div>
-
-            <div class="card-info">
-                <div class="card-brand">BAYTEK COLLECTION</div>
-                <div class="card-title">${p.name}</div>
-                
-                <div class="rating-wrap">
-                    <span class="stars">★★★★★</span>
-                    <span class="rating-count">(${p.reviews})</span>
+                <div class="card-img-wrapper">
+                    <img src="${p.img}" class="card-img" alt="${p.name}" loading="lazy">
                 </div>
-
-                <div class="price-box">
-                    <span class="current-price">${p.price} TL</span>
-                    <span class="old-price">${p.oldPrice} TL</span>
-                </div>
-
-                <div style="display:flex; gap:5px;">
-                    <button class="btn-card-add" style="flex:1" onclick="addToCart(${p.id})">Sepete Ekle</button>
-                    <button class="btn-card-add" style="flex:1; background:var(--ty-orange); border-color:var(--ty-orange); color:#fff;" onclick="buyNow('${p.shopier}')">SATIN AL</button>
-                </div>
-            </div>
-        </div>
-        `;
-    }).join('');
-}
-
-// SEPET MANTIĞI
-function addToCart(id) {
-    const prod = products.find(p => p.id === id);
-    const existing = cart.find(item => item.id === id);
-    
-    if(existing) {
-        existing.qty++;
-        showToast(`"${prod.name}" adedi güncellendi.`);
-    } else {
-        cart.push({...prod, qty: 1});
-        showToast(`"${prod.name}" sepete eklendi.`);
-    }
-    
-    updateCartUI();
-    toggleCart(true); // Sepeti aç
-}
-
-function updateCartUI() {
-    const count = cart.reduce((acc, item) => acc + item.qty, 0);
-    const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-    
-    // Rozetleri güncelle
-    ['desktopBadge', 'mobileHeaderBadge', 'mobileNavBadge', 'cartCountHeader'].forEach(id => {
-        const el = document.getElementById(id);
-        if(el) el.innerText = count;
-    });
-
-    // Toplam tutar
-    document.getElementById('cartTotal').innerText = total.toLocaleString('tr-TR') + ' TL';
-
-    // Sepet içeriği HTML
-    const container = document.getElementById('cartContent');
-    if(cart.length === 0) {
-        container.innerHTML = `
-            <div style="text-align:center; padding-top:50px; color:#666;">
-                <svg width="60" height="60" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin:0 auto 15px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                <p>Sepetinizde ürün bulunmamaktadır.</p>
-                <button onclick="closeAll()" style="color:var(--ty-orange); margin-top:10px; font-weight:700;">Alışverişe Başla</button>
-            </div>`;
-    } else {
-        container.innerHTML = cart.map(item => `
-            <div class="cart-item">
-                <img src="${item.img}" class="cart-img">
-                <div class="cart-info">
-                    <div class="cart-title">${item.name}</div>
-                    <div class="cart-price">${item.price} TL</div>
-                    <div class="cart-qty-ctrl">
-                        <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
-                        <span style="font-size:12px; color:#fff;">${item.qty}</span>
-                        <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+                <div class="card-content">
+                    <div class="card-brand">BAYTEK COLLECTION</div>
+                    <h3 class="card-title">${p.name}</h3>
+                    <div class="card-rating">
+                        ★★★★☆ <span style="color:#666">(${Math.floor(Math.random()*200)})</span>
                     </div>
+                    <div class="card-price-container">
+                        <span class="card-price">${p.price} TL</span>
+                        ${hasDiscount ? `<span class="card-old-price">${p.oldPrice} TL</span>` : ''}
+                    </div>
+                    <button class="add-cart-overlay-btn" onclick="app.addToCart(${p.id})">SEPETE EKLE</button>
                 </div>
-                <button onclick="removeFromCart(${item.id})" style="color:#d32f2f; font-size:20px;">&times;</button>
+            </article>
+            `;
+        }).join('');
+        
+        countEl.innerText = productsToRender.length;
+    },
+
+    renderCategories: function() {
+        const list = document.getElementById('catFilterList');
+        list.innerHTML = db.categories.map(c => `
+            <div class="filter-item ${this.state.activeCategory === c.id ? 'active' : ''}" onclick="app.filterCategory('${c.id}', this)">
+                <span class="checkbox-custom"></span> ${c.name}
             </div>
         `).join('');
+    },
+
+    // --- ACTIONS ---
+    addToCart: function(id) {
+        const product = db.products.find(p => p.id === id);
+        const existing = this.state.cart.find(i => i.id === id);
+        
+        if(existing) {
+            existing.qty++;
+            this.toast(`${product.name} miktarı güncellendi`, 'success');
+        } else {
+            this.state.cart.push({ ...product, qty: 1 });
+            this.toast('Ürün sepete eklendi', 'success');
+        }
+        
+        this.updateBadges();
+        this.renderCart();
+        this.openCart();
+    },
+
+    removeFromCart: function(id) {
+        this.state.cart = this.state.cart.filter(i => i.id !== id);
+        this.updateBadges();
+        this.renderCart();
+    },
+
+    changeQty: function(id, delta) {
+        const item = this.state.cart.find(i => i.id === id);
+        if(item) {
+            item.qty += delta;
+            if(item.qty <= 0) this.removeFromCart(id);
+            else this.renderCart();
+        }
+        this.updateBadges();
+    },
+
+    toggleFav: function(id, btn) {
+        const index = this.state.favorites.indexOf(id);
+        if(index > -1) {
+            this.state.favorites.splice(index, 1);
+            btn.classList.remove('active');
+            btn.querySelector('svg').setAttribute('fill', 'none');
+            this.toast('Favorilerden çıkarıldı', 'info');
+        } else {
+            this.state.favorites.push(id);
+            btn.classList.add('active');
+            btn.querySelector('svg').setAttribute('fill', 'currentColor');
+            this.toast('Favorilere eklendi ❤️', 'success');
+        }
+        this.updateBadges();
+        this.renderFav();
+    },
+
+    // --- UI UPDATES ---
+    updateBadges: function() {
+        const cartCount = this.state.cart.reduce((a,b) => a + b.qty, 0);
+        const favCount = this.state.favorites.length;
+        
+        ['cartBadge', 'mobileCartBadge'].forEach(id => document.getElementById(id).innerText = cartCount);
+        ['favBadge', 'mobileFavBadge'].forEach(id => document.getElementById(id).innerText = favCount);
+        document.getElementById('cartCountHeader').innerText = cartCount;
+    },
+
+    renderCart: function() {
+        const container = document.getElementById('cartContent');
+        const footer = document.getElementById('cartFooter');
+        
+        if(this.state.cart.length === 0) {
+            container.innerHTML = `
+                <div class="flex flex-col items-center justify-center h-full text-center">
+                    <svg class="text-secondary" width="60" height="60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                    <p class="text-muted" style="margin-top:10px">Sepetiniz şu an boş.</p>
+                    <button class="btn btn-outline" style="margin-top:20px" onclick="app.closeAll()">Alışverişe Dön</button>
+                </div>
+            `;
+            footer.style.display = 'none';
+        } else {
+            let total = 0;
+            container.innerHTML = this.state.cart.map(item => {
+                total += item.price * item.qty;
+                return `
+                <div class="cart-item">
+                    <img src="${item.img}" class="cart-item-img">
+                    <div class="cart-item-info">
+                        <div>
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-meta">Adet: ${item.qty}</div>
+                        </div>
+                        <div class="cart-item-actions">
+                            <div class="qty-control">
+                                <div class="qty-btn" onclick="app.changeQty(${item.id}, -1)">-</div>
+                                <span style="font-size:12px">${item.qty}</span>
+                                <div class="qty-btn" onclick="app.changeQty(${item.id}, 1)">+</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="cart-item-price">${item.price * item.qty} TL</div>
+                                <div class="cart-remove-btn" onclick="app.removeFromCart(${item.id})">Sil</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+            document.getElementById('cartTotal').innerText = total + " TL";
+            footer.style.display = 'block';
+        }
+    },
+
+    renderFav: function() {
+        const container = document.getElementById('favContent');
+        if(this.state.favorites.length === 0) {
+            container.innerHTML = '<div class="text-center text-muted" style="padding-top:50px">Favori listeniz boş.</div>';
+            return;
+        }
+        
+        container.innerHTML = this.state.favorites.map(fid => {
+            const p = db.products.find(x => x.id === fid);
+            return `
+            <div class="cart-item">
+                <img src="${p.img}" class="cart-item-img">
+                <div class="cart-item-info">
+                    <div class="cart-item-title">${p.name}</div>
+                    <div class="cart-item-price">${p.price} TL</div>
+                    <button class="btn btn-primary" style="padding:5px 10px; font-size:10px; width:fit-content; margin-top:5px;" onclick="app.addToCart(${p.id})">Sepete Ekle</button>
+                </div>
+            </div>
+            `;
+        }).join('');
+    },
+
+    // --- FILTER & SORT ---
+    filterCategory: function(catId, el) {
+        this.state.activeCategory = catId;
+        this.renderCategories(); // Update UI active state
+        
+        let filtered = db.products;
+        if(catId !== 'all') {
+            filtered = db.products.filter(p => p.cat === catId);
+        }
+        this.renderProducts(filtered);
+    },
+
+    handleSearch: function(query) {
+        query = query.toLowerCase();
+        const filtered = db.products.filter(p => p.name.toLowerCase().includes(query) || p.cat.includes(query));
+        this.renderProducts(filtered);
+    },
+
+    sortProducts: function(type) {
+        let sorted = [...db.products]; // Copy
+        // Filter first if category active
+        if(this.state.activeCategory !== 'all') {
+            sorted = sorted.filter(p => p.cat === this.state.activeCategory);
+        }
+
+        switch(type) {
+            case 'price-asc': sorted.sort((a,b) => a.price - b.price); break;
+            case 'price-desc': sorted.sort((a,b) => b.price - a.price); break;
+            case 'newest': sorted = sorted.filter(p => p.isNew).concat(sorted.filter(p => !p.isNew)); break;
+            default: break; // Relevance (default ID order)
+        }
+        this.renderProducts(sorted);
+    },
+
+    resetFilters: function() {
+        this.state.activeCategory = 'all';
+        document.getElementById('searchInput').value = '';
+        this.renderCategories();
+        this.renderProducts(db.products);
+        this.toast("Filtreler temizlendi", 'info');
+    },
+
+    // --- AUTHENTICATION ---
+    handleLogin: function(e) {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value;
+        // Mock API
+        if(email.length > 5) {
+            this.state.user = { name: "Kerim B.", email: email };
+            document.getElementById('userNameDisplay').innerText = "Kerim B.";
+            document.getElementById('userBtnLabel').classList.add('text-primary');
+            this.closeAll();
+            this.toast("Başarıyla giriş yapıldı 👋", "success");
+        }
+    },
+
+    handleRegister: function(e) {
+        e.preventDefault();
+        this.toast("Kayıt başarılı! Lütfen giriş yapın.", "success");
+        this.switchAuth('login');
+    },
+
+    switchAuth: function(type) {
+        const tabs = document.querySelectorAll('.auth-tab');
+        tabs.forEach(t => t.classList.remove('active'));
+        
+        if(type === 'login') {
+            tabs[0].classList.add('active');
+            document.getElementById('loginForm').classList.remove('hidden');
+            document.getElementById('registerForm').classList.add('hidden');
+        } else {
+            tabs[1].classList.add('active');
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('registerForm').classList.remove('hidden');
+        }
+    },
+
+    // --- DRAWER CONTROLS ---
+    openCart: function() {
+        this.closeAll();
+        document.getElementById('globalOverlay').classList.add('active');
+        document.getElementById('cartDrawer').classList.add('open');
+    },
+    openFav: function() {
+        this.closeAll();
+        this.renderFav();
+        document.getElementById('globalOverlay').classList.add('active');
+        document.getElementById('favDrawer').classList.add('open');
+    },
+    openAuth: function() {
+        if(this.state.user) return; // Already logged in
+        this.closeAll();
+        document.getElementById('globalOverlay').classList.add('active');
+        document.getElementById('authModal').classList.add('active');
+    },
+    closeAll: function() {
+        document.getElementById('globalOverlay').classList.remove('active');
+        document.getElementById('cartDrawer').classList.remove('open');
+        document.getElementById('favDrawer').classList.remove('open');
+        document.getElementById('authModal').classList.remove('active');
+    },
+
+    // --- UTILS ---
+    toast: function(msg, type = 'success') {
+        const container = document.getElementById('toastArea');
+        const el = document.createElement('div');
+        el.className = `toast ${type}`;
+        
+        const icon = type === 'success' 
+            ? '<svg width="20" height="20" fill="var(--status-success)" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>'
+            : '<svg width="20" height="20" fill="var(--status-info)" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>';
+
+        el.innerHTML = `
+            ${icon}
+            <div class="toast-content">
+                <h4>${type === 'success' ? 'Başarılı' : 'Bilgi'}</h4>
+                <p>${msg}</p>
+            </div>
+        `;
+        
+        container.appendChild(el);
+        setTimeout(() => {
+            el.style.animation = 'fadeOutRight 0.3s forwards';
+            setTimeout(() => el.remove(), 300);
+        }, 3000);
+    },
+
+    // --- SLIDER LOGIC ---
+    startSlider: function() {
+        setInterval(() => {
+            this.state.slideIndex = (this.state.slideIndex + 1) % 2;
+            this.setSlide(this.state.slideIndex);
+        }, 5000);
+    },
+
+    setSlide: function(index) {
+        this.state.slideIndex = index;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
     }
-}
+};
 
-function changeQty(id, delta) {
-    const item = cart.find(i => i.id === id);
-    if(item) {
-        item.qty += delta;
-        if(item.qty <= 0) removeFromCart(id);
-        else updateCartUI();
-    }
-}
-
-function removeFromCart(id) {
-    cart = cart.filter(i => i.id !== id);
-    updateCartUI();
-}
-
-function buyNow(url) {
-    window.open(url, '_blank');
-}
-
-function handleCheckout() {
-    if(cart.length === 0) {
-        showToast('Sepetiniz boş!', 'error');
-        return;
-    }
-    // Shopier mantığında sepetteki her ürün için ayrı link veya tek bir shopier dükkan linki olur.
-    // Burada kullanıcı deneyimi için alert verip ilk ürünün linkine veya genel iletişime yönlendirebiliriz.
-    // Ancak talimat gereği direkt "Satın Al" butonları ürüne gidiyor. Toplu checkout için basit bir uyarı:
-    alert('Toplu siparişleriniz için lütfen WhatsApp hattımızdan iletişime geçiniz veya ürünlerdeki "Satın Al" butonlarını kullanınız.');
-    openModal('contactModal');
-}
-
-// SLIDER MANTIĞI
-function startSlider() {
-    const slides = document.querySelectorAll('.slide');
-    if(slides.length === 0) return;
-    
-    setInterval(() => {
-        slides[slideIndex].classList.remove('active');
-        slideIndex = (slideIndex + 1) % slides.length;
-        slides[slideIndex].classList.add('active');
-    }, 4000);
-}
-
-// UI YARDIMCILARI
-function toggleCart(forceOpen = false) {
-    const drawer = document.getElementById('cartDrawer');
-    const overlay = document.getElementById('overlay');
-    
-    if(forceOpen || !drawer.classList.contains('active')) {
-        drawer.classList.add('active');
-        overlay.classList.add('active');
-    } else {
-        closeAll();
-    }
-}
-
-function openModal(id) {
-    closeAll();
-    document.getElementById(id).classList.add('active');
-    document.getElementById('overlay').classList.add('active');
-}
-
-function closeAll() {
-    document.querySelectorAll('.drawer, .modal, .overlay').forEach(el => el.classList.remove('active'));
-}
-
-function showToast(msg) {
-    const box = document.getElementById('toastBox');
-    const el = document.createElement('div');
-    el.className = 'toast';
-    el.innerHTML = `<span>✅</span> ${msg}`;
-    box.appendChild(el);
-    setTimeout(() => {
-        el.style.opacity = '0';
-        setTimeout(() => el.remove(), 300);
-    }, 3000);
-}
-
-function toggleFav(btn) {
-    btn.classList.toggle('active');
-    if(btn.classList.contains('active')) {
-        showToast('Favorilere eklendi ❤️');
-    }
-}
-
-function filterCat(cat) {
-    if(cat === 'all') renderProducts(products);
-    else renderProducts(products.filter(p => p.cat === cat));
-    scrollToProducts();
-}
-
-function scrollToProducts() {
-    document.getElementById('products-anchor').scrollIntoView({behavior:'smooth'});
-}
+// Start App
+document.addEventListener('DOMContentLoaded', () => {
+    app.init();
+});
 
 </script>
 </body>
