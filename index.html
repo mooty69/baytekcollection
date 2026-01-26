@@ -1209,10 +1209,10 @@ const db = {
         { id: 102, name: "Premium Çelik Termos Seti (3 Bardaklı)", price: 450, oldPrice: 600, cat: "drink", img: "https://i.imgur.com/wvdZXrC.jpeg", rating: 4.9, isNew: false, fastShipping: true },
         { id: 103, name: "Mobgift USB’li Işıklı Cam Küre", price: 290, oldPrice: 350, cat: "gift", img: "https://i.imgur.com/oiAFO7w.jpeg", rating: 4.5, isNew: false, fastShipping: false },
         { id: 104, name: "Lora Bordo Monogram Çanta", price: 550, oldPrice: 850, cat: "fashion", img: "https://i.imgur.com/1a4ScDF.jpeg", rating: 5.0, isNew: true, fastShipping: true },
-        { id: 107, name: "Motivasyonel Matara 2L", price: 220, oldPrice: 300, cat: "drink", img: "https://i.imgur.com/2en5c9l.jpeg", rating: 4.6, isNew: false, fastShipping: true },
-    categories: [
-    ],
-    categories: [
+        { id: 107, name: "Motivasyonel Matara 2L", price: 220, oldPrice: 300, cat: "drink", img: "https://i.imgur.com/2en5c9l.jpeg", rating: 4.6, isNew: false, fastShipping: true }
+    ], // <-- BURADA KÖŞELİ PARANTEZ EKSİKTİ, DİZİYİ KAPATTIK
+    
+    categories: [ // <-- ÇİFT YAZILAN BOŞ CATEGORIES KISMINI SİLDİK
         { id: 'all', name: 'Tümü' },
         { id: 'decor', name: 'Dekorasyon' },
         { id: 'gift', name: 'Hediyelik' },
@@ -1220,7 +1220,7 @@ const db = {
         { id: 'fashion', name: 'Moda & Aksesuar' },
         { id: 'kitchen', name: 'Mutfak' }
     ]
-};
+}; // <-- OBJEYİ TAMAMEN KAPATTIK
 
 const app = {
     state: {
